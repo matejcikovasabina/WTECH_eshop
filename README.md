@@ -31,3 +31,5 @@
 - vytvorenie nového produktu administrátorom cez administrátorské rozhranie
 - produkt musí obsahovať minimálne názov, opis, aspoň 2 fotografie
 - upravenie/vymazanie existujúceho produktu administrátorom cez administrátorské rozhranie
+
+:)
