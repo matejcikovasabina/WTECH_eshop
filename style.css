@@ -1,0 +1,66 @@
+.navigacka ul li a {
+    color: rgb(73, 112, 112);
+    text-decoration: none;
+}
+
+.horny-pasik{
+  background-color: #857c6f;
+  
+}
+
+.card-img-placeholder{
+  width: 75%;
+  height: 270px;
+  background-color: #bebebe;
+  margin: 0 auto
+}
+
+.main-slider-img-placeholder{
+  width: 100%;
+  height: 500px;
+  background-color: #bebebe;
+  margin: 0 auto
+}
+
+.main-carousel{
+	width:80%;
+	margin:auto;
+}
+
+.MainCitat{
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #403f3f;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer{
+  color: #e1e1e1;
+  background-color: #403f3f;
+  padding-bottom: 4rem;
+  padding-top: 5rem;
+}
+
+.footer-text{
+  color:#bebebe
+}
+
+.footer-text ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-text a {
+  color: rgb(209, 248, 248);
+  text-decoration: none;
+}
+
+.background{
+  background-color: #ebe8f1;
+}
+
+.container{
+  background-color: #fafafa;
+}
