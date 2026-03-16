@@ -387,3 +387,53 @@ section {
   align-items: stretch;
 
 }
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.container-card {
+  width: 70%;
+  background-color: #ffffff;
+  padding: 70px 90px;
+}
+
+.container-card h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  margin-bottom: 50px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px 80px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  color: #111;
+}
+
+.form-group input {
+  width: 100%;
+  height: 45px;
+  border: none;
+  background-color: #d9d9d9;
+  padding: 0 15px;
+  font-size: 18px;
+  outline: none;
+}
