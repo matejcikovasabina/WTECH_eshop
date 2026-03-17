@@ -27,6 +27,8 @@
 
 main {
   padding-top: 40px;
+  padding: 2rem;
+  background-color: var(--color-bg-page);
 }
 
 section {
@@ -74,16 +76,40 @@ section {
   width: 70%;
   background-color: var(--color-bg-card);
   padding: 70px 90px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* header */
-.navigacka ul li a {
+/* HEADER aka NAVIGACKA */
+.navigacka {
+  background-color: var(--color-white);
+  border-bottom: 1px solid #e0e0e0;
+  /* padding: 0 2rem; */
+  padding-right: 10rem;
+  padding-left: 10rem;
+}
+
+.navigacka ul:first-of-type {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.navigacka .nav-link {
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.navigacka .nav-link:hover {
   color: var(--color-nav-link);
-  text-decoration: none;
 }
 
 .horny-pasik {
   background-color: var(--color-black);
+}
+
+.horny-pasik p {
+  margin: 0;
 }
 
 /* placeholder obrazky */
