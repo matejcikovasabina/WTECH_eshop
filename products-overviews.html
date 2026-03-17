@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>ReadIt - Beletria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="header"></header>
+    <script>
+        fetch('navbar.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('header').innerHTML = html;
+            });
+    </script>
+
+<main class="background">
+    <section class="container page-container">
+    <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="#">HOME</a>
+            <span>&gt;</span>
+            <a href="#">Knihy</a>
+            <span>&gt;</span>
+            <span>Beletria</span>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <aside class="col-2 border-end py-3">
+
+                    <h6>Filtre</h6>
+                    <hr>
+
+                    <div class="mb-3">
+                        <h6>Jazyk</h6>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lang1" checked>
+                            <label class="form-check-label" for="lang1">slovenčina</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lang2">
+                            <label class="form-check-label" for="lang2">čeština</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lang3">
+                            <label class="form-check-label" for="lang3">angličtina</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="lang4">
+                            <label class="form-check-label" for="lang4">iné</label>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Vydavateľstvo</h6>
+                        <!-- expand/collapse options -->
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Väzba</h6>
+                        <!-- expand/collapse options -->
+                    </div>
+
+                    <div class="mb-3">
+                        <h6>Hodnotenia</h6>
+                        <span>★★★★★</span>
+                    </div>
+
+                </aside>
+
+                <!-- Main content -->
+                <section class="col-10 py-3">
+
+                    <!-- Category tabs -->
+                    <ul class="nav nav-pills mb-3">
+                        <li class="nav-item"><a class="nav-link active" href="#">Trilery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Horory</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Detektívky</a></li>
+                    </ul>
+
+                    <!-- Sort bar -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="skladom">
+                            <label class="form-check-label" for="skladom">Iba skladom</label>
+                        </div>
+                        <div>
+                            <a href="#" class="me-2">Bestsellers</a>
+                            <a href="#" class="me-2">Najnovšie</a>
+                            <a href="#" class="me-2">Najlacnejšie</a>
+                            <a href="#">Najdrahšie</a>
+                        </div>
+                    </div>
+
+                    <!-- Book cards – row 1 -->
+                    <div class="row row-cols-3 g-3 mb-3">
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Milá Debbie</h6>
+                                    <p class="card-text mb-1"><small>Freida McFadden</small></p>
+                                    <p class="card-text mb-1"><small>★★★★★ / slovenčina / brožovaná</small></p>
+                                    <p class="card-text"><small>Niekedy je toho už na človeka veľa... Debbie Mullanová stráca nervy. Celé roky píše svoje najlepšie rady do rubriky Milá Debbie...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Názov knihy</h6>
+                                    <p class="card-text mb-1"><small>Autor</small></p>
+                                    <p class="card-text mb-1"><small>★★★★☆ / jazyk / väzba</small></p>
+                                    <p class="card-text"><small>Cool text obsahu whatvere možno asi uvidím...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Názov knihy</h6>
+                                    <p class="card-text mb-1"><small>Autor</small></p>
+                                    <p class="card-text mb-1"><small>★★★★☆ / jazyk / väzba</small></p>
+                                    <p class="card-text"><small>Cool text obsahu whatvere možno asi uvidím...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Book cards – row 2 -->
+                    <div class="row row-cols-3 g-3 mb-4">
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Názov knihy</h6>
+                                    <p class="card-text mb-1"><small>Autor</small></p>
+                                    <p class="card-text mb-1"><small>★★★★☆ / jazyk / väzba</small></p>
+                                    <p class="card-text"><small>Cool text obsahu whatvere možno asi uvidím...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Názov knihy</h6>
+                                    <p class="card-text mb-1"><small>Autor</small></p>
+                                    <p class="card-text mb-1"><small>★★★★☆ / jazyk / väzba</small></p>
+                                    <p class="card-text"><small>Cool text obsahu whatvere možno asi uvidím...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card h-100">
+                                <div class="bg-secondary" style="height:200px;"></div>
+                                <div class="card-body">
+                                    <h6 class="card-title">Názov knihy</h6>
+                                    <p class="card-text mb-1"><small>Autor</small></p>
+                                    <p class="card-text mb-1"><small>★★★★☆ / jazyk / väzba</small></p>
+                                    <p class="card-text"><small>Cool text obsahu whatvere možno asi uvidím...</small></p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <span>12,90 €</span>
+                                    <button class="btn btn-dark btn-sm">Košík</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="d-flex justify-content-between align-items-center">
+                        <nav>
+                            <ul class="pagination mb-0">
+                                <li class="page-item"><a class="page-link" href="#">…</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            </ul>
+                        </nav>
+                        <button class="btn btn-dark">Next</button>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col">
+                <h5>ReadIt</h5>
+                <p>Najlepšie miesto pre knihy online. Objavujte novinky, bestsellery a zľavy.</p>
+            </div>
+
+            <div class="col">
+                <h6>Všeobecné informácie</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white-50">Obchodné podmienky</a></li>
+                    <li><a href="#" class="text-white-50">Platba a Doprava</a></li>
+                    <li><a href="#" class="text-white-50">Reklamácie</a></li>
+                </ul>
+            </div>
+
+            <div class="col">
+                <h6>Kontakt</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/cdn-cgi/l/email-protection#9eecfbfffaf7eadef5f0f7f6f5ebeefbfdeae8f1b0fdf1f3" class="text-white-50"><span class="__cf_email__" data-cfemail="b9cbdcd8ddd0cdf9d2d7d0d1d2ccc9dcdacdcfd697dad6d4">[email&#160;protected]</span></a></li>
+                    <li><a href="tel:+421678767676" class="text-white-50">+421 678 767 676</a></li>
+                </ul>
+            </div>
+
+            <div class="col text-end">
+                <img src="logo.png" alt="ReadIt logo" height="60">
+                <p class="mt-2 text-white-50 small">© 2026 ReadIt. Všetky práva vyhradené.</p>
+         
