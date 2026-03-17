@@ -112,12 +112,30 @@ section {
   margin: 0;
 }
 
-/* placeholder obrazky */
 .card-img-placeholder {
   width: 75%;
-  height: 270px;
-  background-color: var(--color-bg-placeholder);
+  height: 280px;
   margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-img-news {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cardd {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardd:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .main-slider-img-placeholder {
@@ -196,7 +214,7 @@ section {
 
 .product-image {
   width: 280px;
-  height: 400px;
+  height: 440px;
   background-color: var(--color-bg-muted);
   flex-shrink: 0;
   margin-left: 20px;
@@ -287,10 +305,15 @@ section {
 .cart-btn {
   padding: 18px 35px;
   font-size: 18px;
+  border: 0;
+  border-radius: 0.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .cart-btn:hover {
-  opacity: 0.9;
+  opacity: 0.5;
+  background-color: var(--color-black);
 }
 
 .more-details {
@@ -308,7 +331,7 @@ section {
 
 .book-cover {
   width: 90px;
-  height: 120px;
+  height: 140px;
   background-color: var(--color-bg-muted);
   margin-bottom: 10px;
 }
@@ -322,6 +345,15 @@ section {
   padding: 12px 28px;
   font-size: 16px;
   margin-bottom: 35px;
+  border: 0;
+  border-radius: 0.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cart-btn-sidebar:hover{
+  opacity: 0.5;
+  background-color: var(--color-black);
 }
 
 .side-nav {
@@ -407,6 +439,15 @@ section {
 .review-btn {
   padding: 16px 28px;
   font-size: 16px;
+  border: 0;
+  border-radius: 0.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.review-btn:hover{
+  opacity: 0.5;
+  background-color: var(--color-black);
 }
 
 .review-action {
@@ -483,8 +524,18 @@ section {
   align-items: start;
   column-gap: 20px;
   padding: 5px 0 20px;
+  border-radius: 10px;
+  
 }
 
+.order-row:hover{
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.10);
+}
+
+.order-col{
+  margin-left: 20px;
+}
 .order-number strong {
   display: block;
   font-size: 18px;
