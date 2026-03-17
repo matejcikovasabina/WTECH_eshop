@@ -1,7 +1,7 @@
 
-.row {
+.row{
     --bs-gutter-x: 3rem; 
-    margin: 2rem 0rem;
+    margin: 2rem 0px;
 }
 
 .sortby-bar {
@@ -10,7 +10,7 @@
     border-bottom: 1px solid #f0f0f0;
 }
 
-.card {
+.card{
     border: 1px solid #eee;
     transition: all 0.3s ease;
     border-radius: 10px;
@@ -52,4 +52,41 @@
     
     width: auto;
     margin: 0 auto;
+}
+
+/* RESPONSIVNOST */
+
+/* --- MANUÁLNA REZPONZIVITA --- */
+/* 1. Základ pre všetky stĺpce v našej mriežke */
+.custom-book-grid .col {
+    flex: 0 0 auto; /* Zakáže stĺpcom samovoľne sa rozťahovať */
+    width: 100%;    /* Na úplne malom mobile (pod 576px) bude 1 kniha na riadok */
+}
+
+/* 2. TABLET (Small/Medium zariadenia - od 576px vyššie) */
+@media (min-width: 800px) {
+    .custom-book-grid .col {
+        width: 50%; /* 2 knihy vedľa seba */
+    }
+}
+
+/* 3. LAPTOP / DESKTOP (od 992px vyššie) */
+@media (min-width: 1200px) {
+    .custom-book-grid .col {
+        width: 33.333%; /* 3 knihy vedľa seba */
+    }
+}
+
+@media(max-width:800px){
+    .main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+}
+/* Nastavenie rozloženia 1:1 na mobile, 250px:zvyšok na PC */
+
+.main-layout {
+    display: flex;
+    gap: 20px;
 }

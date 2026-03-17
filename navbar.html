@@ -8,18 +8,33 @@
             <img src="logo.png" alt="ReadIt logo" height="60">
         </a>
 
-        <ul class="nav">    
-            <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Knihy</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
-        </ul>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
 
-        <ul class="nav">
-            <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
-        </ul>
+        <div class="nav-content" id="navContent">
+            <ul class="nav">    
+                <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Knihy</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
+            </ul>
+
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+<!-- <script>
+function toggleMenu() {
+    const menu = document.getElementById('navContent');
+    menu.classList.toggle('active');
+}
+</script> -->

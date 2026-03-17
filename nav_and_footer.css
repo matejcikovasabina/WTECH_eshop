@@ -1,1 +1,32 @@
-/* i guess treba oddelit ccsko zvlast na veci lebo je bordellll */
+
+/* HEADER aka NAVIGACKA */
+.navigacka {
+  background-color: var(--color-white);
+  border-bottom: 1px solid #e0e0e0;
+  /* padding: 0 2rem; */
+  padding-right: 10rem;
+  padding-left: 10rem;
+}
+
+.navigacka ul:first-of-type {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.navigacka .nav-link {
+  color: var(--color-text-main);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.navigacka .nav-link:hover {
+  color: var(--color-nav-link);
+}
+
+.horny-pasik {
+  background-color: var(--color-black);
+}
+
+.horny-pasik p {
+  margin: 0;
+}
