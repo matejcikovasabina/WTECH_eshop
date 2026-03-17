@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>  
-    <header id="header"></header>
-    <script>
-        fetch('navbar.html')
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById('header').innerHTML = html;
-            });
-    </script>
+    <header id="header-placeholder"></header>
 
     <main class="background">
         <section class="container page-container">
@@ -463,47 +456,21 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
+    <div id="footer-placeholder"></div>
 
-                <div class="col footer-text">
-                    <h3>ReadIt</h3>
-                    <p>Najlepšie miesto pre knihy online. Objavujte novinky, bestsellery a zľavy.</p>
-                </div>
+    <script>
+        fetch('navbar.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('header-placeholder').innerHTML = html;
+            });
 
-                <div class="col footer-text">
-                    <h5>Rýchle odkazy</h5>
-                    <ul>
-                        <li><a href="#">Novinky</a></li>
-                        <li><a href="#">Knihy</a></li>
-                        <li><a href="#">Akcie a zľavy</a></li>
-                        <li><a href="#">Poukážky</a></li>
-                    </ul>
-                </div>
-
-                <div class="col footer-text">
-                    <h5>Podpora</h5>
-                    <ul>
-                        <li><a href="#">Obchodné podmienky</a></li>
-                        <li><a href="#">Platba a doprava</a></li>
-                        <li><a href="#">Reklamácie</a></li>
-                    </ul>
-                </div>
-
-                <div class="col footer-text">
-                    <h5>Kontakt</h5>
-                    <ul>
-                        <li>Email: <a href="mailto:info@readit.sk">info@readit.sk</a></li>
-                        <li>Tel.: <a href="tel:+421901234567">+421 901 234 567</a></li>
-                        <li>Adresa: Hlavná 12, Bratislava</li>
-                    </ul>
-                    <p class="mt-3">© 2026 ReadIt. Všetky práva vyhradené.</p>
-                </div>
-
-            </div>
-        </div>
-    </footer>
+        fetch('footer.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('footer-placeholder').innerHTML = html;
+            });
+    </script>
 
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
