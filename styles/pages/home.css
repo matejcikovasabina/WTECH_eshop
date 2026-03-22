@@ -1,0 +1,8 @@
+/* MAIN CITAT DOLNY */
+.MainCitat {
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--color-footer);
+  text-align: center;
+  padding: 20px;
+}

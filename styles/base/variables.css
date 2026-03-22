@@ -1,0 +1,29 @@
+:root {
+  /* POZADIA */
+  --color-bg-page: #ebe8f1;
+  --color-bg-card: #ffffff;
+  --color-bg-container: #fafafa;
+  --color-bg-muted: #d9d9d9;
+  --color-bg-circle: #d3d3d3;
+  --color-bg-placeholder: #bebebe;
+
+  /* TEXTY */
+  --color-text-main: #111;
+  --color-text-secondary: #497070;
+  --color-text-muted: #444;
+  --color-text-soft: #555;
+
+  --color-footer: #403f3f;
+  --color-footer-text: #bebebe;
+
+  --color-link-light: rgb(209, 248, 248);
+  --color-nav-link: rgb(73, 112, 112);
+  --color-black: #000;
+  --color-white: #fff;
+
+  /*INTERAKTIVNE PRVKY A CIARY */
+  --color-border: #e0e0e0;
+  --color-border-dark: #999999;
+  --color-link-hover: var(--color-secondary);
+  --shadow-main: 0 10px 20px rgba(0,0,0,0.15)
+}

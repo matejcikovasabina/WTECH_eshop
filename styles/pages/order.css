@@ -1,0 +1,45 @@
+.order-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.8fr 0.5fr;
+  align-items: start;
+  column-gap: 20px;
+  padding: 5px 0 20px;
+  border-radius: 10px;
+  
+}
+
+.order-row:hover{
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 5px 5px var(--shadow-main);
+}
+
+.order-col{
+  margin-left: 20px;
+}
+.order-number strong {
+  display: block;
+  font-size: 18px;
+  color: var(--color-text-main);
+}
+
+.invoice {
+  font-size: 15px;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+}
+
+.order-date,
+.order-status,
+.order-price {
+  font-size: 18px;
+  color: var(--color-text-main);
+  padding-top: 2px;
+}

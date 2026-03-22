@@ -1,3 +1,26 @@
+/* BASE - zakladne nastavenia */
+@import "styles/base/variables.css";
+@import "styles/base/reset.css";
+
+/* COMPONENTS - veci co sa opakuju viackrat na stranke */
+@import "styles/components/nav.css";
+@import "styles/components/footer.css";
+@import "styles/components/buttons.css";
+@import "styles/components/cards.css";
+@import "styles/components/carousel.css";
+
+
+/* PAGES - konkretne podstranky */
+@import "styles/pages/home.css";
+@import "styles/pages/products-overview.css";
+@import "styles/pages/product-details.css";
+@import "styles/pages/profile.css";
+@import "styles/pages/order.css";
+
+
+
+
+/* 
 :root {
   --color-bg-page: #ebe8f1;
   --color-bg-card: #ffffff;
@@ -7,6 +30,7 @@
   --color-bg-placeholder: #bebebe;
 
   --color-text-main: #111;
+  --color-text-secondary: #497070;
   --color-text-muted: #444;
   --color-text-soft: #555;
 
@@ -17,9 +41,14 @@
   --color-nav-link: rgb(73, 112, 112);
   --color-black: #000;
   --color-white: #fff;
-}
 
-* {
+  --color-border: #e0e0e0;
+  --color-border-dark: #999999;
+  --color-link-hover: var(--color-secondary);
+  --shadow-main: 0 10px 20px rgba(0,0,0,0.15)
+} */
+
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,13 +63,10 @@ main {
 section {
   padding-top: 20px;
   padding-bottom: 20px;
-}
+} */
 
 /* všeobecne */
-.background {
-  background-color: var(--color-bg-page);
-}
-
+/* 
 .page-container {
   background-color: var(--color-bg-container);
 }
@@ -78,18 +104,16 @@ section {
   padding: 70px 90px;
   max-width: 1400px;
   margin: 0 auto;
-}
+} */
 
 /* HEADER aka NAVIGACKA */
-.navigacka {
+/* .navigacka {
   background-color: var(--color-white);
-  border-bottom: 1px solid #e0e0e0;
-  /* padding: 0 2rem; */
+  border-bottom: 1px solid var(--color-border);
   padding-right: 10rem;
   padding-left: 10rem;
 }
 
-/* styl pre hamburger */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -105,34 +129,31 @@ section {
     background-color: var(--color-black);
 }
 
-/* rozbalene desktup spravanie */
 .nav-content {
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
 }
 
-/* --- RESPONZIVITA (pod 1400px) --- */
 @media (max-width: 1400px) {
     .navigacka {
-    
       padding: 0 5rem;
     }
 
     .menu-toggle {
-        display: flex; /* Ukazeme hamburger */
+        display: flex;
     }
 
     .nav-content {
-        display: none; /* schovame menu */
+        display: none;
         position: absolute;
-        top: 100%; /* hned pod navbar */
+        top: 100%; 
         left: 0;
         width: 100%;
-        background: white;
+        background: var(--color-white);
         flex-direction: column;
         padding: 1rem;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--color-border);
         z-index: 1000;
     }
 
@@ -168,9 +189,11 @@ section {
 
 .horny-pasik p {
   margin: 0;
-}
+} */
 
-.card-img-placeholder {
+/* --------------------------------------------- */
+
+/* .card-img-placeholder {
   width: 75%;
   height: 280px;
   margin: 0 auto;
@@ -193,10 +216,10 @@ section {
 
 .cardd:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-}
+  box-shadow: 0 10px 20px var(--shadow-main);
+} */
 
-.main-slider-img-placeholder {
+/* .main-slider-img-placeholder {
   width: 100%;
   height: 500px;
   background-color: var(--color-bg-placeholder);
@@ -206,18 +229,18 @@ section {
 .main-carousel {
   width: 80%;
   margin: auto;
-}
+} */
 
-.MainCitat {
+/* .MainCitat {
   font-style: italic;
   font-size: 1.5rem;
   color: var(--color-footer);
   text-align: center;
   padding: 20px;
-}
+} */
 
 /* footer */
-.footer {
+/* .footer {
   color: #e1e1e1;
   background-color: var(--color-footer);
   padding-bottom: 4rem;
@@ -237,9 +260,9 @@ section {
 .footer-text a {
   color: var(--color-link-light);
   text-decoration: none;
-}
+} */
 
-/* product detail */
+/* product detail
 .book-info {
   padding: 10px;
 }
@@ -309,7 +332,7 @@ section {
 
 .meta {
   margin-bottom: 15px;
-  color: #222;
+  color: var(--color-text-soft);
 }
 
 .info-pack {
@@ -341,17 +364,17 @@ section {
   align-items: center;
   gap: 20px;
   justify-content: flex-end;
-}
+} */
 
-.wishlist {
+/* .wishlist {
   font-size: 42px;
   background: none;
   border: none;
   cursor: pointer;
   line-height: 1;
-}
+} */
 
-.cart-btn,
+/* .cart-btn,
 .cart-btn-sidebar,
 .review-btn {
   background-color: var(--color-black);
@@ -372,9 +395,9 @@ section {
 .cart-btn:hover {
   opacity: 0.5;
   background-color: var(--color-black);
-}
+} */
 
-.more-details {
+/* .more-details {
   display: flex;
   gap: 70px;
   align-items: stretch;
@@ -397,9 +420,9 @@ section {
 .book-price {
   font-size: 28px;
   margin: 0 0 12px;
-}
+} */
 
-.cart-btn-sidebar {
+/* .cart-btn-sidebar {
   padding: 12px 28px;
   font-size: 16px;
   margin-bottom: 35px;
@@ -412,9 +435,9 @@ section {
 .cart-btn-sidebar:hover{
   opacity: 0.5;
   background-color: var(--color-black);
-}
+} */
 
-.side-nav {
+/* .side-nav {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -452,7 +475,7 @@ section {
 }
 
 .details-box {
-  background-color: #e4e4e4;
+  background-color: var(--color-bg-muted);
   padding: 35px 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -464,11 +487,11 @@ section {
 .detail-item {
   font-size: 15px;
   color: var(--color-text-muted);
-}
+} */
 
 /* reviews */
-.reviews-summary {
-  background-color: #e4e4e4;
+/* .reviews-summary {
+  background-color: var(--color-bg-muted);
   padding: 30px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -492,9 +515,9 @@ section {
 .rating-count {
   font-size: 18px;
   margin-bottom: 25px;
-}
+} */
 
-.review-btn {
+/* .review-btn {
   padding: 16px 28px;
   font-size: 16px;
   border: 0;
@@ -506,11 +529,11 @@ section {
 .review-btn:hover{
   opacity: 0.5;
   background-color: var(--color-black);
-}
+} */
 
-.review-action {
-  border-left: 1px solid #999;
-  border-right: 1px solid #999;
+/* .review-action {
+  border-left: 1px solid var(--color-border-dark);
+  border-right: 1px solid var(--color-border-dark);
   padding: 0 35px;
   display: flex;
   justify-content: center;
@@ -552,10 +575,10 @@ section {
   flex-direction: column;
   gap: 10px;
   align-items: stretch;
-}
+} */
 
 /* profil */
-.profile-avatar {
+/* .profile-avatar {
   width: 100px;
   height: 100px;
   margin-bottom: 50px;
@@ -573,10 +596,10 @@ section {
   font-weight: bold;
   margin-bottom: 3px;
   color: var(--color-text-main);
-}
+} */
 
 /* objednavky */
-.order-row {
+/* .order-row {
   display: grid;
   grid-template-columns: 2fr 1.5fr 1.8fr 0.5fr;
   align-items: start;
@@ -588,7 +611,7 @@ section {
 
 .order-row:hover{
   transform: translateY(-2px);
-  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.10);
+  box-shadow: 5px 5px 5px 5px var(--shadow-main);
 }
 
 .order-col{
@@ -620,4 +643,4 @@ section {
   font-size: 18px;
   color: var(--color-text-main);
   padding-top: 2px;
-}
+} */

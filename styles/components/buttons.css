@@ -1,0 +1,77 @@
+/* KOSIK */
+.cart-btn,
+.cart-btn-sidebar,
+.review-btn {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.cart-btn {
+  padding: 18px 35px;
+  font-size: 18px;
+}
+
+.cart-btn-sidebar {
+  padding: 12px 28px;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+/* REVIEW */
+.review-btn {
+  padding: 16px 28px;
+  font-size: 16px;
+}
+
+.cart-btn:hover,
+.cart-btn-sidebar:hover,
+.review-btn:hover {
+  opacity: 0.5;
+}
+
+/* WISHLIST */
+.wishlist {
+  font-size: 42px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* IN PRODUCT DETAILS ON SIDE "KOSIK" */
+.cart-btn-sidebar {
+  padding: 12px 28px;
+  font-size: 16px;
+  margin-bottom: 35px;
+  border: 0;
+  border-radius: 0.4rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cart-btn-sidebar:hover{
+  opacity: 0.5;
+  background-color: var(--color-black);
+}
+
+/* TLACIDLO KOSIK */
+.card-footer .btn-dark {
+  background-color: var(--color-black);
+  border: 0;
+  border-radius: 0.4rem;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.card-footer .btn-dark:hover {
+  opacity: 0.5;
+  background-color: var(--color-black);
+}

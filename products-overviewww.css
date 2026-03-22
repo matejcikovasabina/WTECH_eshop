@@ -1,5 +1,5 @@
 
-.row{
+/* .row{
     --bs-gutter-x: 3rem; 
     margin: 2rem 0px;
 }
@@ -8,9 +8,9 @@
     margin-bottom: 35px;
     padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
-}
+} */
 
-.card{
+/* .card{
     border: 1px solid #eee;
     transition: all 0.3s ease;
     border-radius: 10px;
@@ -24,17 +24,17 @@
 
 .card-body {
     padding: 20px;
-}
+} */
 
-.pagination-wrapper {
+/* .pagination-wrapper {
     margin-top: 50px;
     padding-top: 20px;
     border-top: 1px solid #eee;
-}
+} */
 
 /* ddddddddddddddddddddddd */
 
-.book-cover-place{
+/* .book-cover-place{
     height: 240px;
     display: flex;
     align-items: center;
@@ -52,41 +52,41 @@
     
     width: auto;
     margin: 0 auto;
-}
+} */
 
 /* RESPONSIVNOST */
 
 /* --- MANUÁLNA REZPONZIVITA --- */
 /* 1. Základ pre všetky stĺpce v našej mriežke */
-.custom-book-grid .col {
-    flex: 0 0 auto; /* Zakáže stĺpcom samovoľne sa rozťahovať */
-    width: 100%;    /* Na úplne malom mobile (pod 576px) bude 1 kniha na riadok */
-}
+/* .custom-book-grid .col {
+    flex: 0 0 auto;
+    width: 100%;
+} */
 
 /* 2. TABLET (Small/Medium zariadenia - od 576px vyššie) */
-@media (min-width: 800px) {
+/* @media (min-width: 800px) {
     .custom-book-grid .col {
-        width: 50%; /* 2 knihy vedľa seba */
+        width: 50%;
     }
-}
+} */
 
 /* 3. LAPTOP / DESKTOP (od 992px vyššie) */
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
     .custom-book-grid .col {
-        width: 33.333%; /* 3 knihy vedľa seba */
+        width: 33.333%;
     }
-}
+} */
 
-@media(max-width:800px){
+/* @media(max-width:800px){
     .main-layout {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-}
+} */
 /* Nastavenie rozloženia 1:1 na mobile, 250px:zvyšok na PC */
 
-.main-layout {
+/* .main-layout {
     display: flex;
     gap: 20px;
-}
+} */
