@@ -1,0 +1,180 @@
+.products-page .row {
+    --bs-gutter-x: 3rem; 
+    margin: 2rem 0px;
+}
+
+.sortby-bar {
+    margin-bottom: 35px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.pagination-wrapper {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.book-cover-place {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-book-grid .card-img-top {
+    height: 230px; 
+    object-fit: contain; 
+    background-color: #fdfdfd; 
+    padding: 15px;
+    width: auto;
+    margin: 0 auto;
+}
+
+/* ROZLOZENIE (Layout) */
+.main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* ROZLOZENIE STRANKY */
+.main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+@media (max-width: 800px) {
+    .main-layout { flex-direction: column; }
+}
+
+
+/* FILTERS - bocny panel*/
+aside h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-top: 2rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-black);
+  border-color: var(--color-black);
+}
+
+
+/* VYBERANIE PRODUKTOV PODLA ZANRU */
+.nav-pills{
+    margin: 1rem 1rem;
+}
+.nav-pills .nav-link {
+  color: var(--color-text-main);
+  background-color: var(--color-bg-muted);
+  margin-right: 10px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active, 
+.nav-pills .show > .nav-link {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+  background-color: var(--color-bg-placeholder);
+  color: var(--color-black);
+}
+
+/* ZORADENIE PRODUKTOV PODLA PODMIENKY (bestsellers, price....)*/
+.sortby-bar{
+    margin: 1rem 1rem;
+}
+.sortby-bar a {
+  text-decoration: none;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.sortby-bar a:hover {
+  color: var(--color-black);
+}
+
+/* ciara medzi filtrami na zoradenie */
+.sortby-bar a:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: var(--color-bg-placeholder);
+}
+
+
+/* PAGINACIA */
+.pagination .page-link {
+    color: var(--color-black);
+    border: none;
+    background-color: transparent;
+    margin: 0 2px;
+    padding: 8px 16px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+}
+
+/* HOVER EFEKT*/
+.pagination .page-link:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-black);
+}
+
+/* AKTIVNA STRANKA NA KTOREJ SME */
+.pagination .page-item.active .page-link {
+    background-color: transparent;
+    color: var(--color-black);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-black);
+    border-radius: 0;
+}
+
+/* bootstrap shadow delete */
+.pagination .page-link:focus {
+    box-shadow: none;
+    background-color: var(--color-bg-placeholder);
+}
+
+/* odsadenie wrapperu pagingu a knih */
+.pagination-wrapper {
+    margin-top: 40px;
+    border-top: 1px solid var(--color-bg-muted);
+    padding-top: 20px;
+}
+
+/* RESPONSIVITA */
+
+/* Na malých obrazovkách zmeníme smer layoutu na stĺpec */
+@media (max-width: 800px) {
+    .main-layout {
+        flex-direction: column;
+    }
+}
+
+/* Mriežka kníh */
+.custom-book-grid .col {
+    flex: 0 0 auto;
+    width: 100%;    /* Mobil: 1 kniha */
+}
+
+@media (min-width: 800px) {
+    .custom-book-grid .col {
+        width: 50%; /* Tablet: 2 knihy */
+    }
+}
+
+@media (min-width: 1200px) {
+    .custom-book-grid .col {
+        width: 33.333%; /* Desktop: 3 knihy */
+    }
+}
