@@ -14,27 +14,34 @@
   object-fit: contain;
 }
 
-.cardd {
+.card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cardd:hover {
+.card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-main);
 }
 
-.card{
-    border: 1px solid #eee;
-    transition: all 0.3s ease;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transform: translateY(-5px);
-}
-
 .card-body {
-    padding: 20px;
+  padding: 20px;
+}
+
+.card-order {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 34px;
+  padding: 28px 30px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(126, 97, 109, 0.08);
+}
+
+.card-order h2 {
+  font-size: 18px;
+  margin-bottom: 26px;
 }

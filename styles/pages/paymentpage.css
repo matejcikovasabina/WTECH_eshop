@@ -1,105 +1,52 @@
 .payment-subtitle {
-    color: #777;
-    margin-bottom: 24px;
-    font-size: 15px;
-  }
-  
-  .payment-options {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  
-  .payment-option {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 18px;
-    border: 1px solid #eee;
-    border-radius: 18px;
-    background: #fff;
-    cursor: pointer;
-    transition: all 0.28s ease;
-  }
-  
-  .payment-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-    border-color: #d8c4cb;
-    background: #fffafb;
-  }
-  
-  .payment-option input[type="radio"] {
-    margin-top: 6px;
-    accent-color: #111;
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-  
-  .payment-content {
-    flex: 1;
-  }
-  
-  .payment-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .payment-top h3 {
-    font-size: 17px;
-    margin-bottom: 5px;
-  }
-  
-  .payment-top p {
-    color: #777;
-    font-size: 14px;
-  }
-  
-  .payment-badge {
-    font-weight: 700;
-    font-size: 14px;
-    white-space: nowrap;
-    background: #f7f1f3;
-    padding: 8px 12px;
-    border-radius: 12px;
-  }
-  
-  .payment-badge.recommended {
-    background: #eef6ff;
-    color: #2d5f9a;
-  }
-  
-  .payment-badge.gift {
-    background: #f6eefc;
-    color: #7a42a8;
-  }
-  
-  .payment-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 24px;
-    color: #555;
-    font-size: 14px;
-  }
-  
-  .payment-extra {
-    margin-top: 10px;
-    padding-top: 10px;
-  }
-  
-  @media (max-width: 768px) {
-    .payment-top {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .payment-badge {
-      align-self: flex-start;
-    }
-  }
+  color: #777;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
 
-  
+.payment-option {
+  border: 1px solid #eee;
+}
+
+.payment-option:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: #d8c4cb;
+  background: #fffafb;
+}
+
+.payment-option input[type="radio"] {
+  accent-color: #111;
+}
+
+.payment-top p {
+  color: #777;
+}
+
+.payment-badge {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  background: #f7f1f3;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.payment-badge.recommended {
+  background: #eef6ff;
+  color: #2d5f9a;
+}
+
+.payment-badge.gift {
+  background: #f6eefc;
+  color: #7a42a8;
+}
+
+.payment-info {
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .payment-badge {
+    align-self: flex-start;
+  }
+}

@@ -27,6 +27,10 @@
   /* BORDRE, ČIARY, TIENE */
   --color-border: #e0e0e0;
   --color-border-dark: #999999;
+  --color-border-light: #eee;
+  --color-border-input: #ddd;
+  --color-border-hover: #d8c4cb;
+  --color-border-focus: #c8aeb8;
   --color-line-dark: #222;
 
   --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -35,4 +39,17 @@
   /* OSTATNÉ */
   --radius: 18px;
   --transition: 0.25s ease;
+
+  --color-radio-hover: #6d4c57;
+  --color-accent-dark: #111;
+
+  --color-text-subtle: #777;
+  --color-text-soft: #555;
+  --color-text-label: #222;
+
+  --color-bg-white: #fff;
+  --color-bg-hover-soft: #fffafb;
+
+  --shadow-delivery-hover: 0 12px 28px rgba(0, 0, 0, 0.08);
+  --shadow-input-focus: 0 0 0 4px rgba(200, 174, 184, 0.15);
 }
