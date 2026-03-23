@@ -1,10 +1,10 @@
 :root {
   /* POZADIA */
-  --color-bg-page: #ebe8f1;
+  --color-bg-page: #876556;
   --color-bg-card: #ffffff;
   --color-bg-container: #fafafa;
   --color-bg-muted: #d9d9d9;
-  --color-bg-circle: #d3d3d3;
+  --color-bg-circle: #d3d3d3;   
   --color-bg-placeholder: #bebebe;
   --color-bg-soft: #fcf6f6;
   --color-bg-hover: #f5f5f5;
@@ -16,6 +16,7 @@
   --color-text-soft: #555;
   --color-footer: #403f3f;
   --color-footer-text: #bebebe;
+  --color-link: #666;
 
   /* ODKAZY A ZÁKLADNÉ FARBY */
   --color-link-light: rgb(209, 248, 248);
