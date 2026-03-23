@@ -25,6 +25,8 @@
 @import "styles/pages/summarypage.css";
 
 @import "styles/pages/wishlist.css";
+@import "styles/components/slider-card.css";
+
 /* 
 :root {
   --color-bg-page: #ebe8f1;

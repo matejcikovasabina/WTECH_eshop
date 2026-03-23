@@ -1,0 +1,145 @@
+/* CELY Slider - staticke okno */
+.slider-wrapper {
+  padding: 0 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* POHYBLIVY PAS */
+.book-slider {
+  display: grid;
+  grid-auto-flow: column; /* knihy v nekonecnom riadku */
+  grid-auto-columns: calc(100%); /* Mobil: 1 kniha na celu sirku */
+  gap: 20px; /*medzera medzi jednotlivymi cardss */
+  overflow-x: auto; /* scroll prstom na mobile */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.book-slider::-webkit-scrollbar {
+  display: none; /* Skryje scrollbar v Chrome/Safari */
+}
+
+.book-slider .cardd {
+  scroll-snap-align: start;
+}
+
+/* Balik jednej karty s knihou */
+.cardd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardd:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-main);
+}
+
+/* Obrazok knizky */
+.card-img-placeholder {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  overflow: hidden;
+  padding: 5px;
+  padding-bottom: 15px;
+}
+
+.cardd-img{
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 5px var(--color-border-dark));
+}
+
+.cardd:hover .cardd-img {
+  transform: scale(1.05);
+}
+
+/* DETAILY O KNIHE */
+.cardd-body{
+  padding: 5px;
+  text-align: center;
+}
+
+.cardd-body-title{
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.cardd-body-author{
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardd-body-price{
+  font-weight: 600;
+}
+
+/* RESPONZIVITA */
+/* 2 knihy */
+@media (min-width: 600px) {
+  .book-slider { grid-auto-columns: calc((100% - (1 * 20px)) / 2); }
+}
+
+/* 3 knihy */
+@media (min-width: 800px) {
+  .book-slider { grid-auto-columns: calc((100% - (2 * 20px)) / 3); }
+}
+
+/* 5 knih */
+@media (min-width: 1200px) {
+  .book-slider { grid-auto-columns: calc((100% - (4 * 20px)) / 5); }
+}
+
+/* ARROWS */
+.carousel-control-prev, .carousel-control-next {
+  width: 45px;
+  height: 45px;
+  background-color: var(--color-bg-container);
+  border: 1px solid var(--color-bg-muted);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  box-shadow: 0 4px 10px var(--color-bg-muted);
+  z-index: 10;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: invert(1) grayscale(100) brightness(0);
+  width: 20px;
+}
+
+.carousel-control-prev { 
+  left: 0px;
+}
+
+.carousel-control-next { 
+  right: 0px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background-color: var(--color-bg-muted);
+}
