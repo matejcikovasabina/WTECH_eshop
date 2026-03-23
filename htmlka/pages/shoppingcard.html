@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registracia</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <section class="steps">
+        <div class="step active">
+        <span>Košík</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Doručenie</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Platba</span>
+            <div class="step-line"></div>
+        </div>
+        <div class="step">
+            <span>Sumar</span>
+            <div class="step-line"></div>
+        </div>
+    </section>
+      
+    <main class="background">
+        
+    </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Načítanie komponentov z priečinka components (o úroveň vyššie)
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>
