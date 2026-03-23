@@ -1,0 +1,95 @@
+.form-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--color-bg-card);
+  padding: 36px 28px 28px;
+  text-align: left;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h1 {
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  color: var(--color-text-main);
+}
+
+.form-group label
+.form-card label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-label);
+}
+
+.form-group textarea,
+.form-group input,
+.form-group textarea
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  border: 1px solid var(--color-border-input);
+  background: var(--color-bg-white);
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+}
+
+.form-group textarea:focus,
+.form-group input:focus,
+.form-group textarea:focus
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-input-focus);
+}
+
+.form-link-wrap {
+  text-align: center;
+}
+
+.form-link {
+  display: inline-block;
+  text-align: center;
+  color: var(--color-link);
+  font-size: 14px;
+  margin-bottom: 38px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.form-link:hover {
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
+.form-text {
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.form-text a {
+  color: var(--color-black);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.form-text a:hover {
+  text-decoration: underline;
+}

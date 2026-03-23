@@ -1,17 +1,38 @@
-/* KOSIK */
+/* btns */
 .cart-btn,
 .cart-btn-sidebar,
-.review-btn {
-  background-color: var(--color-black);
+.review-btn,
+.card-footer .btn-dark,
+.btn-dark-custom,
+.continue-btn {
+  background: var(--color-black);
   color: var(--color-white);
   border: none;
   cursor: pointer;
-  border-radius: 0.4rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: opacity 0.3s ease;
+  border-radius: 999px;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
 }
 
+.cart-btn:hover,
+.cart-btn-sidebar:hover,
+.review-btn:hover,
+.card-footer .btn-dark:hover,
+.btn-dark-custom:hover,
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.cart-btn:active,
+.cart-btn-sidebar:active,
+.review-btn:active,
+.card-footer .btn-dark:active,
+.btn-dark-custom:active,
+.continue-btn:active {
+  transform: translateY(0);
+}
+
+/* velkosti / rozdiely */
 .cart-btn {
   padding: 18px 35px;
   font-size: 18px;
@@ -23,19 +44,28 @@
   margin-bottom: 35px;
 }
 
-/* REVIEW */
 .review-btn {
   padding: 16px 28px;
   font-size: 16px;
 }
 
-.cart-btn:hover,
-.cart-btn-sidebar:hover,
-.review-btn:hover {
-  opacity: 0.5;
+.card-footer .btn-dark {
+  padding: 8px 20px;
+  font-size: 12px;
 }
 
-/* WISHLIST */
+.btn-dark-custom {
+  padding: 10px 20px;
+  font-size: 13px;
+}
+
+.continue-btn {
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* wishlist */
 .wishlist {
   font-size: 42px;
   background: none;
@@ -44,60 +74,8 @@
   line-height: 1;
 }
 
-/* IN PRODUCT DETAILS ON SIDE "KOSIK" */
-.cart-btn-sidebar {
-  padding: 12px 28px;
-  font-size: 16px;
-  margin-bottom: 35px;
-  border: 0;
-  border-radius: 0.4rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.cart-btn-sidebar:hover{
-  opacity: 0.5;
-  background-color: var(--color-black);
-}
-
-/* TLACIDLO KOSIK */
-.card-footer .btn-dark {
-  background-color: var(--color-black);
-  border: 0;
-  border-radius: 0.4rem;
-  padding: 8px 20px;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-.card-footer .btn-dark:hover {
-  opacity: 0.5;
-  background-color: var(--color-black);
-}
-
-/* Tlačidlá - upravené pre všeobecné použitie */
-.btn-dark-custom {
-  background-color: var(--color-black);
-  border: 0;
-  border-radius: 0.4rem;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--color-white);
-  transition: opacity 0.3s ease;
-  cursor: pointer;
-}
-
-.btn-dark-custom:hover {
-  opacity: 0.7;
-  background-color: var(--color-black);
-  color: var(--color-white);
-}
-
-/*login + registration*/
-.login-card button {
+/* login + registration */
+.form-card button {
   width: 100%;
   height: 46px;
   border: none;
@@ -112,17 +90,17 @@
   transition: all 0.25s ease;
 }
 
-.login-card button:hover {
+.form-card button:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   opacity: 0.98;
 }
 
-.login-card button:active {
+.form-card button:active {
   transform: translateY(0);
 }
 
-/*shopping card*/
+/* shopping card */
 .delete-btn {
   border: none;
   background: transparent;
@@ -138,48 +116,7 @@
   transform: scale(1.08);
 }
 
-.continue-btn {
-  background: var(--color-black);
-  color: var(--color-white);
-  border: none;
-  padding: 14px 34px;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
-}
-
-.continue-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-}
-
-.continue-btn:active {
-  transform: translateY(0);
-}
-
-.continue-btn {
-  background: var(--color-black);
-  color: var(--color-white);
-  border: none;
-  padding: 14px 34px;
-  font-size: 16px;
-  font-weight: 700;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
-}
-
-.continue-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
-}
-
-.continue-btn:active {
-  transform: translateY(0);
-}
-
+/* quantity */
 .quantity button,
 .quantity span {
   width: 32px;

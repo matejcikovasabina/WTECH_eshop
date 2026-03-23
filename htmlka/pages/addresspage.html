@@ -31,23 +31,23 @@
     </section>
       
     <main class="background">
-        <section class="card cart-card">
+        <section class="card-order cart-card">
           <h2>Košík</h2>
     
           <div class="cart-table">
-            <div class="cart-row cart-item">
+            <div class="cart-row cart-item-summary">
               <span class="product">Amerikáni</span>
               <span class="quantitynext">1 ks</span>
               <span class="price">16.92€</span>
             </div>
     
-            <div class="cart-row cart-item">
+            <div class="cart-row cart-item-summary">
               <span class="product">Mila Debbie</span>
               <span class="quantitynext">1 ks</span>
               <span class="price">16.00€</span>
             </div>
     
-            <div class="cart-row cart-item">
+            <div class="cart-row cart-item-summary">
               <span class="product">Búrlivé výšiny</span>
               <span class="quantitynext">2 ks</span>
               <span class="price">27.30€</span>
@@ -60,7 +60,7 @@
           </div>
         </section>
     
-        <section class="card delivery-card">
+        <section class="card-order delivery-card">
             <h2>Spôsob doručenia</h2>
             <p class="delivery-subtitle">Vyber si spôsob, ktorý ti najviac vyhovuje.</p>
           
@@ -73,7 +73,7 @@
                       <h3>Osobný odber na predajni</h3>
                       <p>Vyzdvihnutie pripravené už do 24 hodín</p>
                     </div>
-                    <span class="delivery-price free">Zdarma</span>
+                    <span class="delivery-price">Zdarma</span>
                   </div>
                   <div class="delivery-info">
                     <span>Najbližšia predajňa: Bratislava Centrum</span>
@@ -118,8 +118,9 @@
             </div>
           
             <div class="delivery-extra">
+              <h4>Fakturacne udaje</h4>
               <div class="form-group">
-                <label for="address">Adresa doručenia</label>
+                <label for="address">Adresa</label>
                 <input type="text" id="address" placeholder="Zadaj ulicu a číslo domu" />
               </div>
           
@@ -140,11 +141,14 @@
                 <textarea id="note" rows="4" placeholder="Napr. zazvoniť pri vchode alebo nechať balík na recepcii"></textarea>
               </div>
             </div>
+
+            <div class="button-wrap">
+              <button class="continue-btn">Pokračovať</button>
+            </div> 
           </section>
     
-        <div class="button-wrap">
-          <button class="continue-btn">Pokračovať</button>
-        </div>
+          
+          
       </main>
     
     <div id="footer-placeholder"></div>
