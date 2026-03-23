@@ -1,19 +1,24 @@
 .profile-avatar {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 50px;
+  width: 120px;
+  height: 120px;
+  background-color: var(--color-bg-muted);
+  border-radius: 50%;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 55px 80px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 15px;
-  font-weight: bold;
-  margin-bottom: 3px;
-  color: var(--color-text-main);
+.profile-avatar:hover::after {
+    content: "ZMENIŤ";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px 0;
 }
