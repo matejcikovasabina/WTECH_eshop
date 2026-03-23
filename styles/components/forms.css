@@ -1,21 +1,8 @@
-.section-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: bold;
-}
-
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     margin-bottom: 2rem;
-}
-
-/* RESPONZIVITA */
-@media (max-width: 768px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 .form-group {
@@ -24,6 +11,7 @@
 }
 
 .form-group label {
+    display: block;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 0.5rem;
@@ -31,24 +19,32 @@
 }
 
 .input-basic {
+    width: 100%;
     padding: 0.6rem 1rem;
     border: 1px solid var(--color-bg-placeholder);
     border-radius: 0.4rem;
     font-size: 15px;
     transition: border-color 0.2s;
+    outline: none;
 }
 
 .input-basic:focus {
-    outline: none;
     border-color: var(--color-black);
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .small a {
     text-decoration: none;
-    transition: text-decoration 0.2s;
-    color: var(--color-text-secondary);
+    color: var(--color-black);
+    font-weight: bold;
+    transition: opacity 0.2s;
 }
 
 .small a:hover {
-    text-decoration: underline;
+    opacity: 0.7;
 }
