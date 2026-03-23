@@ -121,3 +121,85 @@
 .login-card button:active {
   transform: translateY(0);
 }
+
+/*shopping card*/
+.delete-btn {
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #777;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.delete-btn:hover {
+  color: #c0392b;
+  transform: scale(1.08);
+}
+
+.continue-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.continue-btn:active {
+  transform: translateY(0);
+}
+
+.continue-btn {
+  background: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+}
+
+.continue-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.continue-btn:active {
+  transform: translateY(0);
+}
+
+.quantity button,
+.quantity span {
+  width: 32px;
+  height: 32px;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  line-height: 32px;
+}
+
+.quantity button {
+  background: #f3f3f3;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.quantity button:hover {
+  background: #e6e6e6;
+}
+
+.quantity button:active {
+  transform: scale(0.95);
+}
