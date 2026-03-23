@@ -139,8 +139,8 @@
 }
 
 .continue-btn {
-  background: var(--black);
-  color: var(--white);
+  background: var(--color-black);
+  color: var(--color-white);
   border: none;
   padding: 14px 34px;
   font-size: 16px;
@@ -160,8 +160,8 @@
 }
 
 .continue-btn {
-  background: var(--black);
-  color: var(--white);
+  background: var(--color-black);
+  color: var(--color-white);
   border: none;
   padding: 14px 34px;
   font-size: 16px;

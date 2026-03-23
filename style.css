@@ -10,7 +10,7 @@
 @import "styles/components/cards.css";
 @import "styles/components/carousel.css";
 @import "styles/components/loginform.css";
-@import "styles/components/orderprocess.css";
+@import "styles/components/orderprocessbar.css";
 
 /* PAGES - konkretne podstranky */
 @import "styles/pages/home.css";
