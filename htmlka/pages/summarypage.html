@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registracia</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <section class="steps">
+        <div class="step">
+        <span>Košík</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Doručenie</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Platba</span>
+            <div class="step-line"></div>
+        </div>
+        <div class="step active">
+            <span>Sumar</span>
+            <div class="step-line"></div>
+        </div>
+    </section>
+      
+    <main class="background">
+        <section class="card cart-card">
+            <h2>Sumár objednávky</h2>
+          
+            <div class="summary-block">
+              <h3>Produkty</h3>
+          
+              <div class="cart-table">
+                <div class="cart-row cart-item">
+                  <span class="product">Amerikáni</span>
+                  <span class="quantitynext">1 ks</span>
+                  <span class="price">16.92€</span>
+                </div>
+          
+                <div class="cart-row cart-item">
+                  <span class="product">Mila Debbie</span>
+                  <span class="quantitynext">1 ks</span>
+                  <span class="price">16.00€</span>
+                </div>
+          
+                <div class="cart-row cart-item">
+                  <span class="product">Búrlivé výšiny</span>
+                  <span class="quantitynext">2 ks</span>
+                  <span class="price">27.30€</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="summary-block">
+              <h3>Doručenie</h3>
+          
+              <div class="info-card">
+                <div class="info-row">
+                  <span class="info-label">Spôsob:</span>
+                  <span class="info-value">Kuriér na adresu</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Meno:</span>
+                  <span class="info-value">Sabína Matejčíková</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Adresa:</span>
+                  <span class="info-value">Hlavná 25</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Mesto:</span>
+                  <span class="info-value">Bratislava</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">PSČ:</span>
+                  <span class="info-value">811 01</span>
+                </div>
+                <div class="info-row">
+                  <span class="info-label">Poznámka:</span>
+                  <span class="info-value">Prosím zazvoniť pri vchode.</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="summary-block">
+              <h3>Platba</h3>
+          
+              <div class="info-card">
+                <div class="info-row">
+                  <span class="info-label">Spôsob platby:</span>
+                  <span class="info-value">Platba kartou online</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="summary-total">
+              <div class="summary-total-row">
+                <span>Medzisúčet</span>
+                <span>60.22€</span>
+              </div>
+              <div class="summary-total-row">
+                <span>Doručenie</span>
+                <span>3.90€</span>
+              </div>
+              <div class="summary-total-row final">
+                <span>Spolu</span>
+                <strong>64.12€</strong>
+              </div>
+            </div>
+          </section>
+        <div class="button-wrap">
+          <button class="continue-btn">Pokračovať</button>
+        </div>
+      </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Načítanie komponentov z priečinka components (o úroveň vyššie)
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>
