@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist - Kníhkupectvo</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <main class="background">
+        <section class="page-section">
+            <div class="page-box">
+                <h1 class="section-title" style="text-align: left;">Wishlist</h1>
+
+                <div class="wishlist-container">
+
+                    <div class="wishlist-item">
+                        <div class="wishlist-item-main">
+                            <div class="wishlist-book-cover circle-placeholder">
+                                <img src="../../images/adults.webp" alt="Amerikáni">
+                            </div>
+                            <div class="wishlist-book-details">
+                                <h2 class="book-title">Amerikáni</h2>
+                                <p class="book-author">Tomáš Hudák</p>
+                            </div>
+                        </div>
+
+                        <div class="wishlist-item-columns">
+                            <div class="status-column text-muted">Na sklade</div>
+                            <div class="action-column">
+                                <button class="btn-wishlist-del">del</button>
+                            </div>
+                            <div class="price-column">16.92€</div>
+                            <div class="cart-column">
+                                <button class="btn-dark-custom">pridať do košíka</button>
+                            </div>
+                        </div>
+                    </div> <hr class="wishlist-divider">
+
+                    <div class="wishlist-item">
+                        <div class="wishlist-item-main">
+                            <div class="wishlist-book-cover circle-placeholder">
+                                <img src="../../images/youngadult.webp" alt="Mila Debbie">
+                            </div>
+                            <div class="wishlist-book-details">
+                                <h2 class="book-title">Mila Debbie</h2>
+                                <p class="book-author">Freida McFadden</p>
+                            </div>
+                        </div>
+                        <div class="wishlist-item-columns">
+                            <div class="status-column text-muted">Na sklade</div>
+                            <div class="action-column">
+                                <button class="btn-wishlist-del">del</button>
+                            </div>
+                            <div class="price-column">16.00€</div>
+                            <div class="cart-column">
+                                <button class="btn-dark-custom">pridať do košíka</button>
+                            </div>
+                        </div>
+                    </div> <hr class="wishlist-divider">
+
+                    <div class="wishlist-item">
+                        <div class="wishlist-item-main">
+                            <div class="wishlist-book-cover circle-placeholder">
+                                <img src="../../images/zivotnystyl.webp" alt="Búrlivé výšiny">
+                            </div>
+                            <div class="wishlist-book-details">
+                                <h2 class="book-title">Búrlivé výšiny</h2>
+                                <p class="book-author">Emily Brontë</p>
+                            </div>
+                        </div>
+                        <div class="wishlist-item-columns">
+                            <div class="status-column text-muted">Na sklade</div>
+                            <div class="action-column">
+                                <button class="btn-wishlist-del">del</button>
+                            </div>
+                            <div class="price-column">27.30€</div>
+                            <div class="cart-column">
+                                <button class="btn-dark-custom">pridať do košíka</button>
+                            </div>
+                        </div>
+                    </div> </div> </div>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Opravené cesty pre fetch (o úroveň vyššie, v priečinku components)
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>
