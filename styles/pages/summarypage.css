@@ -12,46 +12,11 @@
   color: #111;
 }
 
-.info-card {
-  background: #fffafb;
-  border: 1px solid #f0e4e8;
-  border-radius: 18px;
-  padding: 18px 20px;
-  transition: all 0.25s ease;
-}
-
-.info-card:hover {
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-}
-
-.info-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid #f2f2f2;
-}
-
-.info-row:last-child {
-  border-bottom: none;
-}
-
-.info-label {
-  color: #777;
-  font-weight: 600;
-}
-
-.info-value {
-  color: #111;
-  font-weight: 500;
-}
-
 .summary-total {
   margin-top: 10px;
   padding: 22px 24px;
   border-radius: 18px;
-  background: linear-gradient(to right, #fff, #f9f3f5);
+  background: var(--color-bg-white);
   border: 1px solid #eee;
 }
 

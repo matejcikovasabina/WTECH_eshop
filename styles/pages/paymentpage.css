@@ -1,7 +1,5 @@
 .payment-subtitle {
   color: #777;
-  margin-bottom: 24px;
-  font-size: 15px;
 }
 
 .payment-option {
@@ -16,29 +14,11 @@
 
 .payment-option input[type="radio"] {
   accent-color: #111;
+  transform: scale(1.2);
 }
 
 .payment-top p {
   color: #777;
-}
-
-.payment-badge {
-  font-weight: 700;
-  font-size: 14px;
-  white-space: nowrap;
-  background: #f7f1f3;
-  padding: 8px 12px;
-  border-radius: 12px;
-}
-
-.payment-badge.recommended {
-  background: #eef6ff;
-  color: #2d5f9a;
-}
-
-.payment-badge.gift {
-  background: #f6eefc;
-  color: #7a42a8;
 }
 
 .payment-info {

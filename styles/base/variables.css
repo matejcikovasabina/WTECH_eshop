@@ -53,4 +53,6 @@
 
   --shadow-delivery-hover: 0 12px 28px rgba(0, 0, 0, 0.08);
   --shadow-input-focus: 0 0 0 4px rgba(200, 174, 184, 0.15);
+
+  --color-green: #2f7d32;
 }

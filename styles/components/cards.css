@@ -35,7 +35,7 @@
   max-width: 900px;
   margin: 0 auto 34px;
   padding: 28px 30px;
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--color-bg-card);
   backdrop-filter: blur(6px);
   border-radius: 20px;
   box-shadow: 0 12px 35px rgba(126, 97, 109, 0.08);
@@ -44,4 +44,12 @@
 .card-order h2 {
   font-size: 18px;
   margin-bottom: 26px;
+}
+
+.info-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-bg-hover);
+  border-radius: 18px;
+  padding: 18px 20px;
+  transition: all 0.25s ease;
 }

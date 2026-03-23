@@ -1,17 +1,3 @@
-.cart-row {
-  grid-template-columns: 1fr 100px 120px;
-}
-
-.cart-item {
-  padding: 10px 12px;
-  border-radius: 12px;
-}
-
-.quantitynext,
-.price {
-  font-weight: 500;
-}
-
 .total-row {
   justify-content: flex-end;
   gap: 24px;
@@ -33,18 +19,8 @@
   transform: scale(1.15);
 }
 
-.button-wrap {
-  width: 100%;
-  max-width: 900px;
-  margin: 10px auto 0;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .delivery-subtitle {
   color: var(--color-text-subtle);
-  margin-bottom: 24px;
-  font-size: 15px;
 }
 
 .delivery-option {
@@ -59,67 +35,18 @@
 
 .delivery-option input[type="radio"] {
   accent-color: var(--color-accent-dark);
+  transform: scale(1.2);
 }
 
 .delivery-top p {
   color: var(--color-text-subtle);
 }
 
-.delivery-price {
-  padding: 8px 12px;
-  border-radius: 12px;
-  font-size: 17px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
 .delivery-info {
   color: var(--color-text-soft);
 }
 
-.form-group label {
-  color: var(--color-text-label);
-}
-
-.form-group input,
-.form-group textarea {
-  border: 1px solid var(--color-border-input);
-  background: var(--color-bg-white);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--color-border-focus);
-  box-shadow: var(--shadow-input-focus);
-}
-
-@media (max-width: 1024px) {
-  .checkout-steps {
-    flex-wrap: wrap;
-    gap: 24px;
-  }
-}
-
 @media (max-width: 768px) {
-  .checkout-steps {
-    padding: 18px 20px 24px;
-    justify-content: flex-start;
-  }
-
-  .card {
-    padding: 24px 18px;
-  }
-
-  .cart-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .quantity,
-  .price {
-    text-align: left;
-  }
-
   .total-row {
     justify-content: space-between;
     font-size: 20px;
@@ -129,21 +56,9 @@
     font-size: 22px;
   }
 
-  .button-wrap {
-    justify-content: center;
-  }
-
   .continue-btn,
   .delivery-price {
     width: 100%;
-  }
-
-  .continue-btn,
-  .delivery-price {
     align-self: flex-start;
-  }
-
-  .form-row {
-    gap: 0;
   }
 }
