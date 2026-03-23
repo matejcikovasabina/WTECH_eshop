@@ -3,7 +3,7 @@
 <head>  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title> 
+    <title>Registracia</title> 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 
@@ -14,7 +14,7 @@
     <main class="background">
         <section class="login-page">
             <div class="login-card">
-                <h1>Prihlasenie</h1>
+                <h1>Registracia</h1>
     
                 <form>
                     <label for="email">Email</label>
@@ -22,17 +22,21 @@
     
                     <label for="password">Heslo</label>
                     <input type="password" id="password" />
+
+                    <label for="secondpassword">Zopakujte heslo</label>
+                    <input type="secondpassword" id="secondpassword" />
+
+                    <label for="name">Meno</label>
+                    <input type="name" id="name" />
+
+                    <label for="surname">Priezvisko</label>
+                    <input type="surname" id="surname" />
+
+                    <label for="phonenum">Telefonne cislo</label>
+                    <input type="phonenum" id="phonenum" />
     
-                    <button type="submit">Prihlasit sa</button>
+                    <button type="submit">Zaregistrovat sa</button>
                 </form>
-    
-                <div class="forgot-wrapper">
-                    <a href="#" class="forgot-password">Zabudnute heslo</a>
-                </div>
-    
-                <p class="register-text">
-                    Nemate u nas ucet? <a href="#">Zaregistrujte sa</a>
-                </p>
             </div>
         </section>
     </main>
