@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>ReadIt - Beletria</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
     <!-- <link rel="stylesheet" href="buttons_filters_paging.css"> -->
     <!-- <link rel="stylesheet" href="products-overviewww.css"> -->
 
@@ -100,7 +100,7 @@
                         <div class="col">
                             <div class="card">
                                 <div class="book-cover-place">
-                                    <img src="images/adults.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/adults.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Milá Debbie</h6>
@@ -118,7 +118,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="book-cover-place">
-                                    <img src="images/psychologia.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/psychologia.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Názov knihy</h6>
@@ -136,7 +136,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="book-cover-place">
-                                    <img src="images/teenager.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/teenager.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Názov knihy</h6>
@@ -159,7 +159,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="book-cover-place">
-                                    <img src="images/detska.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/detska.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Názov knihy</h6>
@@ -177,7 +177,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="book-cover-place">
-                                    <img src="images/zivotnystyl.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/zivotnystyl.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Názov knihy</h6>
@@ -195,7 +195,7 @@
                         <div class="col">
                             <div class="card h-100">
                                 <div class="book-cover-place">
-                                    <img src="images/youngadult.webp" class="card-img-top" alt="Milá Debbie">
+                                    <img src="../../images/youngadult.webp" class="card-img-top" alt="Milá Debbie">
                                 </div>
                                 <div class="card-body">
                                     <h6 class="card-title">Názov knihy</h6>
@@ -243,13 +243,13 @@
 <div id="footer-placeholder"></div>
 
     <script>
-        fetch('navbar.html')
+        fetch('../components/navbar.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('header-placeholder').innerHTML = html;
             });
 
-        fetch('footer.html')
+        fetch('../components/footer.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('footer-placeholder').innerHTML = html;

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Objednávky</title> 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <header id="header-placeholder"></header>
@@ -81,13 +81,13 @@
     <div id="footer-placeholder"></div>
 
     <script>
-        fetch('navbar.html')
+        fetch('../components/navbar.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('header-placeholder').innerHTML = html;
             });
 
-        fetch('footer.html')
+        fetch('../components/footer.html')
             .then(res => res.text())
             .then(html => {
                 document.getElementById('footer-placeholder').innerHTML = html;
