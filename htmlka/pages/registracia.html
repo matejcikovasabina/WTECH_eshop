@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrácia</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="buttons_filters_paging.css"> -->
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <main class="background">
+        <section class="page-section">
+            <div class="page-box">
+                <h1 class="section-title">Registrácia</h1>
+    
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="meno">Meno</label>
+                            <input type="text" id="meno" class="input-basic" placeholder="Zadajte meno" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="priezvisko">Priezvisko</label>
+                            <input type="text" id="priezvisko" class="input-basic" placeholder="Zadajte priezvisko" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="input-basic" placeholder="meno@priklad.sk" required>
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="telefon">Telefónne číslo</label>
+                            <input type="text" id="telefon" class="input-basic" placeholder="+421 ...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="heslo">Heslo</label>
+                            <input type="password" id="heslo" class="input-basic" placeholder="Minimálne 8 znakov" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="heslo-znova">Zopakovať heslo</label>
+                            <input type="password" id="heslo-znova" class="input-basic" placeholder="Zopakujte heslo" required>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn-dark-custom">Vytvoriť účet</button>
+                        <p class="mt-3 small">Už máte účet? <a href="prihlasenie.html">Prihláste sa</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>

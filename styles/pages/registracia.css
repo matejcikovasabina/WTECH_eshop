@@ -1,0 +1,54 @@
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* RESPONZIVITA */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+}
+
+.input-basic {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-bg-placeholder);
+    border-radius: 0.4rem;
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+.input-basic:focus {
+    outline: none;
+    border-color: var(--color-black);
+}
+
+.small a {
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+    color: var(--color-text-secondary);
+}
+
+.small a:hover {
+    text-decoration: underline;
+}
