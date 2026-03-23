@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registracia</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <section class="steps">
+        <div class="step active">
+        <span>Košík</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Doručenie</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Platba</span>
+            <div class="step-line"></div>
+        </div>
+        <div class="step">
+            <span>Sumar</span>
+            <div class="step-line"></div>
+        </div>
+    </section>
+      
+    <main class="background">
+        <div class="cart-box">
+          <h1>Košík</h1>
+  
+          <div class="cart-item">
+            <div class="book-thumb"></div>
+            <div class="book-info">
+              <h3>Amerikáni</h3>
+              <p>Tomas Hudak</p>
+            </div>
+            <div class="stock">Na sklade</div>
+            <div class="quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <button class="delete-btn">del</button>
+            <div class="price">16.92€</div>
+          </div>
+  
+          <div class="cart-item">
+            <div class="book-thumb"></div>
+            <div class="book-info">
+              <h3>Mila Debbie</h3>
+              <p>Freida McFadden</p>
+            </div>
+            <div class="stock">Na sklade</div>
+            <div class="quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <button class="delete-btn">del</button>
+            <div class="price">16.00€</div>
+          </div>
+  
+          <div class="cart-item">
+            <div class="book-thumb"></div>
+            <div class="book-info">
+              <h3>Búrlivé výšiny</h3>
+              <p>Emily Bronte</p>
+            </div>
+            <div class="stock">Na sklade</div>
+            <div class="quantity">
+              <button>-</button>
+              <span>1</span>
+              <button>+</button>
+            </div>
+            <button class="delete-btn">del</button>
+            <div class="price">27.30€</div>
+          </div>
+  
+          <div class="cart-summary">
+            <div class="shipping-note">Doprava zadarmo??</div>
+  
+            <div class="summary-right">
+              <div class="total-row">
+                <span>Spolu</span>
+                <strong>60.22€</strong>
+              </div>
+              <button class="continue-btn">Pokračovať</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Načítanie komponentov z priečinka components (o úroveň vyššie)
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>

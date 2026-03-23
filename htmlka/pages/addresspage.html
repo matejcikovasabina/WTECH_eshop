@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registracia</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <section class="steps">
+        <div class="step">
+        <span>Košík</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step active">
+        <span>Doručenie</span>
+        <div class="step-line"></div>
+        </div>
+        <div class="step">
+        <span>Platba</span>
+            <div class="step-line"></div>
+        </div>
+        <div class="step">
+            <span>Sumar</span>
+            <div class="step-line"></div>
+        </div>
+    </section>
+      
+    <main class="background">
+        <section class="card cart-card">
+          <h2>Košík</h2>
+    
+          <div class="cart-table">
+            <div class="cart-row cart-item">
+              <span class="product">Amerikáni</span>
+              <span class="quantitynext">1 ks</span>
+              <span class="price">16.92€</span>
+            </div>
+    
+            <div class="cart-row cart-item">
+              <span class="product">Mila Debbie</span>
+              <span class="quantitynext">1 ks</span>
+              <span class="price">16.00€</span>
+            </div>
+    
+            <div class="cart-row cart-item">
+              <span class="product">Búrlivé výšiny</span>
+              <span class="quantitynext">2 ks</span>
+              <span class="price">27.30€</span>
+            </div>
+          </div>
+    
+          <div class="total-row">
+            <span>Spolu</span>
+            <strong>60.22€</strong>
+          </div>
+        </section>
+    
+        <section class="card delivery-card">
+            <h2>Spôsob doručenia</h2>
+            <p class="delivery-subtitle">Vyber si spôsob, ktorý ti najviac vyhovuje.</p>
+          
+            <div class="delivery-options">
+              <label class="delivery-option">
+                <input type="radio" name="delivery" checked />
+                <div class="delivery-content">
+                  <div class="delivery-top">
+                    <div>
+                      <h3>Osobný odber na predajni</h3>
+                      <p>Vyzdvihnutie pripravené už do 24 hodín</p>
+                    </div>
+                    <span class="delivery-price free">Zdarma</span>
+                  </div>
+                  <div class="delivery-info">
+                    <span>Najbližšia predajňa: Bratislava Centrum</span>
+                    <span>Dostupnosť: zajtra</span>
+                  </div>
+                </div>
+              </label>
+          
+              <label class="delivery-option">
+                <input type="radio" name="delivery" />
+                <div class="delivery-content">
+                  <div class="delivery-top">
+                    <div>
+                      <h3>Kuriér na adresu</h3>
+                      <p>Doručenie priamo domov alebo do práce</p>
+                    </div>
+                    <span class="delivery-price">3.90€</span>
+                  </div>
+                  <div class="delivery-info">
+                    <span>Odhad doručenia: 1–2 pracovné dni</span>
+                    <span>Bezpečne zabalené</span>
+                  </div>
+                </div>
+              </label>
+          
+              <label class="delivery-option">
+                <input type="radio" name="delivery" />
+                <div class="delivery-content">
+                  <div class="delivery-top">
+                    <div>
+                      <h3>Packeta / výdajné miesto</h3>
+                      <p>Pohodlné vyzdvihnutie, keď ti to vyhovuje</p>
+                    </div>
+                    <span class="delivery-price">2.49€</span>
+                  </div>
+                  <div class="delivery-info">
+                    <span>Viac než 2000 výdajných miest</span>
+                    <span>Uloženie zásielky až 7 dní</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+          
+            <div class="delivery-extra">
+              <div class="form-group">
+                <label for="address">Adresa doručenia</label>
+                <input type="text" id="address" placeholder="Zadaj ulicu a číslo domu" />
+              </div>
+          
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="city">Mesto</label>
+                  <input type="text" id="city" placeholder="Bratislava" />
+                </div>
+          
+                <div class="form-group">
+                  <label for="zip">PSČ</label>
+                  <input type="text" id="zip" placeholder="811 01" />
+                </div>
+              </div>
+          
+              <div class="form-group">
+                <label for="note">Poznámka pre kuriéra</label>
+                <textarea id="note" rows="4" placeholder="Napr. zazvoniť pri vchode alebo nechať balík na recepcii"></textarea>
+              </div>
+            </div>
+          </section>
+    
+        <div class="button-wrap">
+          <button class="continue-btn">Pokračovať</button>
+        </div>
+      </main>
+    
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Načítanie komponentov z priečinka components (o úroveň vyššie)
+        fetch('../components/navbar.html').then(res => res.text()).then(html => {
+            document.getElementById('header-placeholder').innerHTML = html;
+        });
+        fetch('../components/footer.html').then(res => res.text()).then(html => {
+            document.getElementById('footer-placeholder').innerHTML = html;
+        });
+    </script>
+</body>
+</html>
