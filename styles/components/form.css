@@ -21,7 +21,7 @@
   color: var(--color-text-main);
 }
 
-.form-group label
+.form-group label,
 .form-card label {
   display: block;
   font-size: 15px;
@@ -32,7 +32,7 @@
 
 .form-group textarea,
 .form-group input,
-.form-group textarea
+.form-group textarea,
 .form-card input,
 .form-card textarea,
 .form-card select {
@@ -49,7 +49,7 @@
 
 .form-group textarea:focus,
 .form-group input:focus,
-.form-group textarea:focus
+.form-group textarea:focus,
 .form-card input:focus,
 .form-card textarea:focus,
 .form-card select:focus {

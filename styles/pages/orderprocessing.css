@@ -135,7 +135,7 @@
   padding-top: 10px;
 }
 
-.payment-badge,
+.payment-badge,x
 .delivery-price {
   padding: 8px 12px;
   border-radius: 12px;
@@ -171,6 +171,17 @@
   justify-content: flex-end;
   margin-top: auto;
   padding-top: 24px;
+}
+
+.summary-block {
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.summary-block h3 {
+  font-size: 17px;
+  margin-bottom: 14px;
+  color: #111;
 }
 
 @media (max-width: 1024px) {
@@ -218,3 +229,4 @@
     gap: 0;
   }
 }
+
