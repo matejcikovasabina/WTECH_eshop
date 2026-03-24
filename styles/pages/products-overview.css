@@ -209,13 +209,8 @@ aside h6 {
     width: 100%;    /* Mobil: 1 kniha */
 }
 
-@media (min-width: 800px) {
-    .custom-book-grid .col {
-        width: 50%; /* Tablet: 2 knihy */
-    }
-}
 
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
     .custom-book-grid .col {
         width: 33.333%; /* Desktop: 3 knihy */
     }

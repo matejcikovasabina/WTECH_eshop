@@ -89,25 +89,61 @@
 }
 
 /* RESPONZIVITA*/
-@media (max-width: 992px) {
+/* RESPONZIVITA */
+@media (max-width: 1300px) {
     .wishlist-item {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
+        gap: 12px;
     }
-    
+
     .wishlist-item-columns {
         width: 100%;
         grid-template-columns: 1fr 1fr;
         text-align: left;
-        margin-top: 10px;
+        gap: 12px;
     }
-    
-    .status-column, .price-column {
+
+    .price-column,
+    .status-column {
         text-align: left;
     }
-    
-    .action-column, .cart-column {
+
+    .cart-column,
+    .action-column {
         text-align: right;
+    }
+}
+
+@media (max-width: 1300px) {
+    .wishlist-item-main {
+        gap: 14px;
+    }
+
+    .wishlist-book-cover {
+        width: 50px;
+        height: 68px;
+    }
+
+    .wishlist-book-details .book-title {
+        font-size: 15px;
+    }
+
+    .wishlist-item-columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .price-column {
+        font-size: 15px;
+    }
+
+    .btn-wishlist-del {
+        font-size: 13px;
+    }
+
+    .cart-column .btn-dark-custom {
+        width: 100%;
+        text-align: center;
     }
 }

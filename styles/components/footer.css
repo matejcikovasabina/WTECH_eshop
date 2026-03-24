@@ -1,21 +1,52 @@
+.footer-row-custom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-col {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 600px) {
+  .footer-col {
+      flex: 1 1 calc(50% - 30px);
+  }
+}
+
+@media (min-width: 1000px) {
+  .footer-col {
+      flex: 1 1 calc(25% - 30px);
+  }
+}
+
+/* --- zvysok stylovania --- */
 .footer {
-  color: #e1e1e1;
   background-color: var(--color-footer);
-  padding-bottom: 4rem;
-  padding-top: 5rem;
+  color: #e1e1e1;
+  padding: 5rem 0 4rem;
 }
 
-.footer-text {
-  color: var(--color-footer-text);
+.footer-col h3, .footer-col h5 {
+  color: #fff;
+  margin-bottom: 1.2rem;
 }
 
-.footer-text ul {
+.footer-col ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.footer-text a {
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
   color: var(--color-link-light);
   text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: #fff;
 }
