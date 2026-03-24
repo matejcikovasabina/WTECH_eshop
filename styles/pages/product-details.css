@@ -198,21 +198,6 @@
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
 }
 
-.card-img-placeholder {
-  height: 230px;
-  background: var(--color-bg-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.card-img-news {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .book-card .card-body h6 {
   font-size: 16px;
   font-weight: 700;
