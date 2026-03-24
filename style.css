@@ -11,6 +11,8 @@
 @import "styles/components/carousel.css";
 @import "styles/components/form.css";
 @import "styles/components/orderprocessbar.css";
+@import "styles/components/slider-card.css";
+
 
 /* PAGES - konkretne podstranky */
 @import "styles/pages/home.css";
@@ -24,9 +26,8 @@
 @import "styles/pages/paymentpage.css";
 @import "styles/pages/summarypage.css";
 @import "styles/pages/orderprocessing.css";
-
 @import "styles/pages/wishlist.css";
-@import "styles/components/slider-card.css";
+@import "styles/pages/orderdetail.css";
 
 /* 
 :root {
