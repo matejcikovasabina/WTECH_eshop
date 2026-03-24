@@ -140,3 +140,37 @@
 .quantity button:active {
   transform: scale(0.95);
 }
+
+
+/* ARROWS - CAROUSELS SLIDERS */
+.carousel-control-prev, .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-bg-page);
+  border-radius: 100%;
+  top: 50%;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+#mainCarousel .carousel-control-prev,
+#mainCarousel .carousel-control-next {
+  background-color: transparent !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  border-radius: 20px;
+  width: 20px;
+}
+
+.carousel-control-prev { 
+  left: 10px;
+}
+
+.carousel-control-next { 
+  right: 10px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  opacity: 0.5;
+}

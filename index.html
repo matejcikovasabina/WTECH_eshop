@@ -12,63 +12,66 @@
     <header id="header-placeholder"></header>
 
     <main>
-        <div id="mainCarousel" class="carousel slide main-carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="main-slider-img-placeholder slide-jarnvypredaj">
-                        <img class="main-carousel-img" src="images/book-bookshelves.webp">
-                        <div class="carousel-caption-custom">
-                            <h1>Jarný výpredaj</h1>
-                            <p>Získaj zľavy až do <strong>30 %</strong> na vybrané tituly!</p>
-                            <a href="#" class="btn btn-primary btn-lg">Nakupovať teraz</a>
+        <div class="container page-container-card">
+            <div id="mainCarousel" class="carousel slide main-carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="main-slider-img-placeholder slide-jarnvypredaj">
+                            <img class="main-carousel-img" src="images/book-bookshelves.webp">
+                            <div class="carousel-caption-custom">
+                                <h1>Jarný výpredaj</h1>
+                                <p>Získaj zľavy až do <strong>30 %</strong> na vybrané tituly!</p>
+                                <a href="#" class="btn btn-primary btn-lg">Nakupovať teraz</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="main-slider-img-placeholder slide-poukazky">
+                            <img class="main-carousel-img" src="images/book-lamp.webp">
+                            <div class="carousel-caption-custom">
+                                <h1>Darčekové poukážky</h1>
+                                <p>Nevieš si vybrať? Poteš svojich blízkych slobodou výberu.</p>
+                                <a href="#" class="btn btn-outline-light btn-lg">Pozrieť poukážky</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="main-slider-img-placeholder slide-doplnky">
+                            <img class="main-carousel-img" src="images/book-bookmark.webp">
+                            <div class="carousel-caption-custom">
+                                <h1>Doplnky ku knihám</h1>
+                                <p>Záložky, lampičky na čítanie a štýlové obaly, ktoré si zamiluješ.</p>
+                                <a href="#" class="btn btn-primary btn-lg">Chcem doplnky</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="carousel-item">
-                    <div class="main-slider-img-placeholder slide-poukazky">
-                        <img class="main-carousel-img" src="images/book-lamp.webp">
-                        <div class="carousel-caption-custom">
-                            <h1>Darčekové poukážky</h1>
-                            <p>Nevieš si vybrať? Poteš svojich blízkych slobodou výberu.</p>
-                            <a href="#" class="btn btn-outline-light btn-lg">Pozrieť poukážky</a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
 
-                <div class="carousel-item">
-                    <div class="main-slider-img-placeholder slide-doplnky">
-                        <img class="main-carousel-img" src="images/book-bookmark.webp">
-                        <div class="carousel-caption-custom">
-                            <h1>Doplnky ku knihám</h1>
-                            <p>Záložky, lampičky na čítanie a štýlové obaly, ktoré si zamiluješ.</p>
-                            <a href="#" class="btn btn-primary btn-lg">Chcem doplnky</a>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
-
-            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-
-            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
         </div>
 
-        <section class="container page-container mt-5">
-            <h2 class="mb-3">Novinky</h2>
+
+        <section class="container page-container-card mt-5">
+            <h2>Novinky</h2>
             <div id="novinky-placeholder"></div>
         </section>
 
-        <section class="container page-container mt-5">
-            <h2 class="mb-3">Pripravujeme</h2>
+        <section class="container page-container-card mt-5">
+            <h2>Pripravujeme</h2>
             <div id="pripravujeme-placeholder"></div>
         </section>
 
 
-        <section class="container page-container my-5">
+        <section class="container page-container-card">
             <h2 class="text-center mb-4">Čo hovoria naši zákazníci</h2>
 
             <div id="recenziaCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
@@ -111,8 +114,8 @@
             </div>
         </section> 
 
-        <section>
-            <div class="container page-container MainCitat">
+        <section class="container page-container-card">
+            <div class="MainCitat">
                 <cite>
                     "Najkrajšie v živote nie sú veci, ale momenty."
                 </cite>

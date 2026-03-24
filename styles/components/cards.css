@@ -69,6 +69,7 @@
 
 .page-container-card {
   border: 1px solid #eee;
+  margin-bottom: 2.5rem;
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;

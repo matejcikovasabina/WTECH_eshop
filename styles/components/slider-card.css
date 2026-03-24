@@ -1,6 +1,6 @@
 /* CELY Slider - staticke okno */
 .slider-wrapper {
-  padding: 0 40px;
+  padding: 0 50px;
   position: relative;
   display: flex;
   align-items: center;
@@ -52,6 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  background-color: transparent;
 
   overflow: hidden;
   padding: 5px;
@@ -113,33 +114,3 @@
   .book-slider { grid-auto-columns: calc((100% - (4 * 20px)) / 5); }
 }
 
-/* ARROWS */
-.carousel-control-prev, .carousel-control-next {
-  width: 45px;
-  height: 45px;
-  background-color: var(--color-bg-container);
-  border: 1px solid var(--color-bg-muted);
-  border-radius: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 1;
-  box-shadow: 0 4px 10px var(--color-bg-muted);
-  z-index: 10;
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  filter: invert(1) grayscale(100) brightness(0);
-  width: 20px;
-}
-
-.carousel-control-prev { 
-  left: 0px;
-}
-
-.carousel-control-next { 
-  right: 0px;
-}
-
-.carousel-control-prev:hover, .carousel-control-next:hover {
-  background-color: var(--color-bg-muted);
-}
