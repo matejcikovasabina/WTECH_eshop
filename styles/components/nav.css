@@ -1,4 +1,11 @@
 /* HEADER aka NAVIGACKA */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background-color: var(--color-white);
+}
+
 .navigacka {
   background-color: var(--color-white);
   border-bottom: 1px solid var(--color-border);

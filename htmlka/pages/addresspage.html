@@ -6,158 +6,216 @@
     <title>Address</title> 
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../style.css">
-
 </head>
-<body>
-    <header id="header-placeholder"></header>
+<body class="bg-light">
+      <header class="site-header">
+        <div class="horny-pasik text-center text-white">
+            <p>Zľavy, akcie, novinky, upozornenia...</p>
+        </div>
 
-    <section class="steps">
-        <div class="step">
-        <span>Košík</span>
-        <div class="step-line"></div>
-        </div>
-        <div class="step active">
-        <span>Doručenie</span>
-        <div class="step-line"></div>
-        </div>
-        <div class="step">
-        <span>Platba</span>
-            <div class="step-line"></div>
-        </div>
-        <div class="step">
-            <span>Sumar</span>
-            <div class="step-line"></div>
+        <nav>
+            <div class="navigacka container-fluid d-flex justify-content-between align-items-center">
+                <a href="#">
+                    <img src="../../images/logo.png" alt="ReadIt logo" height="60">
+                </a>
+
+                <button class="menu-toggle" onclick="toggleMenu()">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+
+                <div class="nav-content" id="navContent">
+                    <ul class="nav">    
+                        <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Knihy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
+                    </ul>
+
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="d-flex flex-wrap justify-content-between text-center gap-3 small fw-semibold">
+                    <a href="#" class="flex-fill text-muted border-bottom pb-2 text-decoration-none">
+                        Košík
+                    </a>
+                    <a href="#" class="flex-fill text-primary border-bottom border-3 border-primary pb-2 text-decoration-none">
+                        Doručenie
+                    </a>
+                    <div class="flex-fill text-muted border-bottom pb-2">
+                        Platba
+                    </div>
+                    <div class="flex-fill text-muted border-bottom pb-2">
+                        Sumár
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
       
-    <main class="background">
-        <section class="card-order cart-card">
-          <h2>Košík</h2>
-    
-          <div class="cart-table">
-            <div class="cart-row cart-item-summary">
-              <span class="product">Amerikáni</span>
-              <span class="quantitynext">1 ks</span>
-              <span class="price">16.92€</span>
-            </div>
-    
-            <div class="cart-row cart-item-summary">
-              <span class="product">Mila Debbie</span>
-              <span class="quantitynext">1 ks</span>
-              <span class="price">16.00€</span>
-            </div>
-    
-            <div class="cart-row cart-item-summary">
-              <span class="product">Búrlivé výšiny</span>
-              <span class="quantitynext">2 ks</span>
-              <span class="price">27.30€</span>
-            </div>
-          </div>
-    
-          <div class="total-row">
-            <span>Spolu</span>
-            <strong>60.22€</strong>
-          </div>
-        </section>
-    
-        <section class="card-order delivery-card">
-            <h2>Spôsob doručenia</h2>
-            <p class="delivery-subtitle">Vyber si spôsob, ktorý ti najviac vyhovuje.</p>
-          
-            <div class="delivery-options">
-              <label class="delivery-option">
-                <input type="radio" name="delivery" checked />
-                <div class="delivery-content">
-                  <div class="delivery-top">
-                    <div>
-                      <h3>Osobný odber na predajni</h3>
-                      <p>Vyzdvihnutie pripravené už do 24 hodín</p>
-                    </div>
-                    <span class="delivery-price">Zdarma</span>
-                  </div>
-                  <div class="delivery-info">
-                    <span>Najbližšia predajňa: Bratislava Centrum</span>
-                    <span>Dostupnosť: zajtra</span>
-                  </div>
-                </div>
-              </label>
-          
-              <label class="delivery-option">
-                <input type="radio" name="delivery" />
-                <div class="delivery-content">
-                  <div class="delivery-top">
-                    <div>
-                      <h3>Kuriér na adresu</h3>
-                      <p>Doručenie priamo domov alebo do práce</p>
-                    </div>
-                    <span class="delivery-price">3.90€</span>
-                  </div>
-                  <div class="delivery-info">
-                    <span>Odhad doručenia: 1–2 pracovné dni</span>
-                    <span>Bezpečne zabalené</span>
-                  </div>
-                </div>
-              </label>
-          
-              <label class="delivery-option">
-                <input type="radio" name="delivery" />
-                <div class="delivery-content">
-                  <div class="delivery-top">
-                    <div>
-                      <h3>Packeta / výdajné miesto</h3>
-                      <p>Pohodlné vyzdvihnutie, keď ti to vyhovuje</p>
-                    </div>
-                    <span class="delivery-price">2.49€</span>
-                  </div>
-                  <div class="delivery-info">
-                    <span>Viac než 2000 výdajných miest</span>
-                    <span>Uloženie zásielky až 7 dní</span>
-                  </div>
-                </div>
-              </label>
-            </div>
-          
-            <div class="delivery-extra">
-              <h4>Fakturacne udaje</h4>
-              <div class="form-group">
-                <label for="address">Adresa</label>
-                <input type="text" id="address" placeholder="Zadaj ulicu a číslo domu" />
-              </div>
-          
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="city">Mesto</label>
-                  <input type="text" id="city" placeholder="Bratislava" />
-                </div>
-          
-                <div class="form-group">
-                  <label for="zip">PSČ</label>
-                  <input type="text" id="zip" placeholder="811 01" />
-                </div>
-              </div>
-          
-              <div class="form-group">
-                <label for="note">Poznámka pre kuriéra</label>
-                <textarea id="note" rows="4" placeholder="Napr. zazvoniť pri vchode alebo nechať balík na recepcii"></textarea>
-              </div>
-            </div>
+    <main class="py-4">
+        <div class="container">
+            <div class="row justify-content-center g-4">
+                
+                <!-- SUMMARY CARD -->
+                <div class="col-12 col-lg-4">
+                  <div class="sticky-top cart-sticky">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+                            <h2 class="h4 mb-4">Košík</h2>
 
-            <div class="button-wrap">
-              <button class="continue-btn">Pokračovať</button>
-            </div> 
-          </section>
-    
-          
-          
-      </main>
+                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                                <span>Amerikáni</span>
+                                <span class="text-muted">1 ks</span>
+                                <strong>16.92€</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                                <span>Mila Debbie</span>
+                                <span class="text-muted">1 ks</span>
+                                <strong>16.00€</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                                <span>Búrlivé výšiny</span>
+                                <span class="text-muted">2 ks</span>
+                                <strong>27.30€</strong>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center pt-4 fs-5 fw-bold">
+                                <span>Spolu</span>
+                                <strong>60.22€</strong>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- DELIVERY CARD -->
+                <div class="col-12 col-lg-8">
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="h4 mb-2">Spôsob doručenia</h2>
+                            <p class="text-muted mb-4">Vyber si spôsob, ktorý ti najviac vyhovuje.</p>
+
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                
+                                <label class="border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="delivery" id="pickup" checked>
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Osobný odber na predajni</h3>
+                                                    <p class="text-muted mb-2">Vyzdvihnutie pripravené už do 24 hodín</p>
+                                                </div>
+                                                <span class="badge text-bg-success fs-6 align-self-start">Zdarma</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Najbližšia predajňa: Bratislava Centrum</span>
+                                                <span>Dostupnosť: zajtra</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="delivery" id="courier">
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Kuriér na adresu</h3>
+                                                    <p class="text-muted mb-2">Doručenie priamo domov alebo do práce</p>
+                                                </div>
+                                                <span class="badge text-bg-secondary fs-6 align-self-start">3.90€</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Odhad doručenia: 1–2 pracovné dni</span>
+                                                <span>Bezpečne zabalené</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="delivery" id="packeta">
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Packeta / výdajné miesto</h3>
+                                                    <p class="text-muted mb-2">Pohodlné vyzdvihnutie, keď ti to vyhovuje</p>
+                                                </div>
+                                                <span class="badge text-bg-secondary fs-6 align-self-start">2.49€</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Viac než 2000 výdajných miest</span>
+                                                <span>Uloženie zásielky až 7 dní</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="pt-2">
+                                <h4 class="h5 mb-3">Fakturačné údaje</h4>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Adresa</label>
+                                    <input type="text" id="address" class="form-control" placeholder="Zadaj ulicu a číslo domu">
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-12 col-md-8">
+                                        <label for="city" class="form-label">Mesto</label>
+                                        <input type="text" id="city" class="form-control" placeholder="Bratislava">
+                                    </div>
+
+                                    <div class="col-12 col-md-4">
+                                        <label for="zip" class="form-label">PSČ</label>
+                                        <input type="text" id="zip" class="form-control" placeholder="811 01">
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <label for="note" class="form-label">Poznámka pre kuriéra</label>
+                                    <textarea id="note" rows="4" class="form-control" placeholder="Napr. zazvoniť pri vchode alebo nechať balík na recepcii"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <button class="btn btn-primary btn-lg px-4">
+                                    Pokračovať
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
     
     <div id="footer-placeholder"></div>
 
     <script>
-        // Načítanie komponentov z priečinka components (o úroveň vyššie)
         fetch('../components/navbar.html').then(res => res.text()).then(html => {
             document.getElementById('header-placeholder').innerHTML = html;
         });
+
         fetch('../components/footer.html').then(res => res.text()).then(html => {
             document.getElementById('footer-placeholder').innerHTML = html;
         });

@@ -1,3 +1,27 @@
+/*shopping .card*/
+.cart-img {
+  width: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 767.98px) {
+  .cart-img {
+    width: 110px;
+  }
+}
+
+.checkout-steps-wrap {
+  position: sticky;
+  top: 60px;
+  z-index: 1050;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+}
+
+
+/**/
+
 .cart-table,
 .delivery-options,
 .payment-options {

@@ -1,64 +1,17 @@
-.total-row {
-  justify-content: flex-end;
-  gap: 24px;
-  margin-top: 28px;
-  font-size: 22px;
-  font-weight: 600;
+.form-check-input {
+  cursor: pointer;
 }
 
-.total-row strong {
-  font-size: 24px;
+label.border {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.radio-option:hover {
-  color: var(--color-radio-hover);
+label.border:hover {
+  border-color: #adb5bd !important;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.08);
 }
 
-.radio-option input[type="radio"] {
-  accent-color: var(--color-accent-dark);
-  transform: scale(1.15);
-}
-
-.delivery-subtitle {
-  color: var(--color-text-subtle);
-}
-
-.delivery-option {
-  border: 1px solid var(--color-border-light);
-}
-
-.delivery-option:hover {
-  box-shadow: var(--shadow-delivery-hover);
-  border-color: var(--color-border-hover);
-  background: var(--color-bg-hover-soft);
-}
-
-.delivery-option input[type="radio"] {
-  accent-color: var(--color-accent-dark);
-  transform: scale(1.2);
-}
-
-.delivery-top p {
-  color: var(--color-text-subtle);
-}
-
-.delivery-info {
-  color: var(--color-text-soft);
-}
-
-@media (max-width: 768px) {
-  .total-row {
-    justify-content: space-between;
-    font-size: 20px;
-  }
-
-  .total-row strong {
-    font-size: 22px;
-  }
-
-  .continue-btn,
-  .delivery-price {
-    width: 100%;
-    align-self: flex-start;
-  }
+.cart-sticky {
+  top: 30px;
 }
