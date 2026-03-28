@@ -17,15 +17,59 @@
         <div class="nav-content" id="navContent">
             <ul class="nav">    
                 <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Knihy</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="booksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Knihy
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="booksDropdown">
+                        <li><a class="dropdown-item" href="#">Beletria</a></li>
+                        <li><a class="dropdown-item" href="#">Náučné</a></li>
+                        <li><a class="dropdown-item" href="#">Životopisy</a></li>
+                        <li><a class="dropdown-item" href="#">Cestovateľské</a></li>
+                        <li><a class="dropdown-item" href="#">Kuchárske</a></li>
+                        <li><a class="dropdown-item" href="#">Učebnice a slovníky</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Všetky kategórie</a></li>
+                    </ul>
+                </li>               
                 <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
             </ul>
 
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+                <li class="nav-item search-item">
+                    <form action="/search" method="GET">
+                        <div class="input-group search-group">
+                            <input 
+                                type="text" 
+                                class="form-control border-start-0 ps-0" 
+                                placeholder="Vyhladavanie" 
+                                aria-label="Vyhľadávanie"
+                            >
+                            <button class="btn btn-search" type="submit">
+                                <img src="../../images/search.png" alt="Hľadať" width="18" height="18">
+                            </button>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item dropdown user-dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Účet
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <div id="nav-guest-zone">
+                            <li><a class="dropdown-item" href="login.html">Prihlásiť sa</a></li>
+                            <li><a class="dropdown-item" href="register.html">Registrácia</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Moje objednávky</a></li>
+                            <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </div>
+                    </ul>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
             </ul>
         </div>

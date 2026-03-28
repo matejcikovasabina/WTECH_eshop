@@ -117,7 +117,7 @@
         <section class="container page-container-card">
             <div class="MainCitat">
                 <cite>
-                    "Najkrajšie v živote nie sú veci, ale momenty."
+                    "Najkrajšie v živote nie sú momenty, ale veci."
                 </cite>
                 <p>Múdry človek</p>
             </div>
@@ -131,6 +131,8 @@
             .then(res => res.text())
             .then(html => {
                 document.getElementById('header-placeholder').innerHTML = html;
+                const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
+                const dropdownList = [...dropdownElementList].map(el => new bootstrap.Dropdown(el));
             });
 
         fetch('htmlka/components/footer.html')
