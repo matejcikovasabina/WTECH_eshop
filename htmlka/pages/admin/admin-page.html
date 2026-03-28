@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - ReadIt</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <main class="background">
+        <section class="page-section">
+            <div class="admin-layout">
+
+                <div class="profile-card admin-sidebar">
+                    <h2 class="section-title">Admin panel</h2>
+                    <a href="admin-pridat.html" class="btn-dark-custom">Pridať produkt</a>
+                    <a href="admin-editovat.html" class="btn-dark-custom">Editovať produkt</a>
+                    <a href="admin-vymazat.html" class="btn-dark-custom">Vymazať produkt</a>
+                    <hr>
+                    <a href="../profilepage.html" class="btn-dark-custom"> ← Späť na profil</a>
+                </div>
+
+                <div class="profile-card admin-main-content">
+                    <h1 class="section-title">Vitajte v admin časti</h1>
+                    <p class="text-muted-custom">Vyberte akciu v ľavom paneli.</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('../../components/navbar.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+        fetch('../../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-placeholder').innerHTML = h);
+    </script>
+</body>
+</html>

@@ -55,4 +55,7 @@
   --shadow-input-focus: 0 0 0 4px rgba(200, 174, 184, 0.15);
 
   --color-green: #2f7d32;
+  --color-red:rgb(111, 37, 37);
+  --color-softgreen: rgb(85, 107, 85);
+  
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pridať produkt - Admin</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+
+    <main class="background">
+        <section class="page-section">
+            <div class="admin-layout">
+
+                <div class="profile-card admin-sidebar">
+                    <h2 class="section-title">Admin panel</h2>
+                    <a href="admin-pridat.html" class="btn-dark-custom">Pridať produkt</a>
+                    <a href="admin-editovat.html" class="btn-dark-custom">Editovať produkt</a>
+                    <a href="admin-vymazat.html" class="btn-dark-custom">Vymazať produkt</a>
+                    <hr>
+                    <a href="../profilepage.html" class="btn-dark-custom">← Späť na profil</a>
+                </div>
+
+                <div class="profile-card admin-main-content">
+                    <h1 class="section-title">Pridať produkt</h1>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nazov">Názov knihy *</label>
+                            <input type="text" id="nazov" placeholder="Napr. Malý princ">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="autor">Autor</label>
+                            <input type="text" id="autor" placeholder="Napr. Antoine de Saint-Exupéry">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vazba">Väzba</label>
+                            <input type="text" id="vazba" placeholder="Napr. pevná / brožovaná">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rozmer">Rozmer</label>
+                            <input type="text" id="rozmer" placeholder="Napr. 130 x 200 mm">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hmotnost">Hmotnosť (g)</label>
+                            <input type="text" id="hmotnost" placeholder="Napr. 350g">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" id="isbn">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rok">Rok vydania</label>
+                            <input type="number" id="rok" placeholder="2024">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jazyk">Jazyk</label>
+                            <input type="text" id="jazyk" placeholder="Napr. slovenský">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vydavatel">Vydavateľstvo</label>
+                            <input type="text" id="vydavatel">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="opis">Opis *</label>
+                            <textarea id="opis" rows="5" placeholder="Napíšte opis knihy…"></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="foto1">Fotografia 1 *</label>
+                            <input type="file" id="foto1" accept="image/*">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="foto2">Fotografia 2 *</label>
+                            <input type="file" id="foto2" accept="image/*">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="foto2">Fotografia 3 *</label>
+                            <input type="file" id="foto3" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-dark-custom">Vytvoriť produkt</button>
+                        <a href="admin.html" class="btn-dark-custom">Zrušiť</a>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('../../components/navbar.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+        fetch('../../components/footer.html').then(r => r.text()).then(h => document.getElementById('footer-placeholder').innerHTML = h);
+    </script>
+</body>
+</html>

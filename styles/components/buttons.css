@@ -11,6 +11,10 @@
   cursor: pointer;
   border-radius: 999px;
   transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+
+  display: block;
+  text-align: center;
+  text-decoration: none;
 }
 
 .cart-btn:hover,
@@ -220,4 +224,12 @@
 
 .carousel-control-prev:hover, .carousel-control-next:hover {
   opacity: 0.5;
+}
+
+.btn-dark-custom.btn-danger{
+  background-color: var(--color-red);
+}
+
+.btn-dark-custom.btn-save-changes{
+  background-color: var(--color-softgreen);
 }

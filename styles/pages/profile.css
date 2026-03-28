@@ -12,13 +12,13 @@
 }
 
 .profile-avatar:hover::after {
-    content: "ZMENIŤ";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    font-size: 10px;
-    text-align: center;
-    padding: 5px 0;
+  content: "ZMENIŤ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px 0;
 }
