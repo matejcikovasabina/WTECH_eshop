@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payment</title> 
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-light">
+    <div class="horny-pasik text-center text-white">
+        <p>Zľavy, akcie, novinky, upozornenia...</p>
+    </div>
+    
+    <nav>
+        <div class="navigacka container-fluid d-flex justify-content-between align-items-center">
+            <a href="#">
+                <img src="../../images/logo.png" alt="ReadIt logo" height="60">
+            </a>
+    
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+    
+            <div class="nav-content" id="navContent">
+                <ul class="nav">    
+                    <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Knihy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
+                </ul>
+    
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="checkout-steps-wrap">
+        <div class="container py-1">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="d-flex flex-wrap justify-content-between text-center gap-3 small fw-semibold">
+                        <a href="#" class="flex-fill text-primary border-bottom border-3 border-primary pb-2 text-decoration-none">
+                            Košík
+                        </a>
+                        <a href="#" class="flex-fill text-primary border-bottom border-3 border-primary pb-2 text-decoration-none">
+                            Doručenie
+                        </a>
+                        <div class="flex-fill text-primary border-bottom border-3 border-primary pb-2">
+                            Platba
+                        </div>
+                        <div class="flex-fill text-muted border-bottom pb-2">
+                            Sumár
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      
+    <main class="py-4">
+        <div class="container">
+            <div class="row justify-content-center g-4">
+                
+                <!-- SUMMARY CARD -->
+                <div class="col-12 col-lg-4">
+                    <div class="sticky-top cart-sticky">
+                        <div class="card border-0 shadow-sm rounded-4 h-100">
+                            <div class="card-body p-4">
+                                <h2 class="h4 mb-4">Košík</h2>
+
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom gap-2">
+                                    <span>Amerikáni</span>
+                                    <span class="text-muted small">1 ks</span>
+                                    <strong>16.92€</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom gap-2">
+                                    <span>Mila Debbie</span>
+                                    <span class="text-muted small">1 ks</span>
+                                    <strong>16.00€</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom gap-2">
+                                    <span>Búrlivé výšiny</span>
+                                    <span class="text-muted small">2 ks</span>
+                                    <strong>27.30€</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-2 border-bottom mt-3">
+                                    <span class="text-muted">Doručenie</span>
+                                    <strong>3.90€</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center pt-4 fs-5 fw-bold">
+                                    <span>Spolu</span>
+                                    <strong>64.12€</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAYMENT CARD -->
+                <div class="col-12 col-lg-8">
+                    <div class="card border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="h4 mb-2">Spôsob platby</h2>
+                            <p class="text-muted mb-4">Vyber si spôsob platby, ktorý ti najviac vyhovuje.</p>
+
+                            <div class="d-flex flex-column gap-3 mb-4">
+                                
+                                <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="payment" id="cardPayment" checked>
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Platba kartou online</h3>
+                                                    <p class="text-muted mb-2">Rýchla a bezpečná platba cez Visa, Mastercard alebo Maestro</p>
+                                                </div>
+                                                <span class="badge text-bg-dark fs-6 align-self-start">Odporúčané</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Okamžité spracovanie</span>
+                                                <span>Bezpečné šifrovanie</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="payment" id="cashPayment">
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Platba na dobierku</h3>
+                                                    <p class="text-muted mb-2">Zaplatíš až pri prevzatí zásielky</p>
+                                                </div>
+                                                <span class="badge text-bg-secondary fs-6 align-self-start">+1.20€</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Platba pri doručení</span>
+                                                <span>Hotovosť alebo karta podľa dopravcu</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="payment" id="bankTransfer">
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Bankový prevod</h3>
+                                                    <p class="text-muted mb-2">Po odoslaní objednávky ti zobrazíme údaje k platbe</p>
+                                                </div>
+                                                <span class="badge text-bg-light border text-dark fs-6 align-self-start">Bez poplatku</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Spracovanie po prijatí platby</span>
+                                                <span>Môže trvať 1–2 pracovné dni</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
+                                    <div class="form-check m-0">
+                                        <input class="form-check-input" type="radio" name="payment" id="giftCard">
+                                        <div class="ms-4">
+                                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
+                                                <div>
+                                                    <h3 class="h5 mb-1">Darčeková poukážka</h3>
+                                                    <p class="text-muted mb-2">Uplatni zľavový alebo darčekový kód pri objednávke</p>
+                                                </div>
+                                                <span class="badge text-bg-warning fs-6 align-self-start">Použiť kód</span>
+                                            </div>
+                                            <div class="small text-muted d-flex flex-column flex-md-row gap-2 gap-md-4">
+                                                <span>Možnosť kombinovať so zľavou</span>
+                                                <span>Ideálne ako darček</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row-custom">
+    
+                <div class="footer-col">
+                    <h3>ReadIt</h3>
+                    <p>Najlepšie miesto pre knihy online. Objavujte novinky, bestsellery a zľavy.</p>
+                </div>
+    
+                <div class="footer-col">
+                    <h5>Rýchle odkazy</h5>
+                    <ul>
+                        <li><a href="#">Novinky</a></li>
+                        <li><a href="#">Knihy</a></li>
+                        <li><a href="#">Akcie a zľavy</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col">
+                    <h5>Podpora</h5>
+                    <ul>
+                        <li><a href="#">Obchodné podmienky</a></li>
+                        <li><a href="#">Platba a doprava</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col">
+                    <h5>Kontakt</h5>
+                    <ul>
+                        <li>Email: <a href="mailto:info@readit.sk">info@readit.sk</a></li>
+                        <li>Tel.: <a href="tel:+421901234567">+421 901 234 567</a></li>
+                    </ul>
+                    <p class="mt-3 copyright">© 2026 ReadIt.</p>
+                </div>
+    
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
