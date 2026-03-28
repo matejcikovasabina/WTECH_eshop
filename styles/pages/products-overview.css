@@ -30,11 +30,6 @@
     overflow: hidden;
 }
 
-.card:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transform: translateY(-5px);
-}
-
 .card-body {
     padding: 20px;
 }

@@ -21,11 +21,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-main);
-}
-
 .card-body {
   padding: 20px;
 }
