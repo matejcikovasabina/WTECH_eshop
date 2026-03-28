@@ -63,6 +63,14 @@ label.border:hover {
   }
 }
 
+/*summary page*/
+@media (max-width: 768px) {
+  .cart-sticky {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
 .cart-table,
 .delivery-options,
 .payment-options {
