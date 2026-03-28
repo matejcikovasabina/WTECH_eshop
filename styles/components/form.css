@@ -115,3 +115,23 @@
   grid-column: 1 / -1;
 }
 /* ------------------------ */
+
+@media (max-width: 900px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-card {
+    padding: 24px 16px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
