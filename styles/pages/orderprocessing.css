@@ -1,4 +1,4 @@
-/*shopping .card*/
+/*shopping card*/
 .cart-img {
   width: 80px;
   object-fit: cover;
@@ -19,9 +19,51 @@
   background-color: var(--color-white);
 }
 
+/*adress page*/
+.form-check-input {
+  cursor: pointer;
+}
+
+label.border {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+label.border:hover {
+  border-color: #adb5bd !important;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.cart-sticky {
+  top: 150px;
+}
+
+
+/*payment page*/
+.payment-option {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: #d8c4cb;
+  background: #fffafb;
+}
+
+.payment-option input[type="radio"] {
+  accent-color: #111;
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .cart-sticky {
+    position: static !important;
+    top: auto !important;
+  }
+}
 
 /**/
-
 .cart-table,
 .delivery-options,
 .payment-options {
