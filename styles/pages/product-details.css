@@ -312,7 +312,6 @@
 }
 
 .details-box {
-  background-color: var(--color-bg-muted);
   border-radius: 18px;
   padding: 28px;
   display: grid;
@@ -330,7 +329,6 @@
 }
 
 .reviews-summary {
-  background-color: var(--color-bg-muted);
   border-radius: 18px;
   padding: 30px;
   display: grid;
