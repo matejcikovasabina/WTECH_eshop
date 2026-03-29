@@ -26,44 +26,136 @@
             <div class="main-layout">
                 <!-- Sidebar -->
                 <aside class="sidebar-filters">
-
                     <h6>Filtre</h6>
                     <hr>
 
-                    <div class="mb-3">
-                        <h6>Jazyk</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="lang1" checked>
-                            <label class="form-check-label" for="lang1">slovenčina</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="lang2">
-                            <label class="form-check-label" for="lang2">čeština</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="lang3">
-                            <label class="form-check-label" for="lang3">angličtina</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="lang4">
-                            <label class="form-check-label" for="lang4">iné</label>
+                    <div class="filter-section">
+                        <h6 class="filter-title" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapseLanguage" 
+                            role="button" 
+                            aria-expanded="true">
+                            Jazyk
+                            <span class="arrow-icon">▾</span>
+                        </h6>
+                        <div class="collapse show" id="collapseLanguage">
+                            <div class="filter-content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lang1" checked>
+                                    <label class="form-check-label" for="lang1">slovenčina</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lang2">
+                                    <label class="form-check-label" for="lang2">čeština</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lang3">
+                                    <label class="form-check-label" for="lang3">angličtina</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lang3">
+                                    <label class="form-check-label" for="lang3">ine</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <h6>Vydavateľstvo</h6>
-                        <!-- expand/collapse options -->
+                    <hr>
+
+
+                    <div class="filter-section">
+                        <h6 class="filter-title" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapsePublisher" 
+                            role="button" 
+                            aria-expanded="false">
+                            Vydavateľstvo
+                            <span class="arrow-icon">▾</span>
+                        </h6>
+                        <div class="collapse" id="collapsePublisher">
+                            <div class="filter-content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="pub1">
+                                    <label class="form-check-label" for="pub1">Ikar (124)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="pub2">
+                                    <label class="form-check-label" for="pub2">Slovart (89)</label>
+                                </div>
+                                <a href="#" class="small text-muted d-block mt-2">+ Zobraziť viac</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <h6>Väzba</h6>
-                        <!-- expand/collapse options -->
+                    <hr>
+
+                    <div class="filter-section">
+                        <h6 class="filter-title" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapseBinding" 
+                            role="button" 
+                            aria-expanded="false">
+                            Väzba
+                            <span class="arrow-icon">▾</span>
+                        </h6>
+                        <div class="collapse" id="collapseBinding">
+                            <div class="filter-content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="vazba1">
+                                    <label class="form-check-label" for="vazba1">Brožovaná</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="vazba2">
+                                    <label class="form-check-label" for="vazba2">Pevná väzba</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="vazba3">
+                                    <label class="form-check-label" for="vazba3">E-kniha</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <h6>Hodnotenia</h6>
-                        <span>★★★★★</span>
+                    <hr>
+
+
+                    <div class="filter-section">
+                        <h6 class="filter-title" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapseRating" 
+                            role="button" 
+                            aria-expanded="false">
+                            Hodnotenia
+                            <span class="arrow-icon">▾</span>
+                        </h6>
+                        <div class="collapse" id="collapseRating">
+                            <div class="filter-content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rate5">
+                                    <label class="form-check-label" for="rate5">★★★★★ (5)</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rate4">
+                                    <label class="form-check-label" for="rate4">4★ a viac</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rate4">
+                                    <label class="form-check-label" for="rate4">3★ a viac</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rate4">
+                                    <label class="form-check-label" for="rate4">2★a viac</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rate4">
+                                    <label class="form-check-label" for="rate4">1★ a viac</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <hr>
+
 
                 </aside>
 
@@ -78,15 +170,15 @@
                     </ul>
 
                     <!-- Sort bar -->
-                    <div class="sortby-bar d-flex justify-content-between align-items-center">
+                    <div class="sortby-bar">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="skladom">
                             <label class="form-check-label" for="skladom">Iba skladom</label>
                         </div>
                         <div>
-                            <a href="#" class="me-2">Bestsellers</a>
-                            <a href="#" class="me-2">Najnovšie</a>
-                            <a href="#" class="me-2">Najlacnejšie</a>
+                            <a href="#">Bestsellers</a>
+                            <a href="#">Najnovšie</a>
+                            <a href="#">Najlacnejšie</a>
                             <a href="#">Najdrahšie</a>
                         </div>
                     </div>
@@ -248,5 +340,7 @@
                 document.getElementById('footer-placeholder').innerHTML = html;
             });
     </script>
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
