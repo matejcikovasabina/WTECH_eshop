@@ -19,14 +19,14 @@
 }
 
 .book-slider::-webkit-scrollbar {
-  display: none; /* Skryje scrollbar v Chrome/Safari */
+  display: none; /* skryje scrollbar v chrome/safari */
 }
 
 .book-slider .cardd {
   scroll-snap-align: start;
 }
 
-/* Balik jednej karty s knihou */
+/* balik jednej karty s knihou */
 .cardd {
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   box-shadow: var(--shadow-main);
 }
 
-/* Obrazok knizky */
+/* obrazok knizky */
 .card-img-placeholder {
   width: 100%;
   height: 280px;

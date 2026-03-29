@@ -20,6 +20,23 @@
     border-radius: 10px;
     overflow: hidden;
     background-color: var(--color-bg-card);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.overview-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-card .card-body {
+    flex: 1 1 auto;
+}
+
+.card.overview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-main);
 }
 
 .card-body {
@@ -247,7 +264,6 @@ aside h6 {
 }
 
 /* odsadenie wrapperu pagingu a knih */
-
 .pagination-wrapper {
     margin-top: 40px;
     margin-bottom: 3rem;

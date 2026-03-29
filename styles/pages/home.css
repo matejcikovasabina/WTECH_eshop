@@ -36,7 +36,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Roztiahne bez deformacie */
+  object-fit: cover; /* roztiahne bez deformacie */
   
   filter: brightness(0.3);
   z-index: 1;

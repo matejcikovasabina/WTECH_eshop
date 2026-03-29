@@ -46,11 +46,10 @@
   display: block;
 }
 
-/* RESPONZIVITA PRE DETAIL OBJEDNÁVKY */
+/* RESPONZIVITA PRE DETAIL OBJEDNAVKY */
 @media (max-width: 600px) {
     .order-detail-row {
-        /* Zmeníme grid na jeden stĺpec */
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* grid na jeden sltpec*/
         gap: 15px;
         text-align: center;
         padding: 25px 0;

@@ -114,8 +114,7 @@
 .full-width {
   grid-column: 1 / -1;
 }
-/* ------------------------ */
-
+/* ----------- RESPONZIVITAA------------- */
 @media (max-width: 900px) {
   .form-grid {
     grid-template-columns: 1fr;
