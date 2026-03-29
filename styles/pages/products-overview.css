@@ -14,11 +14,11 @@
   object-fit: contain;
 }
 
-.cardd {
+.card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cardd:hover {
+.card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-main);
 }
@@ -28,10 +28,15 @@
     transition: all 0.3s ease;
     border-radius: 10px;
     overflow: hidden;
+    background-color: var(--color-bg-card);
 }
 
 .card-body {
     padding: 20px;
+}
+
+.row{
+    padding:1rem 1rem;
 }
 
 
@@ -69,17 +74,16 @@
     margin: 0 auto;
 }
 
+.card-footer{
+    background-color: var(--color-bg-card);
+}
+
 /* ROZLOZENIE (Layout) */
 .main-layout {
     display: flex;
     gap: 20px;
 }
 
-/* ROZLOZENIE STRANKY */
-.main-layout {
-    display: flex;
-    gap: 20px;
-}
 
 /* @media (max-width: 800px) {
     .main-layout { flex-direction: column; }
@@ -151,6 +155,9 @@ aside h6 {
 
 
 /* PAGINACIA */
+.mx-auto{
+    background-color: transparent;
+}
 .pagination .page-link {
     color: var(--color-black);
     border: none;
@@ -185,6 +192,7 @@ aside h6 {
 /* odsadenie wrapperu pagingu a knih */
 .pagination-wrapper {
     margin-top: 40px;
+    margin-bottom: 3rem;
     border-top: 1px solid var(--color-bg-muted);
     padding-top: 20px;
 }
