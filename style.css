@@ -47,6 +47,60 @@
   font-size: 0.95rem;
 }
 
+.profile-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+/*login, registration */
+.register-card h1,
+.login-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.profile-card .form-label,
+.register-card .form-label,
+.login-card .form-label {
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+.profile-card .form-control,
+.register-card .form-control,
+.login-card .form-control {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  box-shadow: none;
+}
+
+.profile-card .form-control:focus,
+.register-card .form-control:focus,
+.login-card .form-control:focus {
+  box-shadow: 0 0 0 0.15rem rgba(33, 37, 41, 0.12);
+}
+
+.register-text a,
+.forgot-link,
+.login-text a {
+  color: #212529;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-text a:hover,
+.forgot-link:hover,
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+.register-text,
+.login-text {
+  color: #6c757d;
+}
+
 /* 
 :root {
   --color-bg-page: #ebe8f1;
