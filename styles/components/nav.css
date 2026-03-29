@@ -37,8 +37,8 @@ nav {
   justify-content: space-between;
 }
 
-/* --- RESPONZIVITA (pod 1400px) --- */
-@media (max-width: 1400px) {
+/* --- RESPONZIVITA --- */
+@media (max-width: 1500px) {
   .navigacka {
     padding: 0 5rem;
   }
@@ -76,6 +76,7 @@ nav {
   color: var(--color-text-main);
   font-size: 0.95rem;
   font-weight: 500;
+  padding:0.5rem;
 }
 
 .navigacka .nav-link:hover {
