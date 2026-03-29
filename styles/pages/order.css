@@ -43,3 +43,43 @@
   color: var(--color-text-main);
   padding-top: 2px;
 }
+
+/* --- RESPONZIVITA --- */
+@media (max-width: 600px) {
+  .order-row {
+    grid-template-columns: 1fr; 
+    
+    gap: 12px;
+    padding: 25px 15px;
+    text-align: center;
+    
+    border-bottom: 2px solid var(--color-border-light);
+    margin-bottom: 10px;
+  }
+
+  .order-col {
+    margin-left: 0; 
+    width: 100%;
+  }
+
+  .order-number strong {
+    font-size: 20px;
+  }
+
+  .invoice {
+    justify-content: center;
+    margin-top: 5px;
+  }
+
+  .order-text {
+    font-size: 16px;
+    padding-top: 5px;
+  }
+
+  .order-price {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--color-text-main);
+  }
+}

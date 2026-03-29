@@ -45,3 +45,36 @@
   border-radius: 8px;
   display: block;
 }
+
+/* RESPONZIVITA PRE DETAIL OBJEDNÁVKY */
+@media (max-width: 600px) {
+    .order-detail-row {
+        /* Zmeníme grid na jeden stĺpec */
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+        padding: 25px 0;
+    }
+
+    .book-thumb {
+        margin: 0 auto;
+        width: 80px;
+        height: 120px;
+    }
+
+    .order-detail-info strong {
+        font-size: 17px;
+    }
+
+    .order-text {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .order-detail-price {
+        text-align: center;
+        font-size: 18px;
+        color: var(--color-black);
+        margin-top: 5px;
+    }
+}
