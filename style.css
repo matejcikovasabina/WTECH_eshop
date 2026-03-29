@@ -28,24 +28,7 @@
 @import "styles/pages/orderprocessing.css";
 @import "styles/pages/wishlist.css";
 @import "styles/pages/orderdetail.css";
-@import "styles/pages/admin.css";
-
-
-/*profile page*/
-.profile-avatar {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background-color: #e9ecef;
-  border: 2px solid #dee2e6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6c757d;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
+@import "styles/pages/admin.css"
 
 /* 
 :root {
