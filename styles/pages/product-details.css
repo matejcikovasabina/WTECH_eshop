@@ -36,6 +36,7 @@
   gap: 48px;
   align-items: stretch;
   background: #fff;
+  border-radius: 1rem;
 }
 
 .product-image {
