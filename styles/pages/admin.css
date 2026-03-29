@@ -126,7 +126,7 @@
 
 
 /* RESPONSIVE (Mobil a tablet - pod sebou) */
-@media (max-width: 992px) {
+@media (max-width: 900px) {
     .admin-layout {
         flex-direction: column;
         width: 100%;
