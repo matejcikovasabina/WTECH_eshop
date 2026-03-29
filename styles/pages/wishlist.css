@@ -57,6 +57,11 @@
     flex-shrink: 0;
 }
 
+.status-column{
+    align-items: right;
+    width: 120px;
+}
+
 .price-column {
     font-size: 16px;
     font-weight: bold;
@@ -67,14 +72,8 @@
     text-align: right;
 }
 
-.btn-wishlist-del {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    padding: 0;
-    text-decoration: underline;
+.cart-column .btn-dark-custom{
+    width: 95px;
 }
 
 .btn-wishlist-del:hover {
@@ -89,7 +88,6 @@
 }
 
 /* RESPONZIVITA*/
-/* RESPONZIVITA */
 @media (max-width: 1300px) {
     .wishlist-item {
         flex-direction: column;
