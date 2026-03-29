@@ -457,14 +457,12 @@
 
 
     <script>
-        // Univerzálna funkcia na posun (funguje pre oba slidery)
         function scrollSlider(button, direction) {
-            // "button.parentElement" nájde ten slider-wrapper, v ktorom si klikla
             const slider = button.parentElement.querySelector('.book-slider');
             const card = slider.querySelector('.cardd');
             
             if (card) {
-                const step = card.offsetWidth + 20; // Šírka knihy + gap 20px
+                const step = card.offsetWidth + 20;
                 slider.scrollBy({
                     left: direction * step,
                     behavior: 'smooth'
