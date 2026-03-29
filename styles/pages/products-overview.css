@@ -14,15 +14,6 @@
   object-fit: contain;
 }
 
-.card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-main);
-}
-
 .card{
     border: 1px solid #eee;
     transition: all 0.3s ease;

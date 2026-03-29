@@ -48,8 +48,7 @@
   padding: 18px 20px;
   transition: all 0.25s ease;
 }
-
-.profile-card{
+.admin-card{
   width: 100%;
   max-width: 950px;
   margin: 0 auto;
