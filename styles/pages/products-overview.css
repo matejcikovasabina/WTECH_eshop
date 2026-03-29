@@ -36,7 +36,8 @@
 }
 
 .row{
-    padding:1rem 1rem;
+    padding:0rem 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -46,9 +47,13 @@
 }
 
 .sortby-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     margin-bottom: 35px;
     padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--color-bg-muted);
 }
 
 .pagination-wrapper {
@@ -84,12 +89,6 @@
     gap: 20px;
 }
 
-
-/* @media (max-width: 800px) {
-    .main-layout { flex-direction: column; }
-} */
-
-
 /* FILTERS - bocny panel*/
 aside h6 {
   font-weight: bold;
@@ -97,17 +96,69 @@ aside h6 {
   font-size: 14px;
   letter-spacing: 0.5px;
   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.form-check-input:checked {
-  background-color: var(--color-black);
-  border-color: var(--color-black);
+.filter-section{
+    margin-bottom: 1rem;
+}
+.filter-title {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.filter-title:hover {
+    color: var(--color-link, #007bff);
+}
+
+/*  animacie sipiek */
+.filter-title[aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.arrow-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.filter-content {
+    padding-left: 5px;
+}
+
+.sidebar-filters .form-check-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.sidebar-filters .form-check-input:checked {
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+
+/* IBA SKLADOM */
+.sortby-bar .form-check-label {
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.sortby-bar .form-check-input:checked {
+    background-color: var(--color-black);
+    border-color: var(--color-black);
 }
 
 
 /* VYBERANIE PRODUKTOV PODLA ZANRU */
+.nav-item{
+    padding: 0.5rem;
+}
 .nav-pills{
-    margin: 1rem 1rem;
+    margin: 0rem 1rem;
 }
 .nav-pills .nav-link {
   color: var(--color-text-main);
@@ -151,6 +202,27 @@ aside h6 {
   content: "|";
   margin-left: 10px;
   color: var(--color-bg-placeholder);
+}
+
+@media (max-width: 768px) {
+    .sortby-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .sortby-bar a:not(:last-child)::after {
+        content: ""; 
+        margin: 0;
+    }
+    
+    .sortby-bar a {
+        display: inline-block;
+        margin-right: 15px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
 }
 
 
@@ -198,23 +270,20 @@ aside h6 {
 }
 
 /* RESPONSIVITA */
-
-/* Na malých obrazovkách zmeníme smer layoutu na stĺpec */
 @media (max-width: 800px) {
     .main-layout {
         flex-direction: column;
     }
 }
 
-/* Mriežka kníh */
 .custom-book-grid .col {
     flex: 0 0 auto;
-    width: 100%;    /* Mobil: 1 kniha */
+    width: 100%;
 }
 
 
 @media (min-width: 1100px) {
     .custom-book-grid .col {
-        width: 33.333%; /* Desktop: 3 knihy */
+        width: 33.333%;
     }
 }
