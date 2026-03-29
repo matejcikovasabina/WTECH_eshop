@@ -29,3 +29,19 @@
     text-align: right;
     font-weight: 600;
 }
+
+/* LIKE A CART */
+.book-thumb {
+  width: 65px;
+  height: 100px;
+  background: linear-gradient(135deg, #dcdcdc, #f0f0f0);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.book-thumb img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
