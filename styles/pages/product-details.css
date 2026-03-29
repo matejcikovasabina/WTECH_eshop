@@ -427,7 +427,6 @@
   }
 
   .product-image {
-    width: 100%;
     max-width: 340px;
     min-width: unset;
     margin: 0 auto;
