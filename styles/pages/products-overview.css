@@ -47,12 +47,6 @@
     border-bottom: 1px solid var(--color-bg-muted);
 }
 
-.pagination-wrapper {
-    margin-top: 50px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
 .book-cover-place {
     height: 240px;
     display: flex;
@@ -253,11 +247,26 @@ aside h6 {
 }
 
 /* odsadenie wrapperu pagingu a knih */
+
 .pagination-wrapper {
     margin-top: 40px;
     margin-bottom: 3rem;
     border-top: 1px solid var(--color-bg-muted);
     padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: relative;
+}
+
+.pagination-wrapper .btn-dark {
+    position: absolute;
+    right: 0;
+}
+
+.pages-number-box{
+    background-color: transparent;
 }
 
 /* RESPONSIVITA */
@@ -276,5 +285,20 @@ aside h6 {
 @media (min-width: 1100px) {
     .custom-book-grid .col {
         width: 33.333%;
+    }
+}
+
+/* --- RESPONSIVITA PRE PAGINACIU --- */
+@media (max-width: 576px) {
+    .pagination-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        position: static;
+    }
+
+    .pagination-wrapper .btn-dark {
+        position: static;
+        width: 100%;
+        max-width: 200px;
     }
 }
