@@ -233,21 +233,3 @@
 .btn-dark-custom.btn-save-changes{
   background-color: var(--color-softgreen);
 }
-
-
-.admin-btn{
-  width: 100%;
-}
-.admin-btn,
-.register-btn,
-.login-btn {
-  padding: 0.75rem 1.2rem;
-  border-radius: 999px;
-  font-weight: 600;
-  transition: 0.2s ease-in-out;
-}
-
-.register-btn:hover,
-.login-btn:hover {
-  transform: translateY(-1px);
-}
