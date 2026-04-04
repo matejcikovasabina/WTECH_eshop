@@ -1,5 +1,28 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import './style.css';
+
+/* BASE - zakladne nastavenia */
+@import "./styles/base/variables.css";
+@import "./styles/base/reset.css";
+
+/* COMPONENTS - veci co sa opakuju viackrat na stranke */
+@import "./styles/components/nav.css";
+@import "./styles/components/footer.css";
+@import "./styles/components/buttons.css";
+@import "./styles/components/cards.css";
+@import "./styles/components/form.css";
+@import "./styles/components/slider-card.css";
+
+/* PAGES - konkretne podstranky */
+@import "./styles/pages/home.css";
+@import "./styles/pages/products-overview.css";
+@import "./styles/pages/product-details.css";
+@import "./styles/pages/order.css";
+@import "./styles/pages/wishlist.css";
+@import "./styles/pages/orderdetail.css";
+@import "./styles/pages/admin.css";
 
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';

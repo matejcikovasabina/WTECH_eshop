@@ -1,0 +1,36 @@
+<footer class="footer">
+    <div class="container">
+        <div class="footer-row-custom">
+            <div class="footer-col">
+                <h3>ReadIt</h3>
+                <p>Najlepšie miesto pre knihy online. Objavujte novinky, bestsellery a zľavy.</p>
+            </div>
+
+            <div class="footer-col">
+                <h5>Rýchle odkazy</h5>
+                <ul>
+                    <li><a href="#">Novinky</a></li>
+                    <li><a href="#">Knihy</a></li>
+                    <li><a href="#">Akcie a zľavy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Podpora</h5>
+                <ul>
+                    <li><a href="#">Obchodné podmienky</a></li>
+                    <li><a href="#">Platba a doprava</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Kontakt</h5>
+                <ul>
+                    <li>Email: <a href="mailto:info@readit.sk">info@readit.sk</a></li>
+                    <li>Tel.: <a href="tel:+421901234567">+421 901 234 567</a></li>
+                </ul>
+                <p class="mt-3 copyright">© 2026 ReadIt.</p>
+            </div>
+        </div>
+    </div>
+</footer>

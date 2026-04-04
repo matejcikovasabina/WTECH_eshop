@@ -13,6 +13,12 @@ nav {
   padding-left: 10rem;
 }
 
+.logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
 /* styl pre hamburger */
 .menu-toggle {
   display: none;

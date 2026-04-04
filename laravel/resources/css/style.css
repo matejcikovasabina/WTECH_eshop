@@ -1,34 +1,3 @@
-/* BASE - zakladne nastavenia */
-@import "styles/base/variables.css";
-@import "styles/base/reset.css";
-
-/* COMPONENTS - veci co sa opakuju viackrat na stranke */
-@import "styles/components/nav.css";
-@import "styles/components/footer.css";
-@import "styles/components/buttons.css";
-@import "styles/components/forms.css";
-@import "styles/components/cards.css";
-@import "styles/components/carousel.css";
-@import "styles/components/form.css";
-@import "styles/components/orderprocessbar.css";
-@import "styles/components/slider-card.css";
-
-/* PAGES - konkretne podstranky */
-@import "styles/pages/home.css";
-@import "styles/pages/products-overview.css";
-@import "styles/pages/product-details.css";
-@import "styles/pages/profile.css";
-@import "styles/pages/order.css";
-@import "styles/pages/loginregistrationpage.css";
-@import "styles/pages/shoppingcard.css";
-@import "styles/pages/addresspage.css";
-@import "styles/pages/paymentpage.css";
-@import "styles/pages/summarypage.css";
-@import "styles/pages/orderprocessing.css";
-@import "styles/pages/wishlist.css";
-@import "styles/pages/orderdetail.css";
-@import "styles/pages/admin.css";
-
 /*login and registration */
 .profile-card,
 .login-card,
