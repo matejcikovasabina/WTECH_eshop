@@ -1,0 +1,79 @@
+.order-detail-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr auto;
+    align-items: center;
+    column-gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.order-detail-img {
+    width: 60px;
+    height: 80px;
+    border-radius: 4px;
+}
+
+.order-detail-info strong {
+    display: block;
+    font-size: 15px;
+    color: var(--color-text-main);
+}
+
+.order-detail-info p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-text-muted);
+}
+
+.order-detail-price {
+    text-align: right;
+    font-weight: 600;
+}
+
+/* LIKE A CART */
+.book-thumb {
+  width: 65px;
+  height: 100px;
+  background: linear-gradient(135deg, #dcdcdc, #f0f0f0);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.book-thumb img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* RESPONZIVITA PRE DETAIL OBJEDNAVKY */
+@media (max-width: 600px) {
+    .order-detail-row {
+        grid-template-columns: 1fr; /* grid na jeden sltpec*/
+        gap: 15px;
+        text-align: center;
+        padding: 25px 0;
+    }
+
+    .book-thumb {
+        margin: 0 auto;
+        width: 80px;
+        height: 120px;
+    }
+
+    .order-detail-info strong {
+        font-size: 17px;
+    }
+
+    .order-text {
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .order-detail-price {
+        text-align: center;
+        font-size: 18px;
+        color: var(--color-black);
+        margin-top: 5px;
+    }
+}

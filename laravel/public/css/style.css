@@ -1,0 +1,253 @@
+/* BASE - zakladne nastavenia */
+@import "styles/base/variables.css";
+@import "styles/base/reset.css";
+
+/* COMPONENTS - veci co sa opakuju viackrat na stranke */
+@import "styles/components/nav.css";
+@import "styles/components/footer.css";
+@import "styles/components/buttons.css";
+@import "styles/components/forms.css";
+@import "styles/components/cards.css";
+@import "styles/components/carousel.css";
+@import "styles/components/form.css";
+@import "styles/components/orderprocessbar.css";
+@import "styles/components/slider-card.css";
+
+/* PAGES - konkretne podstranky */
+@import "styles/pages/home.css";
+@import "styles/pages/products-overview.css";
+@import "styles/pages/product-details.css";
+@import "styles/pages/profile.css";
+@import "styles/pages/order.css";
+@import "styles/pages/loginregistrationpage.css";
+@import "styles/pages/shoppingcard.css";
+@import "styles/pages/addresspage.css";
+@import "styles/pages/paymentpage.css";
+@import "styles/pages/summarypage.css";
+@import "styles/pages/orderprocessing.css";
+@import "styles/pages/wishlist.css";
+@import "styles/pages/orderdetail.css";
+@import "styles/pages/admin.css";
+
+/*login and registration */
+.profile-card,
+.login-card,
+.register-card {
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+
+.profile-card h1,
+.login-card h1,
+.register-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.address-card .form-label,
+.profile-card .form-label,
+.login-card .form-label,
+.register-card .form-label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.address-card .form-control,
+.profile-card .form-control,
+.login-card .form-control,
+.register-card .form-control {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(#bebebe);
+  box-shadow: none;
+}
+
+.address-card .form-control:focus,
+.profile-card .form-control:focus,
+.login-card .form-control:focus,
+.register-card .form-control:focus {
+  border-color: var(--color-light-highlight);
+  box-shadow: 0 0 0 0.15rem rgba(33, 37, 41, 0.12);
+}
+
+.login-btn,
+.register-btn {
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  transform: translateY(-1px);
+}
+
+.login-text,
+.register-text {
+  color: var(--color-text-soft);
+}
+
+.forgot-link,
+.login-text a,
+.register-text a {
+  color: var(--color-black);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.forgot-link:hover,
+.login-text a:hover,
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+/*profile page*/
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  background-color: var(--color-bg-muted);
+  border: 2px solid var(--color-bg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-avatar:hover::after {
+  content: "ZMENIŤ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  color: var(--color-white);
+  font-size: 10px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.admin-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+}
+
+.admin-btn:hover {
+  transform: translateY(-1px);
+}
+
+/*shopping card*/
+.cart-img {
+  width: 80px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 767.98px) {
+  .cart-img {
+    width: 110px;
+  }
+}
+
+.checkout-steps-wrap {
+  position: sticky;
+  top: 60px;
+  z-index: 1050;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  padding: 0;
+}
+
+/*adress page*/
+.form-check-input {
+  cursor: pointer;
+}
+
+label.border {
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+label.border:hover {
+  border-color: var(--color-light-highlight) !important;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.cart-sticky {
+  top: 150px;
+}
+
+/*payment page*/
+.payment-option {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-option:hover {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  border-color: #d8c4cb;
+  background: var(--color-white);
+}
+
+.payment-option input[type="radio"] {
+  accent-color: var(--color-black);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .cart-sticky {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
+/*summary page*/
+@media (max-width: 768px) {
+  .cart-sticky {
+    position: static !important;
+    top: auto !important;
+  }
+}
+
+/*posvietenie*/
+.form-check-input:checked {
+  background-color: var(--color-light-highlight);
+  border-color: var(--color-light-highlight);
+}
+
+.form-check-input:focus {
+  border-color: var(--color-light-highlight);
+  box-shadow: 0 0 0 0.2rem rgba(73, 112, 112, 0.15);
+}
+
+.delivery-option:has(input:checked) {
+  border-color: var(--color-light-highlight) !important;
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 0.15rem rgba(73, 112, 112, 0.08);
+}
+
+.checkout-step {
+  border-bottom: 1px solid var(--color-grey);
+  text-align: center;
+  font-weight: 600;
+}
+
+.active-step {
+  color: var(--color-highlight);
+  border-bottom: 3px solid var(--color-highlight);
+}
+
+.inactive-step {
+  color: var(--color-grey);
+}

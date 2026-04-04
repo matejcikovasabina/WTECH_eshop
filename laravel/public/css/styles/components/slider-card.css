@@ -1,0 +1,116 @@
+/* CELY Slider - staticke okno */
+.slider-wrapper {
+  padding: 0 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* POHYBLIVY PAS */
+.book-slider {
+  display: grid;
+  grid-auto-flow: column; /* knihy v nekonecnom riadku */
+  grid-auto-columns: calc(100%); /* Mobil: 1 kniha na celu sirku */
+  gap: 20px; /*medzera medzi jednotlivymi cardss */
+  overflow-x: auto; /* scroll prstom na mobile */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.book-slider::-webkit-scrollbar {
+  display: none; /* skryje scrollbar v chrome/safari */
+}
+
+.book-slider .cardd {
+  scroll-snap-align: start;
+}
+
+/* balik jednej karty s knihou */
+.cardd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardd:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-main);
+}
+
+/* obrazok knizky */
+.card-img-placeholder {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-color: transparent;
+
+  overflow: hidden;
+  padding: 5px;
+  padding-bottom: 15px;
+}
+
+.cardd-img{
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 5px var(--color-border-dark));
+}
+
+.cardd:hover .cardd-img {
+  transform: scale(1.05);
+}
+
+/* DETAILY O KNIHE */
+.cardd-body{
+  padding: 5px;
+  text-align: center;
+}
+
+.cardd-body-title{
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.cardd-body-author{
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cardd-body-price{
+  font-weight: 600;
+}
+
+/* RESPONZIVITA */
+/* 2 knihy */
+@media (min-width: 600px) {
+  .book-slider { grid-auto-columns: calc((100% - (1 * 20px)) / 2); }
+}
+
+/* 3 knihy */
+@media (min-width: 800px) {
+  .book-slider { grid-auto-columns: calc((100% - (2 * 20px)) / 3); }
+}
+
+/* 5 knih */
+@media (min-width: 1200px) {
+  .book-slider { grid-auto-columns: calc((100% - (4 * 20px)) / 5); }
+}
+

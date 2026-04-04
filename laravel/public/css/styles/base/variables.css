@@ -1,0 +1,66 @@
+:root {
+  /* POZADIA */
+  --color-bg-page: #876556;
+  --color-bg-card: #ffffff;
+  --color-bg-container: #f5f5f5;
+  --color-bg-muted: #d9d9d9;
+  --color-bg-circle: #d3d3d3;   
+  --color-bg-placeholder: #bebebe;
+  --color-bg-soft: #fcf6f6;
+  --color-bg-hover: #f1f1f1;
+
+  /* TEXT */
+  --color-text-main: #111;
+  --color-text-secondary: #497070;
+  --color-text-muted: #444;
+  --color-text-soft: #555;
+  --color-footer: #403f3f;
+  --color-footer-text: #bebebe;
+  --color-link: #666;
+
+  /* ODKAZY A ZÁKLADNÉ FARBY */
+  --color-link-light: rgb(209, 248, 248);
+  --color-nav-link: rgb(73, 112, 112);
+  --color-link-hover: var(--color-text-secondary);
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey: #777;
+
+  /* BORDRE, ČIARY, TIENE */
+  --color-border: #e0e0e0;
+  --color-border-dark: #999999;
+  --color-border-light: #eee;
+  --color-border-input: #ddd;
+  --color-border-hover: #d8c4cb;
+  --color-border-focus: #c8aeb8;
+  --color-line-dark: #222;
+
+  --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+  /* OSTATNÉ */
+  --radius: 18px;
+  --transition: 0.25s ease;
+
+  --color-radio-hover: #6d4c57;
+  --color-accent-dark: #111;
+
+  --color-text-subtle: #777;
+  --color-text-soft: #555;
+  --color-text-label: #222;
+
+  --color-bg-white: #fff;
+  --color-bg-hover-soft: #fffafb;
+
+  --shadow-delivery-hover: 0 12px 28px rgba(0, 0, 0, 0.08);
+  --shadow-input-focus: 0 0 0 4px rgba(200, 174, 184, 0.15);
+
+  --color-green: #2f7d32;
+  /*HIGHLIGHTS*/
+  --color-highlight: #8a0b31;
+  --color-light-highlight: #f76f98;
+
+  /* KONKRETNE FARBY */
+  --color-red:rgb(111, 37, 37);
+  --color-softgreen: rgb(85, 107, 85);
+}

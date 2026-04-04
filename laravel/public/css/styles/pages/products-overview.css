@@ -1,0 +1,320 @@
+.card-img-placeholder {
+  width: 75%;
+  height: 280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card-img-news {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card{
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--color-bg-card);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.overview-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-card .card-body {
+    flex: 1 1 auto;
+}
+
+.card.overview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-main);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.row{
+    padding:0rem 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.products-page .row {
+    --bs-gutter-x: 3rem; 
+    margin: 2rem 0px;
+}
+
+.sortby-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-bg-muted);
+}
+
+.book-cover-place {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+}
+
+.custom-book-grid .card-img-top {
+    height: 230px; 
+    object-fit: contain; 
+    background-color: #fdfdfd; 
+    padding: 15px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.card-footer{
+    background-color: var(--color-bg-card);
+}
+
+/* ROZLOZENIE (Layout) */
+.main-layout {
+    display: flex;
+    gap: 20px;
+}
+
+/* FILTERS - bocny panel*/
+aside h6 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-section{
+    margin-bottom: 1rem;
+}
+.filter-title {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.filter-title:hover {
+    color: var(--color-link, #007bff);
+}
+
+/*  animacie sipiek */
+.filter-title[aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.arrow-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.filter-content {
+    padding-left: 5px;
+}
+
+.sidebar-filters .form-check-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.sidebar-filters .form-check-input:checked {
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+
+/* IBA SKLADOM */
+.sortby-bar .form-check-label {
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.sortby-bar .form-check-input:checked {
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+}
+
+
+/* VYBERANIE PRODUKTOV PODLA ZANRU */
+.nav-item{
+    padding: 0.5rem;
+}
+.nav-pills{
+    margin: 0rem 1rem;
+}
+.nav-pills .nav-link {
+  color: var(--color-text-main);
+  background-color: var(--color-bg-muted);
+  margin-right: 10px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link.active, 
+.nav-pills .show > .nav-link {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.nav-pills .nav-link:hover:not(.active) {
+  background-color: var(--color-bg-placeholder);
+  color: var(--color-black);
+}
+
+/* ZORADENIE PRODUKTOV PODLA PODMIENKY (bestsellers, price....)*/
+.sortby-bar{
+    margin: 1rem 1rem;
+}
+.sortby-bar a {
+  text-decoration: none;
+  color: var(--color-text-soft);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.sortby-bar a:hover {
+  color: var(--color-black);
+}
+
+/* ciara medzi filtrami na zoradenie */
+.sortby-bar a:not(:last-child)::after {
+  content: "|";
+  margin-left: 10px;
+  color: var(--color-bg-placeholder);
+}
+
+@media (max-width: 768px) {
+    .sortby-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .sortby-bar a:not(:last-child)::after {
+        content: ""; 
+        margin: 0;
+    }
+    
+    .sortby-bar a {
+        display: inline-block;
+        margin-right: 15px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+}
+
+
+/* PAGINACIA */
+.mx-auto{
+    background-color: transparent;
+}
+.pagination .page-link {
+    color: var(--color-black);
+    border: none;
+    background-color: transparent;
+    margin: 0 2px;
+    padding: 8px 16px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+}
+
+/* HOVER EFEKT*/
+.pagination .page-link:hover {
+    background-color: var(--color-bg-muted);
+    color: var(--color-black);
+}
+
+/* AKTIVNA STRANKA NA KTOREJ SME */
+.pagination .page-item.active .page-link {
+    background-color: transparent;
+    color: var(--color-black);
+    font-weight: bold;
+    border-bottom: 2px solid var(--color-black);
+    border-radius: 0;
+}
+
+/* bootstrap shadow delete */
+.pagination .page-link:focus {
+    box-shadow: none;
+    background-color: var(--color-bg-placeholder);
+}
+
+/* odsadenie wrapperu pagingu a knih */
+.pagination-wrapper {
+    margin-top: 40px;
+    margin-bottom: 3rem;
+    border-top: 1px solid var(--color-bg-muted);
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    position: relative;
+}
+
+.pagination-wrapper .btn-dark {
+    position: absolute;
+    right: 0;
+}
+
+.pages-number-box{
+    background-color: transparent;
+}
+
+/* RESPONSIVITA */
+@media (max-width: 800px) {
+    .main-layout {
+        flex-direction: column;
+    }
+}
+
+.custom-book-grid .col {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+
+@media (min-width: 1100px) {
+    .custom-book-grid .col {
+        width: 33.333%;
+    }
+}
+
+/* --- RESPONSIVITA PRE PAGINACIU --- */
+@media (max-width: 576px) {
+    .pagination-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        position: static;
+    }
+
+    .pagination-wrapper .btn-dark {
+        position: static;
+        width: 100%;
+        max-width: 200px;
+    }
+}
