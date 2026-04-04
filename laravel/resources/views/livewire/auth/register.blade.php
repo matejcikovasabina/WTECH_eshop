@@ -1,67 +1,138 @@
-<x-layouts::auth :title="__('Register')">
-    <div class="flex flex-col gap-6">
-        <x-auth-header :title="__('Create an account')" :description="__('Enter your details below to create your account')" />
+@extends('layouts.auth')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="text-center" :status="session('status')" />
+@section('title', 'Registrácia')
 
-        <form method="POST" action="{{ route('register.store') }}" class="flex flex-col gap-6">
-            @csrf
-            <!-- Name -->
-            <flux:input
-                name="name"
-                :label="__('Name')"
-                :value="old('name')"
-                type="text"
-                required
-                autofocus
-                autocomplete="name"
-                :placeholder="__('Full name')"
-            />
+@section('content')
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
+            <div class="register-card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <h1 class="text-center mb-4">Registrácia</h1>
 
-            <!-- Email Address -->
-            <flux:input
-                name="email"
-                :label="__('Email address')"
-                :value="old('email')"
-                type="email"
-                required
-                autocomplete="email"
-                placeholder="email@example.com"
-            />
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
 
-            <!-- Password -->
-            <flux:input
-                name="password"
-                :label="__('Password')"
-                type="password"
-                required
-                autocomplete="new-password"
-                :placeholder="__('Password')"
-                viewable
-            />
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    placeholder="example@gmail.com"
+                                    value="{{ old('email') }}"
+                                    required
+                                    autocomplete="email"
+                                >
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-            <!-- Confirm Password -->
-            <flux:input
-                name="password_confirmation"
-                :label="__('Confirm password')"
-                type="password"
-                required
-                autocomplete="new-password"
-                :placeholder="__('Confirm password')"
-                viewable
-            />
+                            <div class="col-12 col-md-6">
+                                <label for="password" class="form-label">Heslo</label>
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="••••••"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
-            <div class="flex items-center justify-end">
-                <flux:button type="submit" variant="primary" class="w-full" data-test="register-user-button">
-                    {{ __('Create account') }}
-                </flux:button>
+                            <div class="col-12 col-md-6">
+                                <label for="password_confirmation" class="form-label">Zopakujte heslo</label>
+                                <input 
+                                    type="password" 
+                                    id="password_confirmation" 
+                                    name="password_confirmation"
+                                    class="form-control"
+                                    placeholder="••••••"
+                                    required
+                                    autocomplete="new-password"
+                                >
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="name" class="form-label">Meno</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name"
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="Mária"
+                                    value="{{ old('name') }}"
+                                    required
+                                    autocomplete="given-name"
+                                >
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <label for="surname" class="form-label">Priezvisko</label>
+                                <input 
+                                    type="text" 
+                                    id="surname" 
+                                    name="surname"
+                                    class="form-control @error('surname') is-invalid @enderror"
+                                    placeholder="Smith"
+                                    value="{{ old('surname') }}"
+                                    required
+                                    autocomplete="family-name"
+                                >
+                                @error('surname')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="col-12">
+                                <label for="phone" class="form-label">Telefónne číslo</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone"
+                                    class="form-control @error('phone') is-invalid @enderror"
+                                    placeholder="+421 900 000 000"
+                                    value="{{ old('phone') }}"
+                                >
+                                @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-dark register-btn">
+                                Zaregistrovať sa
+                            </button>
+                        </div>
+
+                        <p class="text-center mt-4 mb-0 register-text">
+                            Už máte účet? <a href="{{ route('login') }}">Prihláste sa</a>
+                        </p>
+                    </form>
+                </div>
             </div>
-        </form>
-
-        <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
-            <span>{{ __('Already have an account?') }}</span>
-            <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
         </div>
     </div>
-</x-layouts::auth>
+</section>
+@endsection
