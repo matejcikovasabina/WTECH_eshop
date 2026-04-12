@@ -8,7 +8,7 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Book::query();
+        $query = Book::with(['authors', 'language', 'publisher', 'coverType']);
 
         // SEARCH BAR
         if ($request->filled('search')) {
@@ -16,30 +16,38 @@ class BookController extends Controller
             $query->where(function($q) use ($search) {
                 // unaccent() je ze netreba diakritiku
                 $q->whereRaw("unaccent(title) ILIKE unaccent(?)", ["%{$search}%"])
-                ->orWhereRaw("unaccent(author) ILIKE unaccent(?)", ["%{$search}%"])
-                ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"]);
+                  ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"])
+                  ->orWhereHas('authors', function($query) use ($search) {
+                      $query->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
+                  });
             });
         }
 
 
         // Jazyk
         if ($request->has('language')) {
-            $query->whereIn('language', $request->language);
+            $query->whereHas('language', function($q) use ($request) {
+                $q->whereIn('name', (array)$request->language);
+            });
         }
 
         // Vydavatelstvo
         if ($request->has('publisher')) {
-            $query->whereIn('publisher', $request->publisher);
+            $query->whereHas('publisher', function($q) use ($request) {
+                $q->whereIn('name', (array)$request->publisher);
+            });
         }
 
         // Vazba
         if ($request->has('cover_type')) {
-            $query->whereIn('cover_type', $request->cover_type);
+            $query->whereHas('coverType', function($q) use ($request) {
+                $q->whereIn('name', (array)$request->cover_type);
+            });
         }
 
         // Hodnotenie
         if ($request->has('rating')) {
-            $minRating = min($request->rating);
+            $minRating = min((array)$request->rating);
             $query->where('rating', '>=', $minRating);
         }
 
@@ -79,8 +87,8 @@ class BookController extends Controller
 
     public function show($id)
     {
-        $book = Book::findOrFail($id);
-        
+        $book = Book::with(['authors', 'language', 'publisher', 'coverType'])->findOrFail($id);        
+
         $relatedBooks = Book::where('genre', $book->genre)
                             ->where('id', '!=', $book->id)
                             ->take(10)

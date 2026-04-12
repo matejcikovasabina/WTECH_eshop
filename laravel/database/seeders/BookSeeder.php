@@ -2,15 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
+use App\Models\Author;
 
 class BookSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $books = [
@@ -116,8 +113,37 @@ class BookSeeder extends Seeder
             ],
         ];
 
-        foreach ($books as $book) {
-            Book::create($book);
+        foreach ($books as $bookData) {
+            // 1. Vytiahneme si názvy z poľa
+            $authorName = $bookData['author'];
+            $languageName = $bookData['language'];
+            $publisherName = $bookData['publisher'];
+            $coverName = $bookData['cover_type'];
+
+            // 2. Vymažeme tieto textové kľúče z poľa, aby neplietli Book::create
+            unset(
+                $bookData['author'], 
+                $bookData['language'], 
+                $bookData['publisher'], 
+                $bookData['cover_type']
+            );
+
+            // 3. Nájdeme alebo vytvoríme záznamy v číselníkoch
+            $author = \App\Models\Author::firstOrCreate(['name' => $authorName]);
+            $language = \App\Models\Language::firstOrCreate(['name' => $languageName]);
+            $publisher = \App\Models\Publisher::firstOrCreate(['name' => $publisherName]);
+            $coverType = \App\Models\CoverType::firstOrCreate(['name' => $coverName]);
+
+            // 4. Priradíme ID-čka jazyka a vydavateľa priamo ku knihe
+            $bookData['language_id'] = $language->id;
+            $bookData['publisher_id'] = $publisher->id;
+            $bookData['cover_type_id'] = $coverType->id;
+
+            // 5. Vytvoríme knihu
+            $book = \App\Models\Book::create($bookData);
+
+            // 6. Prepojíme autora cez spojovaciu tabuľku
+            $book->authors()->attach($author->id);
         }
     }
 }

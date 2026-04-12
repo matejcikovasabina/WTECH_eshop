@@ -14,16 +14,24 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('author');
+            // $table->string('author'); 
+            //  neni author lebo spojovacia tabulka
             $table->text('description');
             $table->decimal('price', 8, 2);
             $table->string('genre');
-            $table->string('cover_type'); // Väzba
+
+            // $table->string('cover_type'); // Väzba
+            $table->foreignId('cover_type_id')->constrained()->onDelete('cascade');
             $table->string('dimensions')->nullable(); // Rozmer
             $table->string('isbn')->nullable();
             $table->integer('year'); // Rok vydania
-            $table->string('publisher'); // Vydavatelstvo
-            $table->string('language')->default('Slovenčina');
+
+        
+            // $table->string('publisher'); // Vydavatelstvo
+            $table->foreignId('publisher_id')->constrained()->onDelete('cascade');
+            // $table->string('language')->default('Slovenčina');
+            $table->foreignId('language_id')->constrained()->onDelete('cascade');
+
             $table->integer('stock')->default(0);
             $table->string('image_path')->nullable();
             $table->boolean('is_bestseller')->default(false); // Ten badge "Bestseller"

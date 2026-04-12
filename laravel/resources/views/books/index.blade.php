@@ -174,7 +174,7 @@
                                         </div>
                                         <div class="card-body">
                                             <h6 class="card-title">{{ $book->title }}</h6>
-                                            <p class="card-text mb-1"><small>{{ $book->author->name ?? 'Autor' }}</small></p>
+                                            <p class="card-text mb-1"><small>{{ $book->authors->pluck('name')->implode(', ') ?: 'Neznámy autor' }}</small></p>
                                             <p class="card-text mb-1">
                                                 <small>
                                                     @php
@@ -183,7 +183,7 @@
                                                         $hasHalf = ($rating - $fullStars) >= 0.5;
                                                     @endphp
                                                     @for ($i = 0; $i < $fullStars; $i++)★@endfor@if($hasHalf)☆@endif@for ($i = $fullStars + ($hasHalf ? 1 : 0); $i < 5; $i++)☆@endfor
-                                                    / {{ $book->language ?? 'sk' }} / {{ $book->cover_type ?? 'brožovaná' }}
+                                                    / {{ $book->language->name ?? 'sk' }} / {{ $book->coverType->name ?? 'brožovaná' }}
                                                 </small>
                                             </p>
                                             <p class="card-text"><small>{{ Str::limit($book->description, 80, '...') }}</small></p>
