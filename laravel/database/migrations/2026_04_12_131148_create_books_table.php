@@ -27,6 +27,7 @@ return new class extends Migration
             $table->integer('stock')->default(0);
             $table->string('image_path')->nullable();
             $table->boolean('is_bestseller')->default(false); // Ten badge "Bestseller"
+            $table->decimal('rating', 3, 2)->default(0);
             $table->timestamps();
         });
     }

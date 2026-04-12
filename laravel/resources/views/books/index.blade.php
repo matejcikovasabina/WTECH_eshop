@@ -20,7 +20,7 @@
                     <form action="{{ route('books.index') }}" method="GET" id="filter-form">
                         <div class="filter-section">
                             <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseLanguage">
-                                JAZYK <span class="arrow-icon">▼</span>
+                                JAZYK <span class="arrow-icon">▾</span>
                             </h6>
                             <div id="collapseLanguage" class="collapse show">
                                 <div class="filter-content">
@@ -45,101 +45,82 @@
                         
                         {{-- Ak nechceš onchange="this.form.submit()", pridaj sem tlačidlo: --}}
                         {{-- <button type="submit" class="btn btn-primary btn-sm mt-3">Filtrovať</button> --}}
+
+                        <hr>
+
+                        <div class="filter-section">
+                            <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapsePublisher">
+                                Vydavateľstvo <span class="arrow-icon">▾</span>
+                            </h6>
+                            <div class="collapse show" id="collapsePublisher">
+                                <div class="filter-content">
+                                    @foreach(['Ikar', 'Slovart', 'Plus'] as $pub)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="publisher[]" 
+                                                value="{{ $pub }}" id="pub-{{ $loop->index }}"
+                                                {{ is_array(request('publisher')) && in_array($pub, request('publisher')) ? 'checked' : '' }}
+                                                onchange="this.form.submit()">
+                                            <label class="form-check-label" for="pub-{{ $loop->index }}">
+                                                {{ $pub }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="filter-section">
+                            <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseBinding">
+                                Väzba <span class="arrow-icon">▾</span>
+                            </h6>
+                            <div class="collapse show" id="collapseBinding"> {{-- pridal som 'show' aby to bolo vidno --}}
+                                <div class="filter-content">
+                                    @foreach(['Brožovaná', 'Pevná väzba', 'E-kniha'] as $bind)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="cover_type[]" 
+                                                value="{{ $bind }}" id="bind-{{ $loop->index }}"
+                                                {{ is_array(request('cover_type')) && in_array($bind, request('cover_type')) ? 'checked' : '' }}
+                                                onchange="this.form.submit()">
+                                            <label class="form-check-label" for="bind-{{ $loop->index }}">{{ $bind }}</label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="filter-section">
+                            <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseRating">
+                                Hodnotenia <span class="arrow-icon">▾</span>
+                            </h6>
+                            <div class="collapse show" id="collapseRating">
+                                <div class="filter-content">
+                                    @for($i = 5; $i >= 1; $i--)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="rating[]" 
+                                                value="{{ $i }}" id="rate-{{ $i }}"
+                                                {{ is_array(request('rating')) && in_array((string)$i, request('rating')) ? 'checked' : '' }}
+                                                onchange="this.form.submit()">
+                                            <label class="form-check-label" for="rate-{{ $i }}">
+                                                @for($j = 1; $j <= 5; $j++)
+                                                    {{ $j <= $i ? '★' : '☆' }}
+                                                @endfor
+                                                ({{ $i }}+)
+                                            </label>
+                                        </div>
+                                    @endfor
+                                </div>
+                            </div>
+                        </div>
+
                     </form>
 
                     <hr>
 
-                    <div class="filter-section">
-                        <h6 class="filter-title" 
-                            data-bs-toggle="collapse" 
-                            data-bs-target="#collapsePublisher" 
-                            role="button" 
-                            aria-expanded="false">
-                            Vydavateľstvo
-                            <span class="arrow-icon">▾</span>
-                        </h6>
-                        <div class="collapse" id="collapsePublisher">
-                            <div class="filter-content">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="pub1">
-                                    <label class="form-check-label" for="pub1">Ikar (124)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="pub2">
-                                    <label class="form-check-label" for="pub2">Slovart (89)</label>
-                                </div>
-                                <a href="#" class="small text-muted d-block mt-2">+ Zobraziť viac</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <hr>
-
-                    <div class="filter-section">
-                        <h6 class="filter-title" 
-                            data-bs-toggle="collapse" 
-                            data-bs-target="#collapseBinding" 
-                            role="button" 
-                            aria-expanded="false">
-                            Väzba
-                            <span class="arrow-icon">▾</span>
-                        </h6>
-                        <div class="collapse" id="collapseBinding">
-                            <div class="filter-content">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="vazba1">
-                                    <label class="form-check-label" for="vazba1">Brožovaná</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="vazba2">
-                                    <label class="form-check-label" for="vazba2">Pevná väzba</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="vazba3">
-                                    <label class="form-check-label" for="vazba3">E-kniha</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
-
-                    <div class="filter-section">
-                        <h6 class="filter-title" 
-                            data-bs-toggle="collapse" 
-                            data-bs-target="#collapseRating" 
-                            role="button" 
-                            aria-expanded="false">
-                            Hodnotenia
-                            <span class="arrow-icon">▾</span>
-                        </h6>
-                        <div class="collapse" id="collapseRating">
-                            <div class="filter-content">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rate5">
-                                    <label class="form-check-label" for="rate5">★★★★★ (5)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rate4">
-                                    <label class="form-check-label" for="rate4">4★ a viac</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rate3">
-                                    <label class="form-check-label" for="rate3">3★ a viac</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rate2">
-                                    <label class="form-check-label" for="rate2">2★ a viac</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rate1">
-                                    <label class="form-check-label" for="rate1">1★ a viac</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr>
                 </aside>
 
                 <section class="main-content">
@@ -192,7 +173,7 @@
                                                         $hasHalf = ($rating - $fullStars) >= 0.5;
                                                     @endphp
                                                     @for ($i = 0; $i < $fullStars; $i++)★@endfor@if($hasHalf)☆@endif@for ($i = $fullStars + ($hasHalf ? 1 : 0); $i < 5; $i++)☆@endfor
-                                                    / {{ $book->language ?? 'sk' }} / {{ $book->binding ?? 'brožovaná' }}
+                                                    / {{ $book->language ?? 'sk' }} / {{ $book->cover_type ?? 'brožovaná' }}
                                                 </small>
                                             </p>
                                             <p class="card-text"><small>{{ Str::limit($book->description, 80, '...') }}</small></p>

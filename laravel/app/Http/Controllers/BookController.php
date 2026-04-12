@@ -10,8 +10,25 @@ class BookController extends Controller
     {
         $query = Book::query();
 
+        // Jazyk
         if ($request->has('language')) {
             $query->whereIn('language', $request->language);
+        }
+
+        // Vydavatelstvo
+        if ($request->has('publisher')) {
+            $query->whereIn('publisher', $request->publisher);
+        }
+
+        // Vazba
+        if ($request->has('cover_type')) {
+            $query->whereIn('cover_type', $request->cover_type);
+        }
+
+        // Hodnotenie
+        if ($request->has('rating')) {
+            $minRating = min($request->rating);
+            $query->where('rating', '>=', $minRating);
         }
 
         $books = $query->paginate(12)->withQueryString();
