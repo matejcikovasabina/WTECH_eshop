@@ -8,8 +8,13 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $books = Book::paginate(12);
+        $query = Book::query();
 
+        if ($request->has('language')) {
+            $query->whereIn('language', $request->language);
+        }
+
+        $books = $query->paginate(12)->withQueryString();
         return view('books.index', compact('books'));
     }
 

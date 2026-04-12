@@ -17,36 +17,35 @@
                     <h6>Filtre</h6>
                     <hr>
 
-                    <div class="filter-section">
-                        <h6 class="filter-title" 
-                            data-bs-toggle="collapse" 
-                            data-bs-target="#collapseLanguage" 
-                            role="button" 
-                            aria-expanded="true">
-                            Jazyk
-                            <span class="arrow-icon">▾</span>
-                        </h6>
-                        <div class="collapse show" id="collapseLanguage">
-                            <div class="filter-content">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lang1" checked>
-                                    <label class="form-check-label" for="lang1">slovenčina</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lang2">
-                                    <label class="form-check-label" for="lang2">čeština</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lang3">
-                                    <label class="form-check-label" for="lang3">angličtina</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lang4">
-                                    <label class="form-check-label" for="lang4">ine</label>
+                    <form action="{{ route('books.index') }}" method="GET" id="filter-form">
+                        <div class="filter-section">
+                            <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseLanguage">
+                                JAZYK <span class="arrow-icon">▼</span>
+                            </h6>
+                            <div id="collapseLanguage" class="collapse show">
+                                <div class="filter-content">
+                                    @foreach(['Slovenčina', 'Čeština', 'Angličtina'] as $lang)
+                                        <div class="form-check">
+                                            <input class="form-check-input" 
+                                                type="checkbox" 
+                                                name="language[]" {{-- MUSÍ BYŤ POLE --}}
+                                                value="{{ $lang }}" 
+                                                id="lang-{{ $loop->index }}"
+                                                {{-- Tento riadok zabezpečí, že checkbox ostane zakliknutý aj po obnovení stránky --}}
+                                                {{ is_array(request('language')) && in_array($lang, request('language')) ? 'checked' : '' }}
+                                                onchange="this.form.submit()">
+                                            <label class="form-check-label" for="lang-{{ $loop->index }}">
+                                                {{ $lang }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        
+                        {{-- Ak nechceš onchange="this.form.submit()", pridaj sem tlačidlo: --}}
+                        {{-- <button type="submit" class="btn btn-primary btn-sm mt-3">Filtrovať</button> --}}
+                    </form>
 
                     <hr>
 
