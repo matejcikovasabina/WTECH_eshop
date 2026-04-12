@@ -42,8 +42,24 @@ nav {
   justify-content: space-between;
 }
 
+.navigacka ul:first-of-type {
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+
+@media (max-width:1500px){
+  .navigacka ul:first-of-type {
+    margin-left: 0.5rem;
+  }
+
+  nav .nav-item{
+    padding: 0;
+  }
+}
+
 /* --- RESPONZIVITA --- */
-@media (max-width: 1500px) {
+@media (max-width: 1300px) {
   .navigacka {
     padding: 0 5rem;
   }
@@ -72,10 +88,6 @@ nav {
   }
 }
 
-.navigacka ul:first-of-type {
-  margin-right: auto;
-  margin-left: 2rem;
-}
 
 .navigacka .nav-link {
   color: var(--color-text-main);
