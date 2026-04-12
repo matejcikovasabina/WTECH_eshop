@@ -10,6 +10,18 @@ class BookController extends Controller
     {
         $query = Book::query();
 
+        // SEARCH BAR
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                // unaccent() je ze netreba diakritiku
+                $q->whereRaw("unaccent(title) ILIKE unaccent(?)", ["%{$search}%"])
+                ->orWhereRaw("unaccent(author) ILIKE unaccent(?)", ["%{$search}%"])
+                ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"]);
+            });
+        }
+
+
         // Jazyk
         if ($request->has('language')) {
             $query->whereIn('language', $request->language);

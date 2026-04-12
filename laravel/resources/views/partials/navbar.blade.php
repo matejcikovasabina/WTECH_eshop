@@ -35,13 +35,15 @@
 
             <ul class="nav">
                 <li class="nav-item search-item">
-                    <form action="#" method="GET">
+                    <form action="{{ route('books.index') }}" method="GET">
                         <div class="input-group search-group">
                             <input 
                                 type="text" 
+                                name="search" {{-- DOLEŽITÉ: meno, ktoré kontrolér hľadá --}}
                                 class="form-control border-start-0 ps-0" 
                                 placeholder="Vyhľadávanie" 
                                 aria-label="Vyhľadávanie"
+                                value="{{ request('search') }}" {{-- Aby text zostal v poli po vyhľadaní --}}
                             >
                             <button class="btn btn-search" type="submit">
                                 <img src="{{ asset('images/search.png') }}" alt="Hľadať" width="18" height="18">
