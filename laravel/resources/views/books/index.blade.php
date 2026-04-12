@@ -124,7 +124,6 @@
                 </aside>
 
                 <section class="main-content">
-
                     <ul class="nav nav-pills">
                         <li class="nav-item"><a class="nav-link active" href="#">Trilery</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Horory</a></li>
@@ -133,14 +132,25 @@
 
                     <div class="sortby-bar">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="skladom">
+                            {{-- form="filter-form" prepojí checkbox s tvojím formulárom v sidebare --}}
+                            <input class="form-check-input" type="checkbox" name="in_stock" id="skladom" 
+                                form="filter-form" onchange="this.form.submit()"
+                                {{ request('in_stock') ? 'checked' : '' }}>
                             <label class="form-check-label" for="skladom">Iba skladom</label>
                         </div>
-                        <div>
-                            <a href="#">Bestsellers</a>
-                            <a href="#">Najnovšie</a>
-                            <a href="#">Najlacnejšie</a>
-                            <a href="#">Najdrahšie</a>
+                        
+                        {{-- Pridaný checkbox pre Bestsellers, aby sa dal vypnúť/zapnúť --}}
+                        <div class="form-check d-inline-block ms-3">
+                            <input class="form-check-input" type="checkbox" name="bestsellers" id="bestseller-check" 
+                                form="filter-form" onchange="this.form.submit()"
+                                {{ request('bestsellers') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="bestseller-check">Bestsellery</label>
+                        </div>
+
+                        <div class="ms-auto">
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'newest']) }}" class="ms-2">Najnovšie</a>
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'cheapest']) }}" class="ms-2">Najlacnejšie</a>
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'most_expensive']) }}" class="ms-2">Najdrahšie</a>
                         </div>
                     </div>
 

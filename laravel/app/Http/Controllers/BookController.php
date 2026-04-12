@@ -31,6 +31,36 @@ class BookController extends Controller
             $query->where('rating', '>=', $minRating);
         }
 
+
+
+        // 1. FILTROVANIE (Zmenšuje počet zobrazených kníh)
+        // Iba skladom
+        if ($request->has('in_stock')) {
+            $query->where('stock', '>', 0);
+        }
+
+        // Iba Bestsellery
+        if ($request->has('bestsellers')) {
+            $query->where('is_bestseller', true);
+        }
+
+        // 2. ZORADENIE (Preusporiada existujúci zoznam)
+        
+        $sort = $request->get('sort', 'newest'); // Predvolené zoradenie bude 'najnovšie'
+
+        switch ($sort) {
+            case 'cheapest':
+                $query->orderBy('price', 'asc');
+                break;
+            case 'most_expensive':
+                $query->orderBy('price', 'desc');
+                break;
+            case 'newest':
+            default:
+                $query->orderBy('year', 'desc'); // alebo 'created_at'
+                break;
+        }
+
         $books = $query->paginate(12)->withQueryString();
         return view('books.index', compact('books'));
     }
