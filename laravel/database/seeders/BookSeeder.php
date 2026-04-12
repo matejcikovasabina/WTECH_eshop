@@ -113,36 +113,38 @@ class BookSeeder extends Seeder
             ],
         ];
 
+        // Vytvoríme základnú kategóriu mimo cyklu (stačí raz)
+        $defaultCategory = \App\Models\Category::firstOrCreate(['name' => 'Knihy']);
+
         foreach ($books as $bookData) {
-            // 1. Vytiahneme si názvy z poľa
-            $authorName = $bookData['author'];
-            $languageName = $bookData['language'];
-            $publisherName = $bookData['publisher'];
-            $coverName = $bookData['cover_type'];
+            // 1. Najprv vytvoríme číselníkové údaje (aby sme mali ID-čka)
+            $author    = \App\Models\Author::firstOrCreate(['name' => $bookData['author']]);
+            $language  = \App\Models\Language::firstOrCreate(['name' => $bookData['language']]);
+            $publisher = \App\Models\Publisher::firstOrCreate(['name' => $bookData['publisher']]);
+            $coverType = \App\Models\CoverType::firstOrCreate(['name' => $bookData['cover_type']]);
 
-            // 2. Vymažeme tieto textové kľúče z poľa, aby neplietli Book::create
-            unset(
-                $bookData['author'], 
-                $bookData['language'], 
-                $bookData['publisher'], 
-                $bookData['cover_type']
-            );
+            // 2. Vytvoríme PRODUKT (všeobecné info)
+            $product = \App\Models\Product::create([
+                'name'        => $bookData['title'], 
+                'price'       => $bookData['price'],
+                'stock_count' => $bookData['stock'],
+                'type'        => 'book',
+                'category_id' => $defaultCategory->id,
+            ]);
 
-            // 3. Nájdeme alebo vytvoríme záznamy v číselníkoch
-            $author = \App\Models\Author::firstOrCreate(['name' => $authorName]);
-            $language = \App\Models\Language::firstOrCreate(['name' => $languageName]);
-            $publisher = \App\Models\Publisher::firstOrCreate(['name' => $publisherName]);
-            $coverType = \App\Models\CoverType::firstOrCreate(['name' => $coverName]);
+            // 3. Vytvoríme KNIHU (špecifické info) - všimni si premennú $bookData
+            $book = \App\Models\Book::create([
+                'product_id'    => $product->id,
+                'isbn'          => $bookData['isbn'],
+                'year'          => $bookData['year'],
+                'pages_num' => $bookData['pages_num'] ?? 200,
+                'description'   => $bookData['description'],
+                'language_id'   => $language->id,
+                'publisher_id'  => $publisher->id,
+                'cover_type_id' => $coverType->id,
+            ]);
 
-            // 4. Priradíme ID-čka jazyka a vydavateľa priamo ku knihe
-            $bookData['language_id'] = $language->id;
-            $bookData['publisher_id'] = $publisher->id;
-            $bookData['cover_type_id'] = $coverType->id;
-
-            // 5. Vytvoríme knihu
-            $book = \App\Models\Book::create($bookData);
-
-            // 6. Prepojíme autora cez spojovaciu tabuľku
+            // 4. Prepojíme autora
             $book->authors()->attach($author->id);
         }
     }

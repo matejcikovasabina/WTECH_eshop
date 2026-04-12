@@ -9,19 +9,23 @@ class Book extends Model
 {
     use HasFactory;
     
+    protected $primaryKey = 'product_id';
+    public $incrementing = false;
 
     protected $fillable = [
-        'title', 
+        'product_id',
+        // 'title', 
         // 'author', 
         'description', 
-        'price', 
-        'genre', 
+        // 'price', 
+        // 'genre', 
         // 'cover_type', 
         'isbn', 
         'year', 
+        'pages_num',
         // 'publisher', 
         // 'language', 
-        'stock', 
+        // 'stock', 
         'image_path', 
         'is_bestseller',
 
@@ -33,7 +37,7 @@ class Book extends Model
     // M:N
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'book_author');    
+        return $this->belongsToMany(Author::class, 'book_author', 'book_id', 'author_id');
     }
 
    // 1:N

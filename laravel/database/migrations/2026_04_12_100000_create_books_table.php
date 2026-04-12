@@ -12,16 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
+            $table->foreignId('product_id')->primary()->constrained('products')->onDelete('cascade');       
+
+            // $table->string('title');
             // $table->string('author'); 
             //  neni author lebo spojovacia tabulka
             $table->text('description');
-            $table->decimal('price', 8, 2);
-            $table->string('genre');
+            // $table->decimal('price', 8, 2);
+            // $table->string('genre');
 
             // $table->string('cover_type'); // Väzba
             $table->foreignId('cover_type_id')->constrained()->onDelete('cascade');
+
             $table->string('dimensions')->nullable(); // Rozmer
             $table->string('isbn')->nullable();
             $table->integer('year'); // Rok vydania
@@ -32,7 +34,9 @@ return new class extends Migration
             // $table->string('language')->default('Slovenčina');
             $table->foreignId('language_id')->constrained()->onDelete('cascade');
 
-            $table->integer('stock')->default(0);
+            $table->integer('pages_num')->nullable();
+
+            // $table->integer('stock')->default(0);
             $table->string('image_path')->nullable();
             $table->boolean('is_bestseller')->default(false); // Ten badge "Bestseller"
             $table->decimal('rating', 3, 2)->default(0);
