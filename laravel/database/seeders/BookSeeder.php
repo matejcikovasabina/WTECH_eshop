@@ -113,17 +113,17 @@ class BookSeeder extends Seeder
             ],
         ];
 
-        // Vytvoríme základnú kategóriu mimo cyklu (stačí raz)
+        // zakladna kategoria mimmo cyklu
         $defaultCategory = \App\Models\Category::firstOrCreate(['name' => 'Knihy']);
 
         foreach ($books as $bookData) {
-            // 1. Najprv vytvoríme číselníkové údaje (aby sme mali ID-čka)
+            // 1. vyvtvorime ciselnikove udaje (aby sme mali IDcka) -> ak taky ciselnik existuje tak sa len id uz berie (first or craete magia)
             $author    = \App\Models\Author::firstOrCreate(['name' => $bookData['author']]);
             $language  = \App\Models\Language::firstOrCreate(['name' => $bookData['language']]);
             $publisher = \App\Models\Publisher::firstOrCreate(['name' => $bookData['publisher']]);
             $coverType = \App\Models\CoverType::firstOrCreate(['name' => $bookData['cover_type']]);
 
-            // 2. Vytvoríme PRODUKT (všeobecné info)
+            // 2. vyvtvorime produkt so vseobecnym info
             $product = \App\Models\Product::create([
                 'name'        => $bookData['title'], 
                 'price'       => $bookData['price'],
@@ -132,19 +132,19 @@ class BookSeeder extends Seeder
                 'category_id' => $defaultCategory->id,
             ]);
 
-            // 3. Vytvoríme KNIHU (špecifické info) - všimni si premennú $bookData
+            // 3. Vvytvorime konkretnu KNIHY
             $book = \App\Models\Book::create([
                 'product_id'    => $product->id,
                 'isbn'          => $bookData['isbn'],
                 'year'          => $bookData['year'],
-                'pages_num' => $bookData['pages_num'] ?? 200,
+                'pages_num'     => $bookData['pages_num'] ?? 200,
                 'description'   => $bookData['description'],
                 'language_id'   => $language->id,
                 'publisher_id'  => $publisher->id,
                 'cover_type_id' => $coverType->id,
             ]);
 
-            // 4. Prepojíme autora
+            // 4. propojenie autorov (M:N)
             $book->authors()->attach($author->id);
         }
     }

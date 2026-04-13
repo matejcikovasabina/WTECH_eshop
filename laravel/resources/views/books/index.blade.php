@@ -173,7 +173,7 @@
                                             >
                                         </div>
                                         <div class="card-body">
-                                            <h6 class="card-title">{{ $book->title }}</h6>
+                                            <h6 class="card-title">{{ $book->display_name ?? $book->title }}</h6>
                                             <p class="card-text mb-1"><small>{{ $book->authors->pluck('name')->implode(', ') ?: 'Neznámy autor' }}</small></p>
                                             <p class="card-text mb-1">
                                                 <small>

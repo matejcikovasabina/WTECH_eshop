@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 40);
             $table->enum('type', ['book', 'giftcard', 'merch']); // co za typ
-            $table->float('price');
+            $table->decimal('price', 8, 2);            
             $table->integer('stock_count');
             // prepojenie na kategorie
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');

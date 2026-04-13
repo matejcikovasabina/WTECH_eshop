@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cover_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Pevná, Brozovaná, E-kniha...
+            $table->string('name')->unique(); // Pevna, Brozovana, E-kniha...
             $table->timestamps();
         });
     }

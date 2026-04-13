@@ -13,32 +13,19 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->foreignId('product_id')->primary()->constrained('products')->onDelete('cascade');       
-
-            // $table->string('title');
-            // $table->string('author'); 
-            //  neni author lebo spojovacia tabulka
             $table->text('description');
-            // $table->decimal('price', 8, 2);
-            // $table->string('genre');
-
-            // $table->string('cover_type'); // Väzba
             $table->foreignId('cover_type_id')->constrained()->onDelete('cascade');
 
-            $table->string('dimensions')->nullable(); // Rozmer
             $table->string('isbn')->nullable();
             $table->integer('year'); // Rok vydania
 
-        
-            // $table->string('publisher'); // Vydavatelstvo
             $table->foreignId('publisher_id')->constrained()->onDelete('cascade');
-            // $table->string('language')->default('Slovenčina');
             $table->foreignId('language_id')->constrained()->onDelete('cascade');
 
             $table->integer('pages_num')->nullable();
 
-            // $table->integer('stock')->default(0);
             $table->string('image_path')->nullable();
-            $table->boolean('is_bestseller')->default(false); // Ten badge "Bestseller"
+            $table->boolean('is_bestseller')->default(false); // badge bestseller
             $table->decimal('rating', 3, 2)->default(0);
             $table->timestamps();
         });

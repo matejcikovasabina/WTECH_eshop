@@ -8,18 +8,24 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Book::with(['authors', 'language', 'publisher', 'coverType']);
+        $query = Book::query()
+        ->join('products', 'books.product_id', '=', 'products.id')
+        ->select(
+            'books.*', 
+            'products.price', 
+            'products.name as display_name',
+            'products.stock_count'
+        );
 
         // SEARCH BAR
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
-                // unaccent() je ze netreba diakritiku
-                $q->whereRaw("unaccent(title) ILIKE unaccent(?)", ["%{$search}%"])
-                  ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"])
-                  ->orWhereHas('authors', function($query) use ($search) {
-                      $query->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
-                  });
+                $q->whereRaw("unaccent(products.name) ILIKE unaccent(?)", ["%{$search}%"])
+                ->orWhereRaw("unaccent(books.description) ILIKE unaccent(?)", ["%{$search}%"])
+                ->orWhereHas('authors', function($q2) use ($search) {
+                    $q2->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
+                });
             });
         }
 
@@ -52,11 +58,10 @@ class BookController extends Controller
         }
 
 
-
-        // 1. FILTROVANIE (Zmenšuje počet zobrazených kníh)
+        // 1. FILTROVANIE
         // Iba skladom
         if ($request->has('in_stock')) {
-            $query->where('stock', '>', 0);
+            $query->where('products.stock_count', '>', 0);
         }
 
         // Iba Bestsellery
@@ -64,23 +69,24 @@ class BookController extends Controller
             $query->where('is_bestseller', true);
         }
 
-        // 2. ZORADENIE (Preusporiada existujúci zoznam)
-        
-        $sort = $request->get('sort', 'newest'); // Predvolené zoradenie bude 'najnovšie'
-
-        switch ($sort) {
+        // 2. ZORADENIE
+    
+        switch ($request->query('sort')) {
             case 'cheapest':
-                $query->orderBy('price', 'asc');
+                $query->orderBy('products.price', 'asc');
                 break;
             case 'most_expensive':
-                $query->orderBy('price', 'desc');
+                $query->orderBy('products.price', 'desc');
                 break;
             case 'newest':
+                $query->orderBy('books.year', 'desc');
+                break;
             default:
-                $query->orderBy('year', 'desc'); // alebo 'created_at'
+                $query->orderBy('products.id', 'desc'); // Predvolené zoradenie
                 break;
         }
 
+        // STRANKOVANIE
         $books = $query->paginate(12)->withQueryString();
         return view('books.index', compact('books'));
     }

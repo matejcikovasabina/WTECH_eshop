@@ -8,30 +8,22 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends Model
 {
-    // Definujeme, ktoré polia môžeme hromadne napĺňať (napr. v Seederi)
+    // ktore polia mozme hromadne vyplnat v seedeeri
     protected $fillable = ['name', 'category_id'];
 
-    /**
-     * Vzťah k produktom: Kategória má mnoho produktov.
-     */
+    // 1:N ku produktom
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
     }
 
-    /**
-     * Vzťah k nadradenej kategórii (Parent): 
-     * Napr. "Beletria" patrí pod "Knihy".
-     */
+    // stromova struktura na parenta - kategorii (sama na seba)
     public function parent(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    /**
-     * Vzťah k podkategóriám (Children): 
-     * Napr. "Knihy" majú pod sebou "Beletriu" a "Detektívky".
-     */
+    // stromova struktura na deti
     public function children(): HasMany
     {
         return $this->hasMany(Category::class, 'category_id');

@@ -14,18 +14,10 @@ class Book extends Model
 
     protected $fillable = [
         'product_id',
-        // 'title', 
-        // 'author', 
-        'description', 
-        // 'price', 
-        // 'genre', 
-        // 'cover_type', 
+        'description',  
         'isbn', 
         'year', 
         'pages_num',
-        // 'publisher', 
-        // 'language', 
-        // 'stock', 
         'image_path', 
         'is_bestseller',
 
