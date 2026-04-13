@@ -53,8 +53,16 @@
                 </li>
 
                 <li class="nav-item dropdown user-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Účet
+                    <a class="nav-link dropdown-toggle user-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @guest
+                            Login
+                        @endguest
+
+                        @auth
+                            <span class="user-circle">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </span>
+                        @endauth
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         @guest
