@@ -239,3 +239,8 @@ label.border:hover {
   font-weight: 600;
   font-size: 14px;
 }
+
+.quantity-input {
+  width: 80px;
+  text-align: center;
+}

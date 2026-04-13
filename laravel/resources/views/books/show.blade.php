@@ -67,12 +67,27 @@
                         </p>
                     </div>
 
-                    <div class="actions">
+                    <form action="{{ route('cart.add') }}" method="POST" class="actions d-flex align-items-center gap-2">
+                        @csrf
+
+                        <input type="hidden" name="product_id" value="{{ $book->product_id }}">
+
+                        <input
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            max="{{ $book->product?->stock_count ?? 1 }}"
+                            value="1"
+                            class="form-control"
+                            style="width: 90px;"
+                        >
+
                         <button class="wishlist" type="button">♡</button>
-                        <button class="cart-btn" type="button" onclick="addToCart({{ $book->product_id }})">
+
+                        <button class="cart-btn" type="submit">
                             Vložiť do košíka
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -188,9 +203,22 @@
                     {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €
                 </p>
 
-                <button class="cart-btn-sidebar" type="button" onclick="addToCart({{ $book->product_id }})">
-                    Košík
-                </button>
+                <form action="{{ route('cart.add') }}" method="POST" class="d-flex flex-column gap-2">
+                    @csrf
+
+                    <input type="hidden" name="product_id" value="{{ $book->product_id }}">
+
+                    <input
+                        type="number"
+                        name="quantity"
+                        min="1"
+                        max="{{ $book->product?->stock_count ?? 1 }}"
+                        value="1"
+                        class="form-control"
+                    >
+
+                    <button class="cart-btn-sidebar" type="submit">Košík</button>
+                </form>
 
                 <nav class="side-nav">
                     <a href="#popis">Popis knihy</a>
