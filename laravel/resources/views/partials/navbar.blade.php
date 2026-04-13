@@ -25,7 +25,7 @@
                         <li><a class="dropdown-item" href="#">Kuchárske</a></li>
                         <li><a class="dropdown-item" href="#">Učebnice a slovníky</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Všetky kategórie</a></li>
+                        <li><a class="dropdown-item" href="{{ route('books.overview') }}">Všetky kategórie</a></li>
                     </ul>
                 </li>               
                 <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
@@ -35,7 +35,7 @@
 
             <ul class="nav">
                 <li class="nav-item search-item">
-                    <form action="{{ route('books.index') }}" method="GET">
+                    <form action="{{ route('books.overview') }}" method="GET">
                         <div class="input-group search-group">
                             <input 
                                 type="text" 

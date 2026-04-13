@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -8,91 +9,111 @@ class BookController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Book::with(['authors', 'language', 'publisher', 'coverType']);
+        $query = Book::with(['product', 'authors', 'language', 'publisher', 'binding']);
 
         // SEARCH BAR
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(function($q) use ($search) {
-                // unaccent() je ze netreba diakritiku
-                $q->whereRaw("unaccent(title) ILIKE unaccent(?)", ["%{$search}%"])
-                  ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"])
-                  ->orWhereHas('authors', function($query) use ($search) {
-                      $query->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
-                  });
+
+            $query->where(function ($q) use ($search) {
+                // hladanie v nazve produktu
+                $q->whereHas('product', function ($productQuery) use ($search) {
+                    $productQuery->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
+                })
+
+                // hladanie v popise knihy
+                ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"])
+
+                // hladanie v autoroch
+                ->orWhereHas('authors', function ($authorQuery) use ($search) {
+                    $authorQuery->whereRaw(
+                        "unaccent(first_name || ' ' || last_name) ILIKE unaccent(?)",
+                        ["%{$search}%"]
+                    );
+                });
             });
         }
-
 
         // Jazyk
-        if ($request->has('language')) {
-            $query->whereHas('language', function($q) use ($request) {
-                $q->whereIn('name', (array)$request->language);
+        if ($request->filled('language')) {
+            $query->whereHas('language', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->language);
             });
         }
 
-        // Vydavatelstvo
-        if ($request->has('publisher')) {
-            $query->whereHas('publisher', function($q) use ($request) {
-                $q->whereIn('name', (array)$request->publisher);
+        // Vydavateľstvo
+        if ($request->filled('publisher')) {
+            $query->whereHas('publisher', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->publisher);
             });
         }
 
-        // Vazba
-        if ($request->has('cover_type')) {
-            $query->whereHas('coverType', function($q) use ($request) {
-                $q->whereIn('name', (array)$request->cover_type);
+        // Väzba
+        if ($request->filled('cover_type')) {
+            $query->whereHas('binding', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->cover_type);
             });
         }
 
         // Hodnotenie
-        if ($request->has('rating')) {
-            $minRating = min((array)$request->rating);
+        if ($request->filled('rating')) {
+            $minRating = min((array) $request->rating);
             $query->where('rating', '>=', $minRating);
         }
 
-
-
-        // 1. FILTROVANIE (Zmenšuje počet zobrazených kníh)
         // Iba skladom
         if ($request->has('in_stock')) {
-            $query->where('stock', '>', 0);
+            $query->whereHas('product', function ($q) {
+                $q->where('stock_count', '>', 0);
+            });
         }
 
-        // Iba Bestsellery
+        // Iba bestsellery
         if ($request->has('bestsellers')) {
             $query->where('is_bestseller', true);
         }
 
-        // 2. ZORADENIE (Preusporiada existujúci zoznam)
-        
-        $sort = $request->get('sort', 'newest'); // Predvolené zoradenie bude 'najnovšie'
+        // Zoradenie
+        $sort = $request->get('sort', 'newest');
 
         switch ($sort) {
             case 'cheapest':
-                $query->orderBy('price', 'asc');
+                $query->whereHas('product')
+                      ->join('products', 'books.product_id', '=', 'products.id')
+                      ->orderBy('products.price', 'asc')
+                      ->select('books.*');
                 break;
+
             case 'most_expensive':
-                $query->orderBy('price', 'desc');
+                $query->whereHas('product')
+                      ->join('products', 'books.product_id', '=', 'products.id')
+                      ->orderBy('products.price', 'desc')
+                      ->select('books.*');
                 break;
+
             case 'newest':
             default:
-                $query->orderBy('year', 'desc'); // alebo 'created_at'
+                $query->orderBy('year', 'desc');
                 break;
         }
 
         $books = $query->paginate(12)->withQueryString();
-        return view('books.index', compact('books'));
+
+        return view('books.overview', compact('books'));
     }
 
     public function show($id)
     {
-        $book = Book::with(['authors', 'language', 'publisher', 'coverType'])->findOrFail($id);        
+        $book = Book::with(['product', 'authors', 'language', 'publisher', 'binding'])
+            ->findOrFail($id);
 
-        $relatedBooks = Book::where('genre', $book->genre)
-                            ->where('id', '!=', $book->id)
-                            ->take(10)
-                            ->get();
+        $relatedBooks = Book::with(['product', 'authors'])
+            ->where('product_id', '!=', $book->product_id)
+            ->when($book->publisher_id, function ($q) use ($book) {
+                $q->where('publisher_id', $book->publisher_id);
+            })
+            ->take(10)
+            ->get();
 
         return view('books.show', compact('book', 'relatedBooks'));
     }
