@@ -96,7 +96,7 @@ class BookController extends Controller
 
         $books = $query->paginate(12)->withQueryString();
 
-        return view('books.overview', compact('books'));
+        return view('books.index', compact('books'));
     }
 
     public function show($id)

@@ -6,7 +6,7 @@
         <div class="breadcrumb">
             <a href="{{ route('home') }}">Domov</a>
             <span>&gt;</span>
-            <a href="{{ route('books.overview') }}">Knihy</a>
+            <a href="{{ route('books.index') }}">Knihy</a>
             <span>&gt;</span>
             <a href="#">Beletria</a>
             <span>&gt;</span>
@@ -207,15 +207,7 @@
                     @csrf
 
                     <input type="hidden" name="product_id" value="{{ $book->product_id }}">
-
-                    <input
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        max="{{ $book->product?->stock_count ?? 1 }}"
-                        value="1"
-                        class="form-control"
-                    >
+                    <input type="hidden" name="quantity" value="1">
 
                     <button class="cart-btn-sidebar" type="submit">Košík</button>
                 </form>

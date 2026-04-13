@@ -6,7 +6,7 @@
         <div class="breadcrumb">
             <a href="{{ route('home') }}">HOME</a>
             <span>&gt;</span>
-            <a href="{{ route('books.overview') }}">Knihy</a>
+            <a href="{{ route('books.index') }}">Knihy</a>
             <span>&gt;</span>
             <span>Beletria</span>
         </div>
@@ -17,7 +17,7 @@
                     <h6>Filtre</h6>
                     <hr>
 
-                    <form action="{{ route('books.overview') }}" method="GET" id="filter-form">
+                    <form action="{{ route('books.index') }}" method="GET" id="filter-form">
                         <div class="filter-section">
                             <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseLanguage">
                                 JAZYK <span class="arrow-icon">▾</span>

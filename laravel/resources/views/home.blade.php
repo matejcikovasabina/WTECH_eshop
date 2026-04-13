@@ -60,6 +60,7 @@
 
             <div class="book-slider">
                 @forelse($newBooks as $book)
+                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img
@@ -83,6 +84,7 @@
                             </p>
                         </div>
                     </div>
+                </a>
                 @empty
                     <p>Žiadne knihy na zobrazenie.</p>
                 @endforelse
@@ -103,6 +105,7 @@
 
             <div class="book-slider">
                 @forelse($upcomingBooks as $book)
+                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img
@@ -126,6 +129,7 @@
                             </p>
                         </div>
                     </div>
+                </a>
                 @empty
                     <p>Žiadne pripravované knihy na zobrazenie.</p>
                 @endforelse
