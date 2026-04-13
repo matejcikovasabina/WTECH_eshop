@@ -159,10 +159,36 @@
         const gap = 20;
         const scrollAmount = card.offsetWidth + gap;
 
-        slider.scrollBy({
-            left: direction * scrollAmount,
-            behavior: "smooth"
-        });
+        const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+        const currentScroll = slider.scrollLeft;
+
+        if (direction === 1) {
+            if (currentScroll + scrollAmount >= maxScrollLeft) {
+                slider.scrollTo({
+                    left: 0,
+                    behavior: "smooth"
+                });
+            } else {
+                slider.scrollBy({
+                    left: scrollAmount,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        if (direction === -1) {
+            if (currentScroll <= 0) {
+                slider.scrollTo({
+                    left: maxScrollLeft,
+                    behavior: "smooth"
+                });
+            } else {
+                slider.scrollBy({
+                    left: -scrollAmount,
+                    behavior: "smooth"
+                });
+            }
+        }
     }
 </script>
 @endsection
