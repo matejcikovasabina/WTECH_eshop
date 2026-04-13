@@ -6,26 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name', 40);
-            $table->enum('type', ['book', 'giftcard', 'merch']); // co za typ
-            $table->float('price');
+            $table->enum('type', ['book', 'giftcard', 'merch']);
+            $table->decimal('price', 8, 2);
             $table->integer('stock_count');
-            // prepojenie na kategorie
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreignId('category_id')
+                ->constrained('categories')
+                ->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('products');
