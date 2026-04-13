@@ -71,7 +71,7 @@
                         @endguest
 
                         @auth
-                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
                             <li><a class="dropdown-item" href="#">Moje objednávky</a></li>
                             <li><a class="dropdown-item" href="#">Wishlist</a></li>
                             <li><hr class="dropdown-divider"></li>

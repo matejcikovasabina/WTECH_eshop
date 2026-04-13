@@ -13,20 +13,24 @@ class UserSeeder extends Seeder
         $adminRole = Role::where('name', 'admin')->firstOrFail();
         $userRole = Role::where('name', 'user')->firstOrFail();
 
-        User::create([
-            'first_name' => 'Admin',
-            'last_name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'password' => 'admin1234',
-            'role_id' => $adminRole->id,
-        ]);
+        User::firstOrCreate(
+            ['email' => 'admin@admin.com'],
+            [
+                'first_name' => 'Admin',
+                'last_name' => 'Admin',
+                'password' => 'admin1234',
+                'role_id' => $adminRole->id,
+            ]
+        );
 
-        User::create([
-            'first_name' => 'User',
-            'last_name' => 'User',
-            'email' => 'user@user.com',
-            'password' => 'user1234',
-            'role_id' => $userRole->id,
-        ]);
+        User::firstOrCreate(
+            ['email' => 'user@user.com'],
+            [
+                'first_name' => 'User',
+                'last_name' => 'User',
+                'password' => 'user1234',
+                'role_id' => $userRole->id,
+            ]
+        );
     }
 }
