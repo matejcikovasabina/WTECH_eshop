@@ -12,12 +12,11 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
 
+            CategorySeeder::class,
             LanguageSeeder::class,
             PublisherSeeder::class,
             BindingSeeder::class,
-            CategorySeeder::class,
             AuthorSeeder::class,
-
             BookSeeder::class,
         ]);
     }
