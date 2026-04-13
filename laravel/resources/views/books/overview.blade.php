@@ -185,6 +185,7 @@
                         <div class="row custom-book-grid">
                             @foreach($chunk as $book)
                                 <div class="col">
+                                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                                     <div class="card overview-card">
                                         <div class="book-cover-place">
                                             <img
@@ -239,11 +240,12 @@
                                             <span>
                                                 {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €
                                             </span>
-                                            <button class="btn btn-dark btn-sm" onclick="addToCart({{ $book->product_id }})">
+                                            <button class="btn btn-dark btn-sm" type="button" onclick="event.preventDefault(); addToCart({{ $book->product_id }})">
                                                 Košík
                                             </button>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                             @endforeach
                         </div>

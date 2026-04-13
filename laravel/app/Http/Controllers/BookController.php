@@ -21,9 +21,6 @@ class BookController extends Controller
                     $productQuery->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"]);
                 })
 
-                // hladanie v popise knihy
-                ->orWhereRaw("unaccent(description) ILIKE unaccent(?)", ["%{$search}%"])
-
                 // hladanie v autoroch
                 ->orWhereHas('authors', function ($authorQuery) use ($search) {
                     $authorQuery->whereRaw(
@@ -104,17 +101,38 @@ class BookController extends Controller
 
     public function show($id)
     {
-        $book = Book::with(['product', 'authors', 'language', 'publisher', 'binding'])
-            ->findOrFail($id);
+        $book = \App\Models\Book::with([
+            'product',
+            'authors',
+            'language',
+            'binding',
+            'publisher'
+        ])->findOrFail($id);
 
-        $relatedBooks = Book::with(['product', 'authors'])
+        $authorIds = $book->authors->pluck('id');
+
+        $moreFromAuthor = \App\Models\Book::with(['product', 'authors'])
             ->where('product_id', '!=', $book->product_id)
-            ->when($book->publisher_id, function ($q) use ($book) {
-                $q->where('publisher_id', $book->publisher_id);
+            ->whereHas('authors', function ($query) use ($authorIds) {
+                $query->whereIn('authors.id', $authorIds);
             })
+            ->inRandomOrder()
+            ->take(5)
+            ->get();
+
+        $showAuthorSlider = $moreFromAuthor->count() >= 5;
+
+        $recommended = \App\Models\Book::with(['product', 'authors'])
+            ->where('product_id', '!=', $book->product_id)
+            ->inRandomOrder()
             ->take(10)
             ->get();
 
-        return view('books.show', compact('book', 'relatedBooks'));
+        return view('books.show', compact(
+            'book',
+            'moreFromAuthor',
+            'showAuthorSlider',
+            'recommended'
+        ));
     }
 }
