@@ -220,3 +220,27 @@ label.border:hover {
 .inactive-step {
   color: var(--color-grey);
 }
+
+.user-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.quantity-input {
+  width: 80px;
+  text-align: center;
+}

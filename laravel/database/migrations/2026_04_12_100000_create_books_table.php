@@ -6,34 +6,38 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->foreignId('product_id')->primary()->constrained('products')->onDelete('cascade');       
-            $table->text('description');
-            $table->foreignId('cover_type_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')
+                ->primary()
+                ->constrained('products')
+                ->onDelete('cascade');
 
-            $table->string('isbn')->nullable();
-            $table->integer('year'); // Rok vydania
+            $table->string('isbn')->nullable()->unique();
 
-            $table->foreignId('publisher_id')->constrained()->onDelete('cascade');
-            $table->foreignId('language_id')->constrained()->onDelete('cascade');
+            $table->foreignId('publisher_id')
+                ->constrained('publishers')
+                ->onDelete('cascade');
 
+            $table->foreignId('language_id')
+                ->constrained('languages')
+                ->onDelete('cascade');
+
+            $table->foreignId('binding_id')
+                ->constrained('bindings')
+                ->onDelete('cascade');
+
+            $table->integer('year');
             $table->integer('pages_num')->nullable();
 
-            $table->string('image_path')->nullable();
-            $table->boolean('is_bestseller')->default(false); // badge bestseller
-            $table->decimal('rating', 3, 2)->default(0);
-            $table->timestamps();
+            $table->decimal('weight', 8, 2)->nullable();
+            $table->decimal('width', 8, 2)->nullable();
+            $table->decimal('height', 8, 2)->nullable();
+            $table->decimal('depth', 8, 2)->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('books');

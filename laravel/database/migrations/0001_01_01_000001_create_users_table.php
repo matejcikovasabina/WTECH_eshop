@@ -14,10 +14,8 @@ return new class extends Migration
             $table->string('last_name', 20);
             $table->string('email', 50)->unique();
             $table->string('password');
-            $table->timestampTz('created_at')->useCurrent();
-            $table->unsignedBigInteger('role_id');
-
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreignId('role_id')->constrained('roles');
+            $table->timestampsTz();
         });
     }
 

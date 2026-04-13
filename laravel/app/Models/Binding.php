@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Binding extends Model
 {
-    protected $table = 'languages';
+    protected $table = 'bindings';
 
     public $timestamps = false;
 
@@ -16,6 +16,6 @@ class Language extends Model
 
     public function books()
     {
-        return $this->hasMany(Book::class, 'language_id', 'id');
+        return $this->hasMany(Book::class, 'binding_id', 'id');
     }
 }

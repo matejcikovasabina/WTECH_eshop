@@ -70,14 +70,6 @@
                             </label>
                         </div>
 
-                        <div class="text-end mb-4">
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="forgot-link">
-                                    Zabudli ste heslo?
-                                </a>
-                            @endif
-                        </div>
-
                         <div class="d-grid mb-4">
                             <button type="submit" class="btn btn-dark login-btn">
                                 Prihlásiť sa

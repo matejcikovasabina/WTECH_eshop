@@ -3,48 +3,60 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Book extends Model
 {
-    use HasFactory;
-    
+    protected $table = 'books';
+
     protected $primaryKey = 'product_id';
+
     public $incrementing = false;
+
+    public $timestamps = false;
+
+    protected $keyType = 'int';
 
     protected $fillable = [
         'product_id',
-        'description',  
-        'isbn', 
-        'year', 
+        'isbn',
+        'publisher_id',
+        'language_id',
+        'binding_id',
+        'year',
         'pages_num',
-        'image_path', 
-        'is_bestseller',
-
-        'language_id', 
-        'publisher_id', 
-        'cover_type_id'
+        'weight',
+        'width',
+        'height',
+        'depth',
     ];
 
-    // M:N
-    public function authors()
+    public function product()
     {
-        return $this->belongsToMany(Author::class, 'book_author', 'book_id', 'author_id');
-    }
-
-   // 1:N
-    public function coverType()
-    {
-        return $this->belongsTo(CoverType::class, 'cover_type_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public function publisher()
     {
-        return $this->belongsTo(Publisher::class);
+        return $this->belongsTo(Publisher::class, 'publisher_id', 'id');
     }
 
     public function language()
     {
-        return $this->belongsTo(Language::class);
+        return $this->belongsTo(Language::class, 'language_id', 'id');
+    }
+
+    public function binding()
+    {
+        return $this->belongsTo(Binding::class, 'binding_id', 'id');
+    }
+
+    public function authors()
+    {
+        return $this->belongsToMany(
+            Author::class,
+            'author_book',
+            'book_id',
+            'author_id'
+        );
     }
 }

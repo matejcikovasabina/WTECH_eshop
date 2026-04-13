@@ -8,24 +8,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Category extends Model
 {
-    // ktore polia mozme hromadne vyplnat v seedeeri
+    protected $table = 'categories';
+
+    public $timestamps = false;
+
     protected $fillable = ['name', 'category_id'];
 
-    // 1:N ku produktom
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
-    // stromova struktura na parenta - kategorii (sama na seba)
     public function parent(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    // stromova struktura na deti
     public function children(): HasMany
     {
-        return $this->hasMany(Category::class, 'category_id');
+        return $this->hasMany(Category::class, 'category_id', 'id');
     }
 }

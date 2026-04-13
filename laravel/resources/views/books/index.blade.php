@@ -4,9 +4,9 @@
 <main>
     <section class="container page-container-card">
         <div class="breadcrumb">
-            <a href="/">HOME</a>
+            <a href="{{ route('home') }}">HOME</a>
             <span>&gt;</span>
-            <a href="/knihy">Knihy</a>
+            <a href="{{ route('books.index') }}">Knihy</a>
             <span>&gt;</span>
             <span>Beletria</span>
         </div>
@@ -26,14 +26,15 @@
                                 <div class="filter-content">
                                     @foreach(['Slovenčina', 'Čeština', 'Angličtina'] as $lang)
                                         <div class="form-check">
-                                            <input class="form-check-input" 
-                                                type="checkbox" 
-                                                name="language[]" {{-- MUSÍ BYŤ POLE --}}
-                                                value="{{ $lang }}" 
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="language[]"
+                                                value="{{ $lang }}"
                                                 id="lang-{{ $loop->index }}"
-                                                {{-- Tento riadok zabezpečí, že checkbox ostane zakliknutý aj po obnovení stránky --}}
                                                 {{ is_array(request('language')) && in_array($lang, request('language')) ? 'checked' : '' }}
-                                                onchange="this.form.submit()">
+                                                onchange="this.form.submit()"
+                                            >
                                             <label class="form-check-label" for="lang-{{ $loop->index }}">
                                                 {{ $lang }}
                                             </label>
@@ -42,9 +43,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        {{-- Ak nechceš onchange="this.form.submit()", pridaj sem tlačidlo: --}}
-                        {{-- <button type="submit" class="btn btn-primary btn-sm mt-3">Filtrovať</button> --}}
 
                         <hr>
 
@@ -56,10 +54,15 @@
                                 <div class="filter-content">
                                     @foreach(['Ikar', 'Slovart', 'Plus'] as $pub)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="publisher[]" 
-                                                value="{{ $pub }}" id="pub-{{ $loop->index }}"
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="publisher[]"
+                                                value="{{ $pub }}"
+                                                id="pub-{{ $loop->index }}"
                                                 {{ is_array(request('publisher')) && in_array($pub, request('publisher')) ? 'checked' : '' }}
-                                                onchange="this.form.submit()">
+                                                onchange="this.form.submit()"
+                                            >
                                             <label class="form-check-label" for="pub-{{ $loop->index }}">
                                                 {{ $pub }}
                                             </label>
@@ -75,15 +78,22 @@
                             <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseBinding">
                                 Väzba <span class="arrow-icon">▾</span>
                             </h6>
-                            <div class="collapse show" id="collapseBinding"> {{-- pridal som 'show' aby to bolo vidno --}}
+                            <div class="collapse show" id="collapseBinding">
                                 <div class="filter-content">
                                     @foreach(['Brožovaná', 'Pevná väzba', 'E-kniha'] as $bind)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="cover_type[]" 
-                                                value="{{ $bind }}" id="bind-{{ $loop->index }}"
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="cover_type[]"
+                                                value="{{ $bind }}"
+                                                id="bind-{{ $loop->index }}"
                                                 {{ is_array(request('cover_type')) && in_array($bind, request('cover_type')) ? 'checked' : '' }}
-                                                onchange="this.form.submit()">
-                                            <label class="form-check-label" for="bind-{{ $loop->index }}">{{ $bind }}</label>
+                                                onchange="this.form.submit()"
+                                            >
+                                            <label class="form-check-label" for="bind-{{ $loop->index }}">
+                                                {{ $bind }}
+                                            </label>
                                         </div>
                                     @endforeach
                                 </div>
@@ -100,10 +110,15 @@
                                 <div class="filter-content">
                                     @for($i = 5; $i >= 1; $i--)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="rating[]" 
-                                                value="{{ $i }}" id="rate-{{ $i }}"
-                                                {{ is_array(request('rating')) && in_array((string)$i, request('rating')) ? 'checked' : '' }}
-                                                onchange="this.form.submit()">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="rating[]"
+                                                value="{{ $i }}"
+                                                id="rate-{{ $i }}"
+                                                {{ is_array(request('rating')) && in_array((string) $i, request('rating')) ? 'checked' : '' }}
+                                                onchange="this.form.submit()"
+                                            >
                                             <label class="form-check-label" for="rate-{{ $i }}">
                                                 @for($j = 1; $j <= 5; $j++)
                                                     {{ $j <= $i ? '★' : '☆' }}
@@ -115,12 +130,9 @@
                                 </div>
                             </div>
                         </div>
-
                     </form>
 
                     <hr>
-
-
                 </aside>
 
                 <section class="main-content">
@@ -132,18 +144,28 @@
 
                     <div class="sortby-bar">
                         <div class="form-check">
-                            {{-- form="filter-form" prepojí checkbox s tvojím formulárom v sidebare --}}
-                            <input class="form-check-input" type="checkbox" name="in_stock" id="skladom" 
-                                form="filter-form" onchange="this.form.submit()"
-                                {{ request('in_stock') ? 'checked' : '' }}>
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="in_stock"
+                                id="skladom"
+                                form="filter-form"
+                                onchange="this.form.submit()"
+                                {{ request('in_stock') ? 'checked' : '' }}
+                            >
                             <label class="form-check-label" for="skladom">Iba skladom</label>
                         </div>
-                        
-                        {{-- Pridaný checkbox pre Bestsellers, aby sa dal vypnúť/zapnúť --}}
+
                         <div class="form-check d-inline-block ms-3">
-                            <input class="form-check-input" type="checkbox" name="bestsellers" id="bestseller-check" 
-                                form="filter-form" onchange="this.form.submit()"
-                                {{ request('bestsellers') ? 'checked' : '' }}>
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="bestsellers"
+                                id="bestseller-check"
+                                form="filter-form"
+                                onchange="this.form.submit()"
+                                {{ request('bestsellers') ? 'checked' : '' }}
+                            >
                             <label class="form-check-label" for="bestseller-check">Bestsellery</label>
                         </div>
 
@@ -159,22 +181,32 @@
                         $chunks = array_chunk($booksArray, 3);
                     @endphp
 
-                    @foreach($chunks as $chunk)
-                        <!-- Book cards – row -->
+                    @forelse($chunks as $chunk)
                         <div class="row custom-book-grid">
                             @foreach($chunk as $book)
                                 <div class="col">
+                                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                                     <div class="card overview-card">
                                         <div class="book-cover-place">
-                                            <img 
-                                                src="{{ asset('images/' . ($book->cover_image ?? 'adults.webp')) }}" 
-                                                class="card-img-top" 
-                                                alt="{{ $book->title }}"
+                                            <img
+                                                src="{{ asset('images/' . ($book->cover_image ?? 'adults.webp')) }}"
+                                                class="card-img-top"
+                                                alt="{{ $book->product?->name ?? 'Kniha' }}"
                                             >
                                         </div>
+
                                         <div class="card-body">
-                                            <h6 class="card-title">{{ $book->display_name ?? $book->title }}</h6>
-                                            <p class="card-text mb-1"><small>{{ $book->authors->pluck('name')->implode(', ') ?: 'Neznámy autor' }}</small></p>
+
+                                            <h6 class="card-title">
+                                                {{ $book->product?->name ?? 'Bez názvu' }}
+                                            </h6>
+
+                                            <p class="card-text mb-1">
+                                                <small>
+                                                    {{ $book->authors->pluck('full_name')->implode(', ') ?: 'Neznámy autor' }}
+                                                </small>
+                                            </p>
+
                                             <p class="card-text mb-1">
                                                 <small>
                                                     @php
@@ -182,32 +214,55 @@
                                                         $fullStars = floor($rating);
                                                         $hasHalf = ($rating - $fullStars) >= 0.5;
                                                     @endphp
-                                                    @for ($i = 0; $i < $fullStars; $i++)★@endfor@if($hasHalf)☆@endif@for ($i = $fullStars + ($hasHalf ? 1 : 0); $i < 5; $i++)☆@endfor
-                                                    / {{ $book->language->name ?? 'sk' }} / {{ $book->coverType->name ?? 'brožovaná' }}
+
+                                                    @for ($i = 0; $i < $fullStars; $i++)
+                                                        ★
+                                                    @endfor
+
+                                                    @if($hasHalf)
+                                                        ☆
+                                                    @endif
+
+                                                    @for ($i = $fullStars + ($hasHalf ? 1 : 0); $i < 5; $i++)
+                                                        ☆
+                                                    @endfor
+
+                                                    / {{ $book->language?->name ?? 'Neznámy jazyk' }}
+                                                    / {{ $book->binding?->name ?? 'Neznáma väzba' }}
                                                 </small>
                                             </p>
-                                            <p class="card-text"><small>{{ Str::limit($book->description, 80, '...') }}</small></p>
+
+                                            <p class="card-text">
+                                                <small>{{ \Illuminate\Support\Str::limit($book->description ?? '', 80, '...') }}</small>
+                                            </p>
                                         </div>
+
                                         <div class="card-footer d-flex justify-content-between align-items-center">
-                                            <span>{{ number_format($book->price, 2, ',', ' ') }} €</span>
-                                            <button class="btn btn-dark btn-sm" onclick="addToCart({{ $book->id }})">Košík</button>
+                                            <span>
+                                                {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €
+                                            </span>
+                                            <button class="btn btn-dark btn-sm" type="button" onclick="event.preventDefault(); addToCart({{ $book->product_id }})">
+                                                Košík
+                                            </button>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                             @endforeach
                         </div>
-                    @endforeach
+                    @empty
+                        <p>Žiadne knihy sa nenašli.</p>
+                    @endforelse
 
-                    <!-- Paginacia -->
                     <div class="pagination-wrapper">
                         <nav class="pages-number-box">
                             {{ $books->links('pagination::bootstrap-4') }}
                         </nav>
+
                         @if($books->hasMorePages())
                             <a href="{{ $books->nextPageUrl() }}" class="btn btn-dark">Next</a>
                         @endif
                     </div>
-
                 </section>
             </div>
         </div>

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $table = 'products';
+
+    public $timestamps = false;
+
     protected $fillable = [
         'name', 
         'type', 
@@ -16,6 +20,11 @@ class Product extends Model
 
     public function book()
     {
-        return $this->hasOne(Book::class, 'product_id');
+        return $this->hasOne(Book::class, 'product_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 }

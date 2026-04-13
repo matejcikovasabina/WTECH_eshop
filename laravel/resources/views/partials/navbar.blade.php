@@ -25,7 +25,7 @@
                         <li><a class="dropdown-item" href="#">Kuchárske</a></li>
                         <li><a class="dropdown-item" href="#">Učebnice a slovníky</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Všetky kategórie</a></li>
+                        <li><a class="dropdown-item" href="{{ route('books.index') }}">Všetky kategórie</a></li>
                     </ul>
                 </li>               
                 <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
@@ -53,8 +53,16 @@
                 </li>
 
                 <li class="nav-item dropdown user-dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Účet
+                    <a class="nav-link dropdown-toggle user-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @guest
+                            Login
+                        @endguest
+
+                        @auth
+                            <span class="user-circle">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </span>
+                        @endauth
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         @guest
@@ -77,7 +85,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="#">Košík</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('cart.index') }}">Košík</a></li>
             </ul>
         </div>
     </div>

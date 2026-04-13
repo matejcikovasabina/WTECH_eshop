@@ -6,10 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
 {
-    protected $fillable = ['name'];
+    protected $table = 'publishers';
 
-    public function books(): HasMany
+    public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+    ];
+
+    public function books()
     {
-        return $this->hasMany(Book::class);
+        return $this->hasMany(Book::class, 'publisher_id', 'id');
     }
 }

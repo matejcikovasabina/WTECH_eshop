@@ -6,23 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('cover_types', function (Blueprint $table) {
+        Schema::create('bindings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique(); // Pevna, Brozovana, E-kniha...
-            $table->timestamps();
+            $table->string('name')->unique(); // Pevná, Brožovaná, E-kniha...
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('cover_types');
+        Schema::dropIfExists('bindings');
     }
 };
