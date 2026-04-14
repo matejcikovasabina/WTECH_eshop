@@ -250,6 +250,11 @@ aside h6 {
 .mx-auto{
     background-color: transparent;
 }
+
+.pages-number-box nav{
+    background-color: transparent;
+}
+
 .pagination .page-link {
     color: var(--color-black);
     border: none;

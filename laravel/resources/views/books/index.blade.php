@@ -80,7 +80,7 @@
                             </h6>
                             <div class="collapse show" id="collapseBinding">
                                 <div class="filter-content">
-                                    @foreach(['Brožovaná', 'Pevná väzba', 'E-kniha'] as $bind)
+                                    @foreach(['Brožovaná väzba', 'Pevná väzba', 'E-kniha'] as $bind)
                                         <div class="form-check">
                                             <input
                                                 class="form-check-input"
