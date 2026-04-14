@@ -29,8 +29,12 @@
                     </ul>
                 </li>               
                 <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Poukážky</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Doplnky</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('giftcards.index') }}">Darčekové poukážky</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('accessories.index') }}">Doplnky</a>
+                </li>
             </ul>
 
             <ul class="nav">

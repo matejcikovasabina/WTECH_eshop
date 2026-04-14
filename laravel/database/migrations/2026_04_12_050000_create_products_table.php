@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name', 40);
-            $table->enum('type', ['book', 'giftcard', 'merch']);
+            $table->enum('type', ['book', 'giftcard', 'accessory']);
             $table->decimal('price', 8, 2);
             $table->integer('stock_count');
             $table->foreignId('category_id')
