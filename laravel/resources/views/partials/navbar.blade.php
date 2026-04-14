@@ -13,21 +13,24 @@
         <div class="nav-content" id="navContent">
             <ul class="nav">    
                 <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="booksDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         Knihy
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="booksDropdown">
-                        <li><a class="dropdown-item" href="#">Beletria</a></li>
-                        <li><a class="dropdown-item" href="#">Náučné</a></li>
-                        <li><a class="dropdown-item" href="#">Životopisy</a></li>
-                        <li><a class="dropdown-item" href="#">Cestovateľské</a></li>
-                        <li><a class="dropdown-item" href="#">Kuchárske</a></li>
-                        <li><a class="dropdown-item" href="#">Učebnice a slovníky</a></li>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('books.index') }}">Všetky knihy</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('books.index') }}">Všetky kategórie</a></li>
+                        @foreach($mainCategories->where('parent_id', null) as $cat)
+                            <li>
+                                <a class="dropdown-item" href="{{ route('books.index', ['category' => $cat->id]) }}">
+                                    {{ $cat->name }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
-                </li>               
+                </li>              
+                
                 <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('giftcards.index') }}">Darčekové poukážky</a>

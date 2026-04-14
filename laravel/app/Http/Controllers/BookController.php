@@ -4,12 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Product;
 
 class BookController extends Controller
+
 {
     public function index(Request $request)
     {
+
+        $rootKnihy = Category::where('name', 'Knihy')->first();
+        $mainCategories = $rootKnihy ? $rootKnihy->children : collect();
+
+        // 2. Query pre knihy
         $query = Book::with(['product', 'authors', 'language', 'publisher', 'binding']);
+
+        // 3. Logika pre podkategorie
+        $currentMainCategory = null;
+        $subCategories = collect();
+
+        if ($request->filled('category')) {
+            $selectedCat = Category::with('parent')->find($request->category);
+
+            if ($selectedCat) {
+                // ak je vybrana kategoria hlavna (jej rodic je "Knihy")
+                if ($selectedCat->category_id == $rootKnihy->id) {
+                    $currentMainCategory = $selectedCat;
+                    $subCategories = $selectedCat->children;
+                    
+                    // Zobrazime produkty z tejto kategórie AJ vsetky jej deti
+                    $ids = $subCategories->pluck('id')->push($selectedCat->id);
+                    $query->whereHas('product', fn($q) => $q->whereIn('category_id', $ids));
+                } 
+                // ak uz vybrana konkretna podkategoria
+                else {
+                    $currentMainCategory = $selectedCat->parent;
+                    $subCategories = $currentMainCategory ? $currentMainCategory->children : collect();
+                    
+                    // zobrazime produkty z tejto podkaterohie
+                    $query->whereHas('product', fn($q) => $q->where('category_id', $selectedCat->id));
+                }
+            }
+        }
 
         // SEARCH BAR
         if ($request->filled('search')) {
@@ -99,7 +135,12 @@ class BookController extends Controller
         // STRANKOVANIE
         $books = $query->paginate(12)->withQueryString();
 
-        return view('books.index', compact('books'));
+        return view('books.index', compact(
+            'books', 
+            'mainCategories', 
+            'subCategories', 
+            'currentMainCategory'
+        ));
     }
 
     public function show($id)

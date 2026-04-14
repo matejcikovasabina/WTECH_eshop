@@ -28,6 +28,11 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function accessory()
+    {
+        return $this->hasOne(Accessory::class, 'product_id', 'id');
+    }
+
     public function giftcard()
     {
         return $this->hasOne(Giftcard::class, 'product_id', 'id');
@@ -66,5 +71,13 @@ class Product extends Model
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class, 'product_id');
+    }
+
+    public function details()
+    {
+        if ($this->type === 'book') return $this->hasOne(Book::class, 'product_id');
+        if ($this->type === 'accessory') return $this->hasOne(Accessory::class, 'product_id');
+        if ($this->type === 'giftcard') return $this->hasOne(Giftcard::class, 'product_id');
+        return null;
     }
 }

@@ -15,37 +15,18 @@ class BookSeeder extends Seeder
 {
     public function run(): void
     {
-        $categories = [
-            'Fantasy' => Category::where('name', 'Fantasy')->firstOrFail(),
-            'Detektívky' => Category::where('name', 'Detektívky')->firstOrFail(),
-            'Romány' => Category::where('name', 'Romány')->firstOrFail(),
-        ];
+        // nacitavanie dat do pomocnych poli
+        $categories = Category::all()->keyBy('name');
+        $publishers = Publisher::all()->keyBy('name');
+        $languages = Language::all()->keyBy('name');
+        $bindings = Binding::all()->keyBy('name');
 
-        $languages = [
-            'Slovenčina' => Language::where('name', 'Slovenčina')->firstOrFail(),
-            'Čeština' => Language::where('name', 'Čeština')->firstOrFail(),
-            'English' => Language::where('name', 'English')->firstOrFail(),
-            'Deutsch' => Language::where('name', 'Deutsch')->firstOrFail(),
-        ];
-
-        $publishers = [
-            'Ikar' => Publisher::where('name', 'Ikar')->firstOrFail(),
-            'Slovart' => Publisher::where('name', 'Slovart')->firstOrFail(),
-            'Tatran' => Publisher::where('name', 'Tatran')->firstOrFail(),
-            'Albatros Media' => Publisher::where('name', 'Albatros Media')->firstOrFail(),
-        ];
-
-        $bindings = [
-            'Pevná väzba' => Binding::where('name', 'Pevná väzba')->firstOrFail(),
-            'Brožovaná väzba' => Binding::where('name', 'Brožovaná väzba')->firstOrFail(),
-            'E-kniha' => Binding::where('name', 'E-kniha')->firstOrFail(),
-        ];
 
         $books = [
             [
                 'name' => 'Hobbit',
                 'author' => ['J.R.R.', 'Tolkien'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Pevná väzba',
@@ -62,7 +43,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Pán prsteňov: Spoločenstvo prsteňa',
                 'author' => ['J.R.R.', 'Tolkien'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Pevná väzba',
@@ -79,7 +60,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Pán prsteňov: Dve veže',
                 'author' => ['J.R.R.', 'Tolkien'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Pevná väzba',
@@ -96,7 +77,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Pán prsteňov: Návrat kráľa',
                 'author' => ['J.R.R.', 'Tolkien'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Pevná väzba',
@@ -113,7 +94,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Harry Potter a Kameň mudrcov',
                 'author' => ['Joanne', 'Rowling'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Brožovaná väzba',
@@ -130,7 +111,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Harry Potter a Tajomná komnata',
                 'author' => ['Joanne', 'Rowling'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Brožovaná väzba',
@@ -147,7 +128,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Harry Potter a Väzeň z Azkabanu',
                 'author' => ['Joanne', 'Rowling'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Ikar',
                 'binding' => 'Brožovaná väzba',
@@ -164,7 +145,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Zaklínač: Posledné želanie',
                 'author' => ['Andrzej', 'Sapkowski'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Čeština',
                 'publisher' => 'Albatros Media',
                 'binding' => 'Brožovaná väzba',
@@ -181,7 +162,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Zaklínač: Meč osudu',
                 'author' => ['Andrzej', 'Sapkowski'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Čeština',
                 'publisher' => 'Albatros Media',
                 'binding' => 'Brožovaná väzba',
@@ -198,7 +179,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Letopisy Narnie',
                 'author' => ['C.S.', 'Lewis'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Tatran',
                 'binding' => 'Pevná väzba',
@@ -215,7 +196,7 @@ class BookSeeder extends Seeder
             [
                 'name' => 'Percy Jackson: Zlodej blesku',
                 'author' => ['Rick', 'Riordan'],
-                'category' => 'Fantasy',
+                'category' => 'Sci-fi a Fantasy',
                 'language' => 'English',
                 'publisher' => 'Albatros Media',
                 'binding' => 'Brožovaná väzba',

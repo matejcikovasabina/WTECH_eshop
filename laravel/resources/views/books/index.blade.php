@@ -8,7 +8,7 @@
             <span>&gt;</span>
             <a href="{{ route('books.index') }}">Knihy</a>
             <span>&gt;</span>
-            <span>Beletria</span>
+            <span>{{ $mainCategories->where('id', request('category'))->first()?->name ?? 'Všetky knihy' }}</span>
         </div>
 
         <div class="container-fluid">
@@ -136,11 +136,30 @@
                 </aside>
 
                 <section class="main-content">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#">Trilery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Horory</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Detektívky</a></li>
-                    </ul>
+                    <h2 class="mb-3">{{ $currentMainCategory->name ?? 'Všetky knihy' }}</h2>
+
+                    @if($subCategories->count() > 0)
+                        <div class="category-filters mb-4">
+                            <ul class="nav nav-pills">
+                                {{-- Tlačidlo "Zobraziť všetko z {{ Hlavná kategória }}" --}}
+                                <li class="nav-item">
+                                    <a class="nav-link {{ request('category') == $currentMainCategory->id ? 'active' : '' }}" 
+                                    href="{{ route('books.index', ['category' => $currentMainCategory->id]) }}">
+                                        Všetko
+                                    </a>
+                                </li>
+
+                                @foreach($subCategories as $sub)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{ request('category') == $sub->id ? 'active' : '' }}" 
+                                        href="{{ route('books.index', ['category' => $sub->id]) }}">
+                                            {{ $sub->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <div class="sortby-bar">
                         <div class="form-check">

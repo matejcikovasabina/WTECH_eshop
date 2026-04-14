@@ -45,12 +45,18 @@
                             @foreach($chunk as $card)
                                 <div class="col">
                                     <div class="card overview-card text-center">
-                                        <div class="book-cover-place d-flex align-items-center justify-content-center" style="background: #f8f9fa; min-height: 200px;">
-                                            <i class="bi bi-gift" style="font-size: 4rem; color: #333;"></i>
-                                        </div>
+                                        {{-- Pridaný odkaz na ikonu --}}
+                                        <a href="{{ route('giftcards.show', $card->id) }}">
+                                            <div class="book-cover-place d-flex align-items-center justify-content-center" style="background: #f8f9fa; min-height: 200px;">
+                                                <i class="bi bi-gift" style="font-size: 4rem; color: #333;"></i>
+                                            </div>
+                                        </a>
 
                                         <div class="card-body">
-                                            <h6 class="card-title">{{ $card->name }}</h6>
+                                            {{-- Pridaný odkaz na názov --}}
+                                            <a href="{{ route('giftcards.show', $card->id) }}" style="text-decoration: none; color: inherit;">
+                                                <h6 class="card-title">{{ $card->name }}</h6>
+                                            </a>
                                             <p class="card-text">
                                                 <small>Ideálny darček pre každého knihomoľa.</small>
                                             </p>

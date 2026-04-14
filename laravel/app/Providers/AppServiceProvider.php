@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\View;
+use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +25,39 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // $this->configureDefaults();
+
+        // View::composer('partials.navbar', function ($view) {
+        //     $mainNames = [
+        //         'Beletria', 
+        //         'Náučné', 
+        //         'Životopisy', 
+        //         'Cestovateľské', 
+        //         'Kuchárske', 
+        //         'Učebnice a slovníky'
+        //     ];
+
+        //     $mainCategories = \App\Models\Category::whereIn('name', $mainNames)->get();
+        //     $view->with('mainCategories', $mainCategories); 
+        // });
+
         $this->configureDefaults();
+
+        View::composer('partials.navbar', function ($view) {
+            // 1. najdeme hlavny koren "Knihy"
+            $rootKnihy = \App\Models\Category::where('name', 'Knihy')->first();
+
+            if ($rootKnihy) {
+                // 2.vytiahneme vsetky kategorie ktore patria pod nej
+                $mainCategories = \App\Models\Category::where('category_id', $rootKnihy->id)->get();
+            } else {
+                // ak by knihy katehoria nebola
+                $mainCategories = collect();
+            }
+
+            $view->with('mainCategories', $mainCategories); 
+        });
+        
     }
 
     /**

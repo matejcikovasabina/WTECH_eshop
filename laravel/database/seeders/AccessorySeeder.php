@@ -24,7 +24,37 @@ class AccessorySeeder extends Seeder
                 'image' => 'zalozka_obloha.webp'
             ],
             [
-                'name' => 'LED Lampička na čítanie',
+                'name' => 'Záložka: Denna obloha',
+                'price' => 2.50,
+                'description' => 'Ručne maľovaná papierová záložka s motívom hviezd.',
+                'image' => 'zalozka_obloha.webp'
+            ],
+            [
+                'name' => 'Záložka: White',
+                'price' => 2.50,
+                'description' => 'Ručne maľovaná papierová záložka s motívom hviezd.',
+                'image' => 'zalozka_obloha.webp'
+            ],
+            [
+                'name' => 'Záložka: Black',
+                'price' => 2.50,
+                'description' => 'Ručne maľovaná papierová záložka s motívom hviezd.',
+                'image' => 'zalozka_obloha.webp'
+            ],
+            [
+                'name' => 'Záložka: Grey',
+                'price' => 2.50,
+                'description' => 'Ručne maľovaná papierová záložka s motívom hviezd.',
+                'image' => 'zalozka_obloha.webp'
+            ],
+            [
+                'name' => 'LED Lampička na čítanie - White',
+                'price' => 12.90,
+                'description' => 'Ohybná lampička s tromi úrovňami jasu.',
+                'image' => 'lampicka.webp'
+            ],
+            [
+                'name' => 'LED Lampička na čítanie - Black',
                 'price' => 12.90,
                 'description' => 'Ohybná lampička s tromi úrovňami jasu.',
                 'image' => 'lampicka.webp'
@@ -33,6 +63,12 @@ class AccessorySeeder extends Seeder
                 'name' => 'Drevený držiak na knihy',
                 'price' => 19.00,
                 'description' => 'Masívny dubový držiak pre vašu poličku.',
+                'image' => 'drziak.webp'
+            ],
+            [
+                'name' => 'Biely držiak na knihy',
+                'price' => 19.00,
+                'description' => 'Masívny dubový biely držiak pre vašu poličku.',
                 'image' => 'drziak.webp'
             ],
         ];

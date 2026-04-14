@@ -25,5 +25,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/doplnky', [AccessoryController::class, 'index'])->name('accessories.index');
 Route::get('/darcekove-poukazy', [GiftcardController::class, 'index'])->name('giftcards.index');
+Route::get('/poukazky/{id}', [App\Http\Controllers\GiftcardController::class, 'show'])->name('giftcards.show');
+Route::get('/doplnky/{id}', [AccessoryController::class, 'show'])->name('accessories.show');
 
 require __DIR__.'/settings.php';

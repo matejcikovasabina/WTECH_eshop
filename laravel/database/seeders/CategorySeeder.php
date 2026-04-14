@@ -2,44 +2,60 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategorySeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
-        $books = Category::firstOrCreate(
-            ['name' => 'Knihy', 'category_id' => null]
-        );
+        DB::statement('TRUNCATE TABLE categories RESTART IDENTITY CASCADE');
 
-        $gifts = Category::firstOrCreate(
-            ['name' => 'Darčeky', 'category_id' => null]
-        );
+        // ------------- MAINNNNNN KATEGORIA KOREN KNIHY
+        $rootKnihy = Category::create(['name' => 'Knihy', 'category_id' => null]);
 
-        Category::firstOrCreate([
-            'name' => 'Fantasy',
-            'category_id' => $books->id,
-        ]);
+        // BELETRIA
+        $beletria = Category::create(['name' => 'Beletria', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'Detektívky', 'category_id' => $beletria->id]);
+        Category::create(['name' => 'Trilery a horory', 'category_id' => $beletria->id]);
+        Category::create(['name' => 'Sci-fi a Fantasy', 'category_id' => $beletria->id]);
+        Category::create(['name' => 'Romány', 'category_id' => $beletria->id]);
 
-        Category::firstOrCreate([
-            'name' => 'Detektívky',
-            'category_id' => $books->id,
-        ]);
+        // NAUCNE
+        $naucne = Category::create(['name' => 'Náučné', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'História', 'category_id' => $naucne->id]);
+        Category::create(['name' => 'Psychológia', 'category_id' => $naucne->id]);
+        Category::create(['name' => 'Populárno-náučná', 'category_id' => $naucne->id]);
 
-        Category::firstOrCreate([
-            'name' => 'Romány',
-            'category_id' => $books->id,
-        ]);
+        // ZIVOTOPISY
+        $zivotopisy = Category::create(['name' => 'Životopisy', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'Skutočné príbehy', 'category_id' => $zivotopisy->id]);
+        Category::create(['name' => 'Memoáre', 'category_id' => $zivotopisy->id]);
 
-        Category::firstOrCreate([
-            'name' => 'Záložky',
-            'category_id' => $gifts->id,
-        ]);
+        // CESTOVATELSKÉ
+        $cestovatelske = Category::create(['name' => 'Cestovateľské', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'Sprievodcovia', 'category_id' => $cestovatelske->id]);
+        Category::create(['name' => 'Cestopisy', 'category_id' => $cestovatelske->id]);
 
-        Category::firstOrCreate([
-            'name' => 'Darčekové karty',
-            'category_id' => $gifts->id,
-        ]);
+        // KUCHARSKE
+        $kucharske = Category::create(['name' => 'Kuchárske', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'Zdravá výživa', 'category_id' => $kucharske->id]);
+        Category::create(['name' => 'Slovenská kuchyňa', 'category_id' => $kucharske->id]);
+        Category::create(['name' => 'Pečenie', 'category_id' => $kucharske->id]);
+
+        // UCEBNICE A SLOVNIKY
+        $ucebnice = Category::create(['name' => 'Učebnice a slovníky', 'category_id' => $rootKnihy->id]);
+        Category::create(['name' => 'Cudzie jazyky', 'category_id' => $ucebnice->id]);
+        Category::create(['name' => 'SŠ a VŠ skriptá', 'category_id' => $ucebnice->id]);
+
+        // -------------- DOPLNKY
+        $doplnky = Category::create(['name' => 'Doplnky', 'category_id' => null]);
+        Category::create(['name' => 'Záložky', 'category_id' => $doplnky->id]);
+        Category::create(['name' => 'Lampy na čítanie', 'category_id' => $doplnky->id]);
+        Category::create(['name' => 'Obaly na knihy', 'category_id' => $doplnky->id]);
+
+        // -------------- POUKAZKY
+        $poukazy = Category::create(['name' => 'Poukážky', 'category_id' => null]);
     }
 }
