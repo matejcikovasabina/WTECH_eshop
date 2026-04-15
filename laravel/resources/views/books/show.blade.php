@@ -15,8 +15,12 @@
 
         <div class="product-detail">
             <div class="product-image">
+                @php
+                    $mainImage = $book->product?->images?->first();
+                @endphp
+
                 <img
-                    src="{{ asset('images/' . ($book->cover_image ?? 'adults.webp')) }}"
+                    src="{{ $mainImage ? asset($mainImage->image_path) : asset('images/no-image.webp') }}"
                     class="main-product-img"
                     alt="{{ $book->product?->name ?? 'Kniha' }}"
                 >
@@ -110,11 +114,15 @@
                         <a href="{{ route('books.show', $item->product_id) }}" class="text-decoration-none text-dark">
                             <div class="cardd">
                                 <div class="card-img-placeholder">
-                                    <img
-                                        src="{{ asset('images/' . ($item->cover_image ?? 'adults.webp')) }}"
-                                        class="cardd-img"
-                                        alt="{{ $item->product?->name ?? 'Kniha' }}"
-                                    >
+                                @php
+                                    $itemImage = $item->product?->images?->first();
+                                @endphp
+
+                                <img
+                                    src="{{ $itemImage ? asset($itemImage->image_path) : asset('images/no-image.webp') }}"
+                                    class="cardd-img"
+                                    alt="{{ $item->product?->name ?? 'Kniha' }}"
+                                >
                                 </div>
 
                                 <div class="cardd-body">
@@ -156,11 +164,15 @@
                         <a href="{{ route('books.show', $item->product_id) }}" class="text-decoration-none text-dark">
                             <div class="cardd">
                                 <div class="card-img-placeholder">
-                                    <img
-                                        src="{{ asset('images/' . ($item->cover_image ?? 'adults.webp')) }}"
-                                        class="cardd-img"
-                                        alt="{{ $item->product?->name ?? 'Kniha' }}"
-                                    >
+                                @php
+                                    $itemImage = $item->product?->images?->first();
+                                @endphp
+
+                                <img
+                                    src="{{ $itemImage ? asset($itemImage->image_path) : asset('images/no-image.webp') }}"
+                                    class="cardd-img"
+                                    alt="{{ $item->product?->name ?? 'Kniha' }}"
+                                >
                                 </div>
 
                                 <div class="cardd-body">
@@ -191,13 +203,17 @@
     <section class="container page-container-card mt-5">
         <div class="more-details">
             <aside class="sidebar">
-                <div class="book-cover">
-                    <img
-                        src="{{ asset('images/' . ($book->cover_image ?? 'adults.webp')) }}"
-                        class="sidebar-book-img"
-                        alt="{{ $book->product?->name ?? 'Kniha' }}"
-                    >
-                </div>
+            <div class="book-cover">
+                @php
+                    $sidebarImage = $book->product?->images?->first();
+                @endphp
+
+                <img
+                    src="{{ $sidebarImage ? asset($sidebarImage->image_path) : asset('images/no-image.webp') }}"
+                    class="sidebar-book-img"
+                    alt="{{ $book->product?->name ?? 'Kniha' }}"
+                >
+            </div>
 
                 <p class="book-price">
                     {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €

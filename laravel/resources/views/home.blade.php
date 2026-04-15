@@ -60,13 +60,17 @@
 
             <div class="book-slider">
                 @forelse($newBooks as $book)
+                @php
+                    $image = $book->product?->images?->first();
+                @endphp
+
                 <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img
-                                src="{{ asset('images/placeholder.webp') }}"
+                                src="{{ $image ? asset($image->image_path) : asset('images/no-image.webp') }}"
                                 class="cardd-img"
-                                alt="{{ $book->product?->name ?? 'Kniha' }}"
+                                alt="{{ $book->product?->name ?? 'Bez názvu' }}"
                             >
                         </div>
 
@@ -105,13 +109,17 @@
 
             <div class="book-slider">
                 @forelse($upcomingBooks as $book)
+                @php
+                    $image = $book->product?->images?->first();
+                @endphp
+
                 <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img
-                                src="{{ asset('images/placeholder.webp') }}"
+                                src="{{ $image ? asset($image->image_path) : asset('images/no-image.webp') }}"
                                 class="cardd-img"
-                                alt="{{ $book->product?->name ?? 'Kniha' }}"
+                                alt="{{ $book->product?->name ?? 'Bez názvu' }}"
                             >
                         </div>
 

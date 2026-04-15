@@ -34,11 +34,11 @@
                         @forelse($cart as $item)
                             <div class="row align-items-center gy-3 py-3 border-bottom">
                                 <div class="col-12 col-md-2 col-lg-1">
-                                    <img
-                                        src="{{ asset('images/' . ($item['cover_image'] ?? 'adults.webp')) }}"
-                                        alt="{{ $item['name'] }}"
-                                        class="img-fluid rounded shadow-sm cart-img"
-                                    >
+                                <img
+                                    src="{{ asset($item['image_path'] ?? 'images/no-image.webp') }}"
+                                    alt="{{ $item['name'] }}"
+                                    class="img-fluid rounded shadow-sm cart-img"
+                                >
                                 </div>
 
                                 <div class="col-12 col-md-4 col-lg-4">

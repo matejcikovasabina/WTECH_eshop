@@ -202,20 +202,23 @@
 
                     @forelse($chunks as $chunk)
                         <div class="row custom-book-grid">
-                            @foreach($chunk as $book)
-                                <div class="col">
+                        @foreach($chunk as $book)
+                            <div class="col">
                                 <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
                                     <div class="card overview-card">
                                         <div class="book-cover-place">
+                                            @php
+                                                $image = $book->product?->images?->first();
+                                            @endphp
+
                                             <img
-                                                src="{{ asset('images/' . ($book->cover_image ?? 'adults.webp')) }}"
+                                                src="{{ $image ? asset($image->image_path) : asset('images/no-image.webp') }}"
                                                 class="card-img-top"
                                                 alt="{{ $book->product?->name ?? 'Kniha' }}"
                                             >
                                         </div>
 
                                         <div class="card-body">
-
                                             <h6 class="card-title">
                                                 {{ $book->product?->name ?? 'Bez názvu' }}
                                             </h6>
@@ -266,8 +269,8 @@
                                         </div>
                                     </div>
                                 </a>
-                                </div>
-                            @endforeach
+                            </div>
+                        @endforeach
                         </div>
                     @empty
                         <p>Žiadne knihy sa nenašli.</p>

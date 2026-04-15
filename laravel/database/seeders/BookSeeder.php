@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Language;
 use App\Models\Product;
 use App\Models\Publisher;
+use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
@@ -39,6 +40,7 @@ class BookSeeder extends Seeder
                 'width' => 14.00,
                 'height' => 21.00,
                 'depth' => 2.50,
+                'images' => ['images/books/hobbit.webp'],
             ],
             [
                 'name' => 'Pán prsteňov: Spoločenstvo prsteňa',
@@ -56,6 +58,7 @@ class BookSeeder extends Seeder
                 'width' => 14.50,
                 'height' => 21.50,
                 'depth' => 3.20,
+                'images' => ['images/books/pp_prsten.webp'],
             ],
             [
                 'name' => 'Pán prsteňov: Dve veže',
@@ -73,6 +76,7 @@ class BookSeeder extends Seeder
                 'width' => 14.50,
                 'height' => 21.50,
                 'depth' => 3.30,
+                'images' => ['images/books/pp_veze.webp'],
             ],
             [
                 'name' => 'Pán prsteňov: Návrat kráľa',
@@ -90,6 +94,7 @@ class BookSeeder extends Seeder
                 'width' => 14.50,
                 'height' => 21.50,
                 'depth' => 3.40,
+                'images' => ['images/books/pp_navrat.webp'],
             ],
             [
                 'name' => 'Harry Potter a Kameň mudrcov',
@@ -107,23 +112,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.50,
                 'depth' => 2.20,
-            ],
-            [
-                'name' => 'Harry Potter a Tajomná komnata',
-                'author' => ['Joanne', 'Rowling'],
-                'category' => 'Sci-fi a Fantasy',
-                'language' => 'Slovenčina',
-                'publisher' => 'Ikar',
-                'binding' => 'Brožovaná väzba',
-                'isbn' => '9788055601239',
-                'price' => 13.90,
-                'stock_count' => 28,
-                'year' => 2019,
-                'pages_num' => 352,
-                'weight' => 0.40,
-                'width' => 13.50,
-                'height' => 20.50,
-                'depth' => 2.30,
+                'images' => ['images/books/hp_mudrc.webp'],
             ],
             [
                 'name' => 'Harry Potter a Väzeň z Azkabanu',
@@ -141,6 +130,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.50,
                 'depth' => 2.50,
+                'images' => ['images/books/hp_vazen.webp'],
             ],
             [
                 'name' => 'Zaklínač: Posledné želanie',
@@ -158,6 +148,7 @@ class BookSeeder extends Seeder
                 'width' => 13.80,
                 'height' => 20.80,
                 'depth' => 2.00,
+                'images' => ['images/books/zaklinac_posledne_zelanie.webp'],
             ],
             [
                 'name' => 'Zaklínač: Meč osudu',
@@ -175,6 +166,7 @@ class BookSeeder extends Seeder
                 'width' => 13.80,
                 'height' => 20.80,
                 'depth' => 2.10,
+                'images' => ['images/books/zaklinac_mec_osudu.webp'],
             ],
             [
                 'name' => 'Letopisy Narnie',
@@ -182,7 +174,7 @@ class BookSeeder extends Seeder
                 'category' => 'Sci-fi a Fantasy',
                 'language' => 'Slovenčina',
                 'publisher' => 'Tatran',
-                'binding' => 'Pevná väzba',
+                'binding' => 'E-kniha',
                 'isbn' => '9788055601243',
                 'price' => 19.90,
                 'stock_count' => 14,
@@ -192,6 +184,8 @@ class BookSeeder extends Seeder
                 'width' => 15.50,
                 'height' => 22.50,
                 'depth' => 4.50,
+                'images' => ['images/books/letopisy.webp'],
+
             ],
             [
                 'name' => 'Percy Jackson: Zlodej blesku',
@@ -209,6 +203,8 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 19.80,
                 'depth' => 2.40,
+                'images' => ['images/books/pj_blesk.webp'],
+                
             ],
             [
                 'name' => 'Alchymista',
@@ -226,6 +222,7 @@ class BookSeeder extends Seeder
                 'width' => 12.50,
                 'height' => 19.50,
                 'depth' => 1.40,
+                'images' => ['images/books/alchymista.webp'],
             ],
             [
                 'name' => 'Malý princ',
@@ -243,6 +240,7 @@ class BookSeeder extends Seeder
                 'width' => 12.00,
                 'height' => 18.00,
                 'depth' => 1.20,
+                'images' => ['images/books/maly_princ.webp'],
             ],
             [
                 'name' => 'Pýcha a predsudok',
@@ -260,6 +258,7 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 20.00,
                 'depth' => 2.00,
+                'images' => ['images/books/pycha_predsudok.webp'],
             ],
             [
                 'name' => 'Jane Eyrová',
@@ -277,6 +276,7 @@ class BookSeeder extends Seeder
                 'width' => 14.00,
                 'height' => 21.00,
                 'depth' => 2.80,
+                'images' => ['images/books/jane_eyre.webp'],
             ],
             [
                 'name' => 'Búrlivé výšiny',
@@ -294,6 +294,7 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 20.00,
                 'depth' => 1.90,
+                'images' => ['images/books/burlive_vysiny.webp'],
             ],
             [
                 'name' => 'Na vine sú hviezdy',
@@ -311,6 +312,7 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 20.00,
                 'depth' => 1.80,
+                'images' => ['images/books/hviezdy_vino.webp'],
             ],
             [
                 'name' => 'Chlapec v pásikavom pyžame',
@@ -328,6 +330,7 @@ class BookSeeder extends Seeder
                 'width' => 12.80,
                 'height' => 19.70,
                 'depth' => 1.50,
+                'images' => ['images/books/chlapec_pyzamo.webp'],
             ],
             [
                 'name' => 'The Book Thief',
@@ -345,6 +348,7 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 19.80,
                 'depth' => 3.00,
+                'images' => ['images/books/book_thief.webp'],
             ],
             [
                 'name' => 'The Kite Runner',
@@ -362,6 +366,7 @@ class BookSeeder extends Seeder
                 'width' => 13.00,
                 'height' => 19.80,
                 'depth' => 2.20,
+                'images' => ['images/books/kite_runner.webp'],
             ],
             [
                 'name' => '1984',
@@ -379,6 +384,7 @@ class BookSeeder extends Seeder
                 'width' => 12.90,
                 'height' => 19.80,
                 'depth' => 2.10,
+                'images' => ['images/books/1984.webp'],
             ],
             [
                 'name' => 'Zvieracia farma',
@@ -396,6 +402,7 @@ class BookSeeder extends Seeder
                 'width' => 12.50,
                 'height' => 19.50,
                 'depth' => 1.20,
+                'images' => ['images/books/zvieracia_farma.webp'],
             ],
             [
                 'name' => 'Vražda v Orient exprese',
@@ -413,12 +420,13 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.00,
                 'depth' => 2.00,
+                'images' => ['images/books/vrazda_expres.webp'],
             ],
             [
                 'name' => 'Desať malých černoškov',
                 'author' => ['Agatha', 'Christie'],
                 'category' => 'Detektívky',
-                'language' => 'Slovenčina',
+                'language' => 'Čeština',
                 'publisher' => 'Slovart',
                 'binding' => 'Brožovaná väzba',
                 'isbn' => '9788055601255',
@@ -430,23 +438,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.00,
                 'depth' => 1.90,
-            ],
-            [
-                'name' => 'Smrť na Níle',
-                'author' => ['Agatha', 'Christie'],
-                'category' => 'Detektívky',
-                'language' => 'Slovenčina',
-                'publisher' => 'Ikar',
-                'binding' => 'Brožovaná väzba',
-                'isbn' => '9788055601256',
-                'price' => 11.90,
-                'stock_count' => 15,
-                'year' => 2020,
-                'pages_num' => 288,
-                'weight' => 0.31,
-                'width' => 13.50,
-                'height' => 20.00,
-                'depth' => 2.00,
+                'images' => ['images/books/desat_cernoskou.webp'],
             ],
             [
                 'name' => 'Sherlock Holmes: Štúdia v červenom',
@@ -464,6 +456,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.50,
                 'depth' => 1.50,
+                'images' => ['images/books/sh_studia.webp'],
             ],
             [
                 'name' => 'Sherlock Holmes: Pes baskervillský',
@@ -481,6 +474,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.50,
                 'depth' => 1.60,
+                'images' => ['images/books/sh_pes.webp'],
             ],
             [
                 'name' => 'Anjeli a démoni',
@@ -498,6 +492,7 @@ class BookSeeder extends Seeder
                 'width' => 13.80,
                 'height' => 20.80,
                 'depth' => 3.10,
+                'images' => ['images/books/anjeli_demoni.webp'],
             ],
             [
                 'name' => 'Da Vinciho kód',
@@ -515,6 +510,7 @@ class BookSeeder extends Seeder
                 'width' => 13.80,
                 'height' => 20.80,
                 'depth' => 3.00,
+                'images' => ['images/books/davinciho_kod.webp'],
             ],
             [
                 'name' => 'Meno ruže',
@@ -532,6 +528,7 @@ class BookSeeder extends Seeder
                 'width' => 14.20,
                 'height' => 21.20,
                 'depth' => 3.40,
+                'images' => ['images/books/meno_ruze.webp'],
             ],
             [
                 'name' => 'Dracula',
@@ -549,6 +546,7 @@ class BookSeeder extends Seeder
                 'width' => 13.80,
                 'height' => 20.80,
                 'depth' => 2.70,
+                'images' => ['images/books/dracula.webp'],
             ],
             [
                 'name' => 'Frankenstein',
@@ -566,6 +564,7 @@ class BookSeeder extends Seeder
                 'width' => 13.50,
                 'height' => 20.50,
                 'depth' => 1.90,
+                'images' => ['images/books/frankeinstein.webp'],
             ],
             [
                 'name' => 'Dvadsaťtisíc míľ pod morom',
@@ -583,6 +582,7 @@ class BookSeeder extends Seeder
                 'width' => 0.00,
                 'height' => 0.00,
                 'depth' => 0.00,
+                'images' => ['images/books/dvadsattisic_mil.webp'],
             ],
         ];
 
@@ -618,6 +618,15 @@ class BookSeeder extends Seeder
             );
 
             $book->authors()->syncWithoutDetaching([$author->id]);
+
+            ProductImage::where('product_id', $product->id)->delete();
+
+            foreach ($data['images'] ?? [] as $imagePath) {
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image_path' => $imagePath,
+                ]);
+            }
         }
     }
 }

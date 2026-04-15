@@ -25,7 +25,9 @@ class CartController extends Controller
             'quantity' => ['required', 'integer', 'min:1'],
         ]);
 
-        $book = Book::with(['product', 'authors'])->findOrFail($validated['product_id']);
+        $book = Book::with(['product.images', 'authors'])
+            ->where('product_id', $validated['product_id'])
+            ->firstOrFail();
 
         $stock = $book->product?->stock_count ?? 0;
         $quantityToAdd = $validated['quantity'];
@@ -42,6 +44,9 @@ class CartController extends Controller
             $authorName = 'Neznámy autor';
         }
 
+        $firstImage = $book->product?->images?->first();
+        $imagePath = $firstImage?->image_path ?? 'images/no-image.webp';
+
         if (isset($cart[$productId])) {
             $newQuantity = $cart[$productId]['quantity'] + $quantityToAdd;
 
@@ -50,6 +55,8 @@ class CartController extends Controller
             }
 
             $cart[$productId]['quantity'] = $newQuantity;
+            $cart[$productId]['stock_count'] = $stock;
+            $cart[$productId]['image_path'] = $imagePath;
         } else {
             if ($quantityToAdd > $stock) {
                 return back()->with('error', 'Nie je možné pridať viac kusov, než je na sklade.');
@@ -60,7 +67,7 @@ class CartController extends Controller
                 'name' => $book->product?->name ?? 'Bez názvu',
                 'author' => $authorName,
                 'price' => $book->product?->price ?? 0,
-                'cover_image' => $book->cover_image ?? 'adults.webp',
+                'image_path' => $imagePath,
                 'quantity' => $quantityToAdd,
                 'stock_count' => $stock,
             ];

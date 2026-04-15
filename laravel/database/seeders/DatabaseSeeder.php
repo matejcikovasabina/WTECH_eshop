@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
             BindingSeeder::class,
             AuthorSeeder::class,
             BookSeeder::class,
-
             GiftcardSeeder::class,
             AccessorySeeder::class,
         ]);
