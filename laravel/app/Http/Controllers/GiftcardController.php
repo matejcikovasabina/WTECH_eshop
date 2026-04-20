@@ -84,18 +84,4 @@ class GiftcardController extends Controller
         return view('products.index', compact('products', 'type', 'firstProduct'));
     }
 
-    public function show($id)
-    {
-        $product = Product::with('giftcard')->findOrFail($id);
-
-        $recommended = Product::where('type', 'giftcard')
-                                ->where('id', '!=', $id) 
-                                ->inRandomOrder()
-                                ->take(6)
-                                ->get();
-
-        $type = 'giftcard';
-        $routeBase = 'giftcards';
-        return view('products.show', compact('product', 'recommended', 'type', 'routeBase'));
-    }
 }

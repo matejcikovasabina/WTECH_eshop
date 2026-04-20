@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+    $type = $product->book ? 'book' : ($product->giftcard ? 'giftcard' : ($product->accessory ? 'accessory' : 'product'));
+
+    $mainImage = $product->images->first()?->image_path;
+
+    if (!$mainImage && $product->accessory?->image_path) {
+        $mainImage = $product->accessory->image_path;
+    }
+
+    $description = $product->accessory?->description ?? $product->description;
+@endphp
 <main>
     <section class="container page-container-card">
         {{-- DYNAMICKÝ BREADCRUMB PODĽA TYPU --}}
@@ -25,7 +37,7 @@
         <div class="product-detail">
             <div class="product-image">
                 <img
-                    src="{{ asset('images/' . ($product->cover_image ?? $product->image ?? 'default.webp')) }}"
+                    src="{{ $mainImage ? asset($mainImage) : asset('images/no-image.webp') }}"
                     class="main-product-img"
                     alt="{{ $product->name ?? 'Produkt' }}"
                 >
@@ -40,7 +52,7 @@
 
                 <h2>
                     @if($type === 'book')
-                        {{ $product->authors->pluck('full_name')->implode(', ') ?: 'Neznámy autor' }}
+                        {{ $product->book?->authors?->pluck('full_name')->implode(', ') ?: 'Neznámy autor' }}
                     @elseif($type === 'giftcard')
                         Darčeková poukážka
                     @else
@@ -139,7 +151,7 @@
 
                                 <div class="cardd-body">
                                     <h6 class="cardd-body-title">
-                                        {{ $item->name ?? 'Bez názvu' }}
+                                        {{ $item->product?->name ?? 'Bez názvu' }}
                                     </h6>
 
                                     <p class="cardd-body-author">
@@ -147,7 +159,7 @@
                                     </p>
 
                                     <p class="cardd-body-price">
-                                        {{ number_format($item->price ?? 0, 2, ',', ' ') }} €
+                                        {{ number_format($item->product?->price ?? 0, 2, ',', ' ') }} €
                                     </p>
                                 </div>
                             </div>
@@ -168,8 +180,8 @@
             <aside class="sidebar">
                 <div class="book-cover">
                     <img
-                        src="{{ asset('images/' . ($product->cover_image ?? $product->image ?? 'default.webp')) }}"
-                        class="sidebar-book-img"
+                        src="{{ $mainImage ? asset($mainImage) : asset('images/no-image.webp') }}"
+                        class="main-product-img"
                         alt="{{ $product->name ?? 'Produkt' }}"
                     >
                 </div>
@@ -214,14 +226,14 @@
 
                     <div class="details-box">
                         @if($type === 'book')
-                            <div class="detail-item">Väzba: {{ $product->binding?->name ?? '-' }}</div>
-                            <div class="detail-item">Rozmer: {{ $product->width ?? '-' }} x {{ $product->height ?? '-' }} x {{ $product->depth ?? '-' }} mm</div>
-                            <div class="detail-item">Hmotnosť: {{ $product->weight ?? '-' }} g</div>
-                            <div class="detail-item">ISBN: {{ $product->isbn ?? '-' }}</div>
-                            <div class="detail-item">Rok vydania: {{ $product->year ?? '-' }}</div>
-                            <div class="detail-item">Jazyk: {{ $product->language?->name ?? '-' }}</div>
-                            <div class="detail-item">Vydavateľstvo: {{ $product->publisher?->name ?? '-' }}</div>
-                            <div class="detail-item">Počet strán: {{ $product->pages_num ?? '-' }}</div>
+                        <div class="detail-item">Väzba: {{ $product->book?->binding?->name ?? '-' }}</div>
+                        <div class="detail-item">Rozmer: {{ $product->book?->width ?? '-' }} x {{ $product->book?->height ?? '-' }} x {{ $product->book?->depth ?? '-' }} mm</div>
+                        <div class="detail-item">Hmotnosť: {{ $product->book?->weight ?? '-' }} g</div>
+                        <div class="detail-item">ISBN: {{ $product->book?->isbn ?? '-' }}</div>
+                        <div class="detail-item">Rok vydania: {{ $product->book?->year ?? '-' }}</div>
+                        <div class="detail-item">Jazyk: {{ $product->book?->language?->name ?? '-' }}</div>
+                        <div class="detail-item">Vydavateľstvo: {{ $product->book?->publisher?->name ?? '-' }}</div>
+                        <div class="detail-item">Počet strán: {{ $product->book?->pages_num ?? '-' }}</div>
                         @else
                             <div class="detail-item">
                                 Typ produktu: 

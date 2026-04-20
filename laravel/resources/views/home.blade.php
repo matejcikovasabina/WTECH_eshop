@@ -64,7 +64,7 @@
                     $image = $book->product?->images?->first();
                 @endphp
 
-                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
+                <a href="{{ route('products.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img
@@ -113,7 +113,7 @@
                     $image = $book->product?->images?->first();
                 @endphp
 
-                <a href="{{ route('books.show', $book->product_id) }}" class="text-decoration-none text-dark">
+                <a href="{{ route('products.show', $book->product_id) }}" class="text-decoration-none text-dark">
                     <div class="cardd">
                         <div class="card-img-placeholder">
                             <img

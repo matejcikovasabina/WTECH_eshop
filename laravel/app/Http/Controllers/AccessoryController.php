@@ -70,20 +70,6 @@ class AccessoryController extends Controller
     //     return view('accessories.show', compact('accessory', 'recommended'));
     // }
 
-    public function show($id)
-    {
-        $product = Product::with('accessory')->findOrFail($id);
 
-        $recommended = Product::where('type', 'accessory')
-            ->where('id', '!=', $id)
-            ->inRandomOrder()
-            ->take(6)
-            ->get();
-
-        $type = 'accessory';
-        $routeBase = 'accessories';
-
-        return view('products.show', compact('product', 'recommended', 'type', 'routeBase'));
-    }
 }
 

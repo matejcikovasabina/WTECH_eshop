@@ -55,11 +55,7 @@
                     </div>
 
                     @php
-                        // laravel paginacia chunkvo po 3
                         $chunks = $products->chunk(3);
-                        
-                        // prefixy na routy (books.show, accessories.show, giftcards.show)
-                        $routePrefix = ($type === 'book') ? 'books' : (($type === 'giftcard') ? 'giftcards' : 'accessories');
                     @endphp
 
                     @forelse($chunks as $chunk)
@@ -68,14 +64,18 @@
                                 <div class="col">
                                     <div class="card overview-card h-100">
                                         {{-- ODKAZ NA OBRÁZKU --}}
-                                        <a href="{{ route($routePrefix . '.show', $product->id) }}">
+                                        <a href="{{ route('products.show', $product->id) }}">
                                             <div class="book-cover-place">
                                                 {{-- NACITANIE OBRAZKA --}}
                                                 @php
-                                                    $imagePath = $product->{$type}->image_path ?? 'default_accessory.webp';
+                                                    $imagePath = $product->images->first()?->image_path;
+
+                                                    if (!$imagePath && $type === 'accessory') {
+                                                        $imagePath = $product->accessory?->image_path;
+                                                    }
                                                 @endphp
                                                 <img 
-                                                    src="{{ asset('images/' . $imagePath) }}" 
+                                                    src="{{ $imagePath ? asset($imagePath) : asset('images/no-image.webp') }}" 
                                                     class="card-img-top" 
                                                     alt="{{ $product->name }}"
                                                 >
@@ -84,7 +84,7 @@
 
                                         <div class="card-body">
                                             <h6 class="card-title">
-                                                <a href="{{ route($routePrefix . '.show', $product->id) }}" class="text-decoration-none text-dark">
+                                                <a href="{{ route('products.show', $product->id) }}" class="text-decoration-none text-dark">
                                                     {{ $product->name }}
                                                 </a>
                                             </h6>
@@ -93,7 +93,7 @@
                                                 <small>
                                                     {{-- ak je to kniha, vypiseme autora -> inak limitovany popis --}}
                                                     @if($type === 'book')
-                                                        {{ $product->book->authors ?? '' }}
+                                                        {{ $product->book?->authors?->pluck('full_name')->implode(', ') ?: 'Neznámy autor' }}
                                                     @else
                                                         {{ \Illuminate\Support\Str::limit($product->{$type}->description ?? '', 80, '...') }}
                                                     @endif
