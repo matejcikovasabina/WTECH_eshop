@@ -51,103 +51,19 @@
         </div>
     </div>
 
-    <section class="container page-container-card mt-5">
-        <h2>Novinky</h2>
-        <div class="slider-wrapper" style="position: relative;">
-            <button class="carousel-control-prev" type="button" onclick="scrollSlider(this, -1)">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
 
-            <div class="book-slider">
-                @forelse($newBooks as $book)
-                @php
-                    $image = $book->product?->images?->first();
-                @endphp
+        @include('partials.book-slider', [
+            'title' => 'Novinky',
+            'items' => $newBooks
+        ])
+ 
 
-                <a href="{{ route('products.show', $book->product_id) }}" class="text-decoration-none text-dark">
-                    <div class="cardd">
-                        <div class="card-img-placeholder">
-                            <img
-                                src="{{ $image ? asset($image->image_path) : asset('images/no-image.webp') }}"
-                                class="cardd-img"
-                                alt="{{ $book->product?->name ?? 'Bez názvu' }}"
-                            >
-                        </div>
 
-                        <div class="cardd-body">
-                            <h6 class="cardd-body-title">
-                                {{ $book->product?->name ?? 'Bez názvu' }}
-                            </h6>
+        @include('partials.book-slider', [
+            'title' => 'Odporúčame',
+            'items' => $recommended
+        ])
 
-                            <p class="cardd-body-author">
-                                {{ $book->authors->pluck('full_name')->join(', ') }}
-                            </p>
-
-                            <p class="cardd-body-price">
-                                {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €
-                            </p>
-                        </div>
-                    </div>
-                </a>
-                @empty
-                    <p>Žiadne knihy na zobrazenie.</p>
-                @endforelse
-            </div>
-
-            <button class="carousel-control-next" type="button" onclick="scrollSlider(this, 1)">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
-
-    <section class="container page-container-card mt-5">
-        <h2>Pripravujeme</h2>
-        <div class="slider-wrapper" style="position: relative;">
-            <button class="carousel-control-prev" type="button" onclick="scrollSlider(this, -1)">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-
-            <div class="book-slider">
-                @forelse($upcomingBooks as $book)
-                @php
-                    $image = $book->product?->images?->first();
-                @endphp
-
-                <a href="{{ route('products.show', $book->product_id) }}" class="text-decoration-none text-dark">
-                    <div class="cardd">
-                        <div class="card-img-placeholder">
-                            <img
-                                src="{{ $image ? asset($image->image_path) : asset('images/no-image.webp') }}"
-                                class="cardd-img"
-                                alt="{{ $book->product?->name ?? 'Bez názvu' }}"
-                            >
-                        </div>
-
-                        <div class="cardd-body">
-                            <h6 class="cardd-body-title">
-                                {{ $book->product?->name ?? 'Bez názvu' }}
-                            </h6>
-
-                            <p class="cardd-body-author">
-                                {{ $book->authors->pluck('full_name')->join(', ') }}
-                            </p>
-
-                            <p class="cardd-body-price">
-                                {{ number_format($book->product?->price ?? 0, 2, ',', ' ') }} €
-                            </p>
-                        </div>
-                    </div>
-                </a>
-                @empty
-                    <p>Žiadne pripravované knihy na zobrazenie.</p>
-                @endforelse
-            </div>
-
-            <button class="carousel-control-next" type="button" onclick="scrollSlider(this, 1)">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-        </div>
-    </section>
 
     
     <section class="container page-container-card">

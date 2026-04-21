@@ -16,8 +16,11 @@ class HomeController extends Controller
             ->take(10)
             ->get();
 
-        $upcomingBooks = Book::with(['product', 'authors'])->skip(10)->take(10)->get();
+        $recommended = Book::with(['product.images', 'authors'])
+                ->inRandomOrder()
+                ->take(10)
+                ->get();
 
-        return view('home', compact('newBooks', 'upcomingBooks'));
+        return view('home', compact('newBooks', 'recommended'));
     }
 }

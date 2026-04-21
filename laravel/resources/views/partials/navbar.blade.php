@@ -19,11 +19,11 @@
                         Knihy
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('books.index') }}">Všetky knihy</a></li>
+                        <li><a class="dropdown-item" href="{{ route('products.index') }}">Všetky knihy</a></li>
                         <li><hr class="dropdown-divider"></li>
                         @foreach($mainCategories->where('parent_id', null) as $cat)
                             <li>
-                                <a class="dropdown-item" href="{{ route('books.index', ['category' => $cat->id]) }}">
+                                <a class="dropdown-item" href="{{ route('products.index', ['category' => $cat->id]) }}">
                                     {{ $cat->name }}
                                 </a>
                             </li>
@@ -42,7 +42,7 @@
 
             <ul class="nav">
                 <li class="nav-item search-item">
-                    <form action="{{ route('books.index') }}" method="GET">
+                    <form action="{{ route('products.index') }}" method="GET">
                         <div class="input-group search-group">
                             <input 
                                 type="text" 

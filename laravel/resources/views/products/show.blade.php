@@ -20,7 +20,7 @@
             <a href="{{ route('home') }}">Domov</a>
             <span>&gt;</span>
             @if($type === 'book')
-                <a href="{{ route('books.index') }}">Knihy</a>
+                <a href="{{ route('products.index') }}">Knihy</a>
             @elseif($type === 'giftcard')
                 <a href="{{ route('giftcards.index') }}">Darčekové poukážky</a>
             @else
@@ -125,55 +125,19 @@
         </div>
     </section>
 
-    @if($type === 'book' && isset($showAuthorSlider) && $showAuthorSlider)
-        <section class="container page-container-card">
-            <h2 class="mb-3">
-                Ďalšie od
-                {{ $product->authors->pluck('full_name')->implode(', ') ?: 'autora' }}
-            </h2>
-
-            <div class="slider-wrapper" style="position: relative;">
-                <button class="carousel-control-prev" type="button" onclick="scrollSlider(this, -1)">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-
-                <div class="book-slider">
-                    @foreach($moreFromAuthor as $item)
-                        <a href="{{ route('books.show', $item->id) }}" class="text-decoration-none text-dark">
-                            <div class="cardd">
-                                <div class="card-img-placeholder">
-                                    <img
-                                        src="{{ asset('images/' . ($item->cover_image ?? 'default.webp')) }}"
-                                        class="cardd-img"
-                                        alt="{{ $item->name ?? 'Kniha' }}"
-                                    >
-                                </div>
-
-                                <div class="cardd-body">
-                                    <h6 class="cardd-body-title">
-                                        {{ $item->product?->name ?? 'Bez názvu' }}
-                                    </h6>
-
-                                    <p class="cardd-body-author">
-                                        {{ $item->authors->pluck('full_name')->implode(', ') ?: 'Neznámy autor' }}
-                                    </p>
-
-                                    <p class="cardd-body-price">
-                                        {{ number_format($item->product?->price ?? 0, 2, ',', ' ') }} €
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-
-                <button class="carousel-control-next" type="button" onclick="scrollSlider(this, 1)">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
-        </section>
+    @if($product->book && $showAuthorSlider)
+        @include('partials.book-slider', [
+            'title' => 'Ďalšie od ' . ($product->book->authors->pluck('full_name')->implode(', ') ?: 'autora'),
+            'items' => $moreFromAuthor
+        ])
     @endif
 
+    @if($product->book && $recommended->isNotEmpty())
+        @include('partials.book-slider', [
+            'title' => 'Odporúčame',
+            'items' => $recommended
+        ])
+    @endif
 
     <section class="container page-container-card mt-5">
         <div class="more-details">

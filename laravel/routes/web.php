@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/knihy', [BookController::class, 'index'])->name('books.index');
+Route::get('/knihy', [BookController::class, 'index'])->name('products.index');
 Route::get('/doplnky', [AccessoryController::class, 'index'])->name('accessories.index');
 Route::get('/darcekove-poukazy', [GiftcardController::class, 'index'])->name('giftcards.index');
 
