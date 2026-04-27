@@ -130,7 +130,7 @@ input[type="radio"]:checked + .avatar-option {
 
 .checkout-steps-wrap {
   position: sticky;
-  top: 60px;
+  top: 75px;
   z-index: 1050;
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-white);

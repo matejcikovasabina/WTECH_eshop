@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccessoryController;
 use App\Http\Controllers\GiftcardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -28,4 +30,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+});
+
+Route::get('/cart/delivery', [CheckoutController::class, 'delivery'])->name('cart.delivery');
+
+
+Route::post('/cart/delivery', [CheckoutController::class, 'storeDelivery'])
+    ->name('cart.delivery.store');
+
 require __DIR__.'/settings.php';
+
+
+

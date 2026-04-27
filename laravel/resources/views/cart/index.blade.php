@@ -43,7 +43,7 @@
 
                                 <div class="col-12 col-md-4 col-lg-4">
                                     <h3 class="h5 mb-1">
-                                        <a href="{{ route('books.show', $item['product_id']) }}" class="text-decoration-none text-dark">
+                                        <a href="{{ route('products.show', $item['product_id']) }}" class="text-decoration-none text-dark">
                                             {{ $item['name'] }}
                                         </a>
                                     </h3>
@@ -116,9 +116,10 @@
                                         <strong>{{ number_format($total, 2, ',', ' ') }} €</strong>
                                     </div>
 
-                                    <button class="continue-btn" {{ empty($cart) ? 'disabled' : '' }}>
+                                    <a href="{{ route('cart.delivery') }}" 
+                                    class="continue-btn {{ empty($cart) ? 'disabled' : '' }}">
                                         Pokračovať
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
