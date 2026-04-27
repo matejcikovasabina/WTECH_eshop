@@ -76,6 +76,62 @@ class CheckoutController extends Controller
 
         session()->put('checkout.payment', $data);
 
-        return redirect()->route('checkout.summary');
+        return redirect()->route('cart.summary');
+    }
+
+
+    public function summary()
+    {
+        $cart = session()->get('cart', []);
+        $delivery = session()->get('checkout.delivery');
+        $payment = session()->get('checkout.payment');
+
+        if (empty($cart)) {
+            return redirect()->route('cart.index')->with('error', 'Košík je prázdny.');
+        }
+
+        if (!$delivery) {
+            return redirect()->route('cart.delivery')->with('error', 'Najprv vyber spôsob doručenia.');
+        }
+
+        if (!$payment) {
+            return redirect()->route('cart.payment')->with('error', 'Najprv vyber spôsob platby.');
+        }
+
+        $subtotal = collect($cart)->sum(function ($item) {
+            return ($item['price'] ?? 0) * ($item['quantity'] ?? 1);
+        });
+
+        $deliveryPrices = [
+            'pickup' => 0,
+            'courier' => 3.90,
+            'packeta' => 2.49,
+        ];
+
+        $deliveryNames = [
+            'pickup' => 'Osobný odber na predajni',
+            'courier' => 'Kuriér na adresu',
+            'packeta' => 'Packeta / výdajné miesto',
+        ];
+
+        $paymentNames = [
+            'card' => 'Platba kartou online',
+            'cash' => 'Platba na dobierku',
+            'bank_transfer' => 'Bankový prevod',
+        ];
+
+        $deliveryPrice = $deliveryPrices[$delivery['delivery']] ?? 0;
+        $total = $subtotal + $deliveryPrice;
+
+        return view('cart.summary', compact(
+            'cart',
+            'delivery',
+            'payment',
+            'subtotal',
+            'deliveryPrice',
+            'total',
+            'deliveryNames',
+            'paymentNames'
+        ));
     }
 }

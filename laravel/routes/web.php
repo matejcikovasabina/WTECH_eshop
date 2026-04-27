@@ -49,6 +49,7 @@ Route::post('/cart/payment', [CheckoutController::class, 'storePayment'])
 Route::get('/cart/summary', [CheckoutController::class, 'summary'])
     ->name('cart.summary');
 
+
     Route::get('/clear-cart', function () {
         session()->forget('cart');
         return redirect()->route('cart.index');
