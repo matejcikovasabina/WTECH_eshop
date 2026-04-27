@@ -40,6 +40,20 @@ Route::get('/cart/delivery', [CheckoutController::class, 'delivery'])->name('car
 Route::post('/cart/delivery', [CheckoutController::class, 'storeDelivery'])
     ->name('cart.delivery.store');
 
+Route::get('/cart/payment', [CheckoutController::class, 'payment'])
+    ->name('cart.payment');
+
+Route::post('/cart/payment', [CheckoutController::class, 'storePayment'])
+    ->name('cart.payment.store');
+
+Route::get('/cart/summary', [CheckoutController::class, 'summary'])
+    ->name('cart.summary');
+
+    Route::get('/clear-cart', function () {
+        session()->forget('cart');
+        return redirect()->route('cart.index');
+    });
+
 require __DIR__.'/settings.php';
 
 

@@ -12,7 +12,7 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
 
         $total = collect($cart)->sum(function ($item) {
-            return $item['price'] * $item['quantity'];
+            return ($item['price'] ?? 0) * ($item['quantity'] ?? 1);
         });
 
         return view('cart.index', compact('cart', 'total'));
