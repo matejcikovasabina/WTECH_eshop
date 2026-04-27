@@ -65,18 +65,18 @@
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <label for="name" class="form-label">Meno</label>
+                                <label for="first_name" class="form-label">Meno</label>
                                 <input 
                                     type="text" 
-                                    id="name" 
-                                    name="name"
-                                    class="form-control @error('name') is-invalid @enderror"
+                                    id="first_name" 
+                                    name="first_name"
+                                    class="form-control @error('first_name') is-invalid @enderror"
                                     placeholder="Mária"
-                                    value="{{ old('name') }}"
+                                    value="{{ old('first_name') }}"
                                     required
                                     autocomplete="given-name"
                                 >
-                                @error('name')
+                                @error('first_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -84,18 +84,18 @@
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <label for="surname" class="form-label">Priezvisko</label>
+                                <label for="last_name" class="form-label">Priezvisko</label>
                                 <input 
                                     type="text" 
-                                    id="surname" 
-                                    name="surname"
-                                    class="form-control @error('surname') is-invalid @enderror"
+                                    id="last_name" 
+                                    name="last_name"
+                                    class="form-control @error('last_name') is-invalid @enderror"
                                     placeholder="Smith"
-                                    value="{{ old('surname') }}"
+                                    value="{{ old('last_name') }}"
                                     required
                                     autocomplete="family-name"
                                 >
-                                @error('surname')
+                                @error('last_name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
