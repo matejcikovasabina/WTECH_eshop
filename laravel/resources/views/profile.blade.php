@@ -11,10 +11,45 @@
                     <div class="card-body p-4 p-md-5">
                         <h1 class="text-center mb-4">Profil</h1>
 
+                        <form method="POST" action="{{ route('profile.update') }}">
+                            @csrf
                         <div class="text-center mb-4">
-                            <div class="profile-avatar">
-                                <span>Avatar</span>
+                            <img 
+                                src="{{ asset('images/avatars/' . (auth()->user()->avatar ?? 'avatar1.jpg')) }}" 
+                                alt="Avatar"
+                                class="profile-avatar"
+                                style="width: 120px; height: 120px; object-fit: cover;"
+                            >
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label d-block text-center">Vyberte si avatara</label>
+
+                            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            @foreach(['avatar1.jpg', 'avatar2.jpg', 'avatar3.jpg', 'avatar4.jpg'] as $avatar)
+                                <label class="text-center">
+                                    <input 
+                                        type="radio" 
+                                        name="avatar" 
+                                        value="{{ $avatar }}"
+                                        class="d-none"
+                                        {{ old('avatar', auth()->user()->avatar ?? 'avatar1.jpg') === $avatar ? 'checked' : '' }}
+                                    >
+
+                                    <img 
+                                        src="{{ asset('images/avatars/' . $avatar) }}"
+                                        class="avatar-option rounded-circle"
+                                        style="width: 70px; height: 70px; cursor: pointer;"
+                                    >
+                                </label>
+                            @endforeach
                             </div>
+
+                            @error('avatar')
+                                <div class="text-danger text-center mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
 
                         @if(session('success'))
@@ -23,8 +58,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('profile.update') }}">
-                            @csrf
+                        
 
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
