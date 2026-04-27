@@ -50,6 +50,10 @@ Route::get('/cart/summary', [CheckoutController::class, 'summary'])
     ->name('cart.summary');
 
 
+Route::post('/cart/order', [CheckoutController::class, 'placeOrder'])
+    ->name('checkout.placeOrder')
+    ->middleware('auth');
+
     Route::get('/clear-cart', function () {
         session()->forget('cart');
         return redirect()->route('cart.index');

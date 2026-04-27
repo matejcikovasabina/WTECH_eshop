@@ -96,7 +96,10 @@
                         </div>
 
                         <div class="d-flex justify-content-end mt-4">
-                            <button class="continue-btn">Objednať</button>
+                            <form method="POST" action="{{ route('checkout.placeOrder') }}">
+                                @csrf
+                                <button type="submit" class="continue-btn">Objednať</button>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="order-col order-status order-text">
-                    {{ $order->status ?? 'spracováva sa' }}
+                    {{ $order->status->name ?? 'spracováva sa' }}
                 </div>
 
                 <div class="order-col order-price order-text">
