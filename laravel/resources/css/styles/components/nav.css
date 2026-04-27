@@ -21,6 +21,18 @@ nav {
   padding-bottom: 10px ;
 }
 
+.user-circle-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.user-toggle::after {
+  margin-left: 8px;
+}
+
 /* styl pre hamburger */
 .menu-toggle {
   display: none;
@@ -42,6 +54,8 @@ nav {
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 12px;
 }
 
 .navigacka ul:first-of-type {
@@ -49,6 +63,15 @@ nav {
   margin-left: 2rem;
 }
 
+.user-dropdown {
+  transform: translateY(-6px);
+}
+
+.user-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
 @media (max-width:1500px){
   .navigacka ul:first-of-type {

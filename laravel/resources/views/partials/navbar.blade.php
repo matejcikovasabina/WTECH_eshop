@@ -66,9 +66,11 @@
                         @endguest
 
                         @auth
-                            <span class="user-circle">
-                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                            </span>
+                        <img 
+                            src="{{ asset('images/avatars/' . (Auth::user()->avatar ?? 'avatar1.jpg')) }}"
+                            alt="Avatar"
+                            class="user-circle-img"
+                        >
                         @endauth
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">

@@ -96,6 +96,18 @@
                                         placeholder="Zadajte email"
                                     >
                                 </div>
+
+                                <div class="col-12">
+                                    <label for="phone" class="form-label">Telefónne číslo</label>
+                                    <input 
+                                        type="tel" 
+                                        id="phone"
+                                        name="phone" 
+                                        class="form-control" 
+                                        value="{{ old('phone', auth()->user()->phone) }}"
+                                        placeholder="Zadajte telefonne číslo"
+                                    >
+                                </div>
                             </div>
 
                             <hr class="my-4">
