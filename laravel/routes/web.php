@@ -59,6 +59,19 @@ Route::post('/cart/order', [CheckoutController::class, 'placeOrder'])
         return redirect()->route('cart.index');
     });
 
+
+Route::get('/admin', function () {
+    return view('admin.admin-page');
+})->name('admin.index');
+
+// Admin skupina
+Route::prefix('admin')->name('admin.')->group(function () {
+    
+    Route::get('products/delete-page', [ProductController::class, 'deletePage'])->name('products.delete-page');
+    
+    Route::resource('products', ProductController::class);
+});
+
 require __DIR__.'/settings.php';
 
 

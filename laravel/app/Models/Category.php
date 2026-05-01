@@ -11,7 +11,6 @@ class Category extends Model
     protected $table = 'categories';
 
     public $timestamps = false;
-
     protected $fillable = ['name', 'category_id'];
 
     public function products(): HasMany
