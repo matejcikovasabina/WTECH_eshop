@@ -10,13 +10,7 @@ class Product extends Model
 
     public $timestamps = false;
 
-    protected $fillable = [
-        'name', 
-        'type', 
-        'price', 
-        'stock_count', 
-        'category_id'
-    ];
+    protected $fillable = ['name', 'type', 'price', 'stock_count', 'category_id', 'description'];
 
     public function book()
     {
