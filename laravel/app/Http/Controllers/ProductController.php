@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Book;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use App\Models\Author;
 
 use App\Models\Language;
@@ -13,6 +14,7 @@ use App\Models\Binding;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+
 
 
 
@@ -72,7 +74,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // Načítaj všetky produkty z databázy
+        // Nacitaj vsetky produkty z databazy
         $products = Product::with('images', 'book', 'category')
             ->paginate(20);
         
@@ -88,7 +90,7 @@ class ProductController extends Controller
         $publishers = Publisher::all();
         $bindings = Binding::all();
         $categories = Category::whereNotNull('category_id')->get();
-        $authors = Author::all(); // <--- Pridané: načítanie autorov
+        $authors = Author::all();
 
         return view('admin.admin-add', compact('languages', 'publishers', 'bindings', 'categories', 'authors'));
     }
@@ -205,66 +207,204 @@ class ProductController extends Controller
     }
 
     /**
-     * ADMIN: Ulozenie zmien produktu
-     */
-    public function update(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
-
-        $validated = $request->validate([
-            'nazov' => 'required|string|max:255',
-            'opis' => 'required|string',
-            'pocetnasklade' => 'required|integer|min:0',
-        ]);
-
-        try {
-            $product->update([
-                'name' => $validated['nazov'],
-                'description' => $validated['opis'],
-                'stock_quantity' => $validated['pocetnasklade'],
-            ]);
-
-            return redirect()
-                ->route('admin.products.index')
-                ->with('success', 'Produkt ✓ úspešne aktualizovaný!');
-        } 
-        catch (\Exception $e) {
-            return back()
-                ->withInput()
-                ->with('error', 'Chyba pri aktualizácii: ' . $e->getMessage());
-        }
-    }
-
-    /**
      * ADMIN: Stranka na potvrdzenie mazania
      */
-    public function deletePage()
+    public function deletePage(Request $request)
     {
-        return view('admin.admin-delete');
+        $query = $request->input('query');
+        $product = null;
+
+        if ($query) {
+            $product = Product::where('name', 'LIKE', "%{$query}%")->first();
+        }
+
+        // Uisti sa, ze tento string 'admin.admin-delete' zodpoveda ceste k suboru
+        return view('admin.admin-delete', compact('product'));
     }
 
     /**
      * ADMIN: Vymazanie produktu
      * Route: DELETE /admin/products/{product}
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        $product = Product::findOrFail($id);
-
         try {
-            // Vymaz fotografie
+            DB::beginTransaction();
+
+            // 1. Zmazeme fyzicke obrzky subory z disku
+            foreach ($product->images as $image) {
+                $filePath = public_path($image->image_path);
+                if (\File::exists($filePath)) {
+                    \File::delete($filePath);
+                }
+            }
+
+            // 2. zmazeme zanamy o obrazkoch
             $product->images()->delete();
-            
-            // Vymaz produkt
+
+            // 3. Ak je to kniha, zmazeme prepojenia na autorov a knihu samotnu
+            if ($product->book) {
+                // Odpojime autorov vo vazobnej tabulke (pivot)
+                $product->book->authors()->detach();
+                // Zmazeme zaznam v tabulke books
+                $product->book->delete();
+            }
+
+            // 4. Ak je to darcekova poukazka
+            if ($product->type === 'giftcard') {
+                DB::table('giftcards')->where('product_id', $product->id)->delete();
+            }
+
+            // 5. Nakoniec zmazeme hlavny produkt
             $product->delete();
 
-            return redirect()
-                ->route('admin.products.index')
-                ->with('success', 'Produkt ✓ úspešne vymazaný!');
-        } 
-        catch (\Exception $e) {
-            return back()
-                ->with('error', 'Chyba pri mazaní: ' . $e->getMessage());
+            DB::commit();
+            return redirect()->route('admin.products.index')->with('success', 'Produkt bol úspešne zmazaný.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Chyba pri mazaní: ' . $e->getMessage()]);
+        }
+    }
+
+    public function deleteSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $product = null;
+
+        if ($query) {
+            // chceme presnu zhodu alebo podobny nazov
+            $product = Product::where('name', 'LIKE', "%{$query}%")->first();
+        }
+
+        return view('admin.admin-delete', compact('product'));
+    }
+
+    public function editSearch(Request $request)
+    {
+        $query = $request->input('query');
+        $product = null;
+
+        if ($query) {
+            $product = Product::where('name', 'LIKE', "%{$query}%")
+                ->with(['book.authors', 'giftcard', 'images', 'book.language', 'book.publisher', 'book.binding'])
+                ->first();
+        }
+
+        // NACITANIE VSETKYCH CISELNIKOV
+        $languages = Language::all();
+        $publishers = Publisher::all();
+        $categories = Category::whereNotNull('category_id')->get();
+        $bindings = Binding::all();
+
+        return view('admin.admin-edit', compact(
+            'product', 
+            'languages', 
+            'publishers', 
+            'categories',
+            'bindings'
+        ));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        // 1. VALIDACIA
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'price'       => 'required|numeric|min:0',
+            'stock_count' => 'required|integer|min:0',
+            'description' => 'required|string',
+            'category_id' => 'nullable|exists:categories,id',
+            'weight'      => 'nullable|numeric',
+            'width'       => 'nullable|numeric',
+            'height'      => 'nullable|numeric',
+            'depth'       => 'nullable|numeric',
+            'isbn'        => 'nullable|string|max:20',
+        ]);
+
+        try {
+            DB::beginTransaction();
+
+            // 2. Aktualizacia základneho produktu
+            $product->update([
+                'name' => $request->name,
+                'price' => $request->price,
+                'stock_count' => $request->stock_count,
+                'description' => $request->description,
+                'category_id' => $request->category_id,
+            ]);
+
+            // 3. Ak je to KNIHA
+            if ($product->type === 'book' && $product->book) {
+                $product->book->update([
+                    'isbn' => $request->isbn,
+                    'language_id' => $request->language_id,
+                    'publisher_id' => $request->publisher_id,
+                    'binding_id' => $request->binding_id,
+                    'year' => $request->year,
+                    'pages_num' => $request->pages_num,
+                    'weight' => $request->weight,
+                    'width' => $request->width,
+                    'height' => $request->height,
+                    'depth' => $request->depth,
+                ]);
+
+                // Autori - stary sa mazu
+                if ($request->filled('authors_raw')) {
+                    $authorsArray = explode(',', $request->authors_raw);
+                    $authorIds = [];
+
+                    foreach ($authorsArray as $authorName) {
+                        $fullName = trim($authorName);
+                        if (empty($fullName)) continue;
+
+                        $parts = explode(' ', $fullName);
+                        $lastName = count($parts) > 1 ? array_pop($parts) : $parts[0]; 
+                        $firstName = implode(' ', $parts);
+
+                        $author = Author::firstOrCreate([
+                            'first_name' => $firstName, 
+                            'last_name' => $lastName
+                        ]);
+                        $authorIds[] = $author->id;
+                    }
+                    $product->book->authors()->sync($authorIds);
+                }
+            } 
+            // 4. Ak je to DARCEKOVA POUKAZKA
+            elseif ($product->type === 'giftcard') {
+                DB::table('giftcards')->updateOrInsert(
+                    ['product_id' => $product->id],
+                    [
+                        'value' => $request->value,
+                        'code' => $request->code,
+                    ]
+                );
+            }
+
+            // 5. Obrazky
+            if ($request->hasFile('images')) {
+                foreach ($product->images as $img) {
+                    if (File::exists(public_path($img->image_path))) {
+                        File::delete(public_path($img->image_path));
+                    }
+                }
+                $product->images()->delete();
+
+                foreach ($request->file('images') as $image) {
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->move(public_path('images/books'), $imageName);
+                    $product->images()->create(['image_path' => 'images/books/' . $imageName]);
+                }
+            }
+
+            DB::commit();
+            return redirect()->route('admin.products.edit_search', ['query' => $product->name])
+                            ->with('success', 'Produkt bol úspešne upravený.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['error' => 'Chyba pri ukladaní: ' . $e->getMessage()])->withInput();
         }
     }
 }
