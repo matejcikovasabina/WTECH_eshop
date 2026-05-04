@@ -11,8 +11,13 @@ class HomeController extends Controller
         #zatial zobrazujeme len 20 knih, 10 novych a 10 pripravovanych
         #neskor podla dakych kategorii
 
+        $latestBookYear = Book::max('year');
+
         $newBooks = Book::with(['product.images', 'authors'])
-            ->latest('year')
+            ->when($latestBookYear, function ($query) use ($latestBookYear) {
+                $query->where('year', $latestBookYear);
+            })
+            ->latest('product_id')
             ->take(10)
             ->get();
 

@@ -2,13 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
+use App\Services\CartService;
 use Carbon\CarbonImmutable;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\View;
-use App\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,6 +59,10 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $view->with('mainCategories', $mainCategories); 
+        });
+
+        Event::listen(Login::class, function (Login $event) {
+            app(CartService::class)->mergeSessionCartIntoDatabase($event->user);
         });
         
     }

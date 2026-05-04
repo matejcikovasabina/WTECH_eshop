@@ -41,6 +41,11 @@ class AuthorSeeder extends Seeder
             ['first_name' => 'Andrzej', 'last_name' => 'Sapkowski'],
             ['first_name' => 'Umberto', 'last_name' => 'Eco'],
             ['first_name' => 'Miguel', 'last_name' => 'de Cervantes'],
+            ['first_name' => 'Vaclav', 'last_name' => 'Smil'],
+            ['first_name' => 'Peter', 'last_name' => 'Hlad'],
+            ['first_name' => 'Dani', 'last_name' => 'Francis'],
+            ['first_name' => 'Angel', 'last_name' => 'Lawson'],
+            ['first_name' => 'Lauren', 'last_name' => 'Roberts'],
         ];
 
         foreach ($authors as $author) {

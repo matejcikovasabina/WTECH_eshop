@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Services\CartService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index()
+    public function index(CartService $cartService)
     {
+        if (Auth::check() && empty(session()->get('cart', []))) {
+            $cartService->loadDatabaseCartToSession(Auth::user());
+        }
+
         $cart = session()->get('cart', []);
 
         $total = collect($cart)->sum(function ($item) {
@@ -18,7 +24,7 @@ class CartController extends Controller
         return view('cart.index', compact('cart', 'total'));
     }
 
-    public function add(Request $request)
+    public function add(Request $request, CartService $cartService)
     {
         $validated = $request->validate([
             'product_id' => ['required', 'integer', 'exists:books,product_id'],
@@ -75,10 +81,14 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
+        if (Auth::check()) {
+            $cartService->saveSessionCartForUser(Auth::user(), $cart);
+        }
+
         return redirect()->route('cart.index')->with('success', 'Kniha bola pridaná do košíka.');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, CartService $cartService)
     {
         $validated = $request->validate([
             'product_id' => ['required', 'integer'],
@@ -110,10 +120,14 @@ class CartController extends Controller
 
         session()->put('cart', $cart);
 
+        if (Auth::check()) {
+            $cartService->saveSessionCartForUser(Auth::user(), $cart);
+        }
+
         return redirect()->route('cart.index');
     }
 
-    public function remove(Request $request)
+    public function remove(Request $request, CartService $cartService)
     {
         $validated = $request->validate([
             'product_id' => ['required', 'integer'],
@@ -125,6 +139,10 @@ class CartController extends Controller
         if (isset($cart[$productId])) {
             unset($cart[$productId]);
             session()->put('cart', $cart);
+        }
+
+        if (Auth::check()) {
+            $cartService->saveSessionCartForUser(Auth::user(), $cart);
         }
 
         return redirect()->route('cart.index')->with('success', 'Položka bola odstránená z košíka.');

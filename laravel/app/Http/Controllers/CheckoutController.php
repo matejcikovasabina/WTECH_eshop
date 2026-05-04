@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Address;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -216,6 +217,10 @@ class CheckoutController extends Controller
 
         session()->forget('cart');
         session()->forget('checkout');
+
+        if (Auth::check()) {
+            app(CartService::class)->clearDatabaseCart(Auth::user());
+        }
 
         return redirect()->route('cart.index')->with('success', 'Objednávka bola úspešne vytvorená.');
     }

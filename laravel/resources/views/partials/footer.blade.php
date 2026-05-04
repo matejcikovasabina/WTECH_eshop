@@ -9,8 +9,8 @@
             <div class="footer-col">
                 <h5>Rýchle odkazy</h5>
                 <ul>
-                    <li><a href="#">Novinky</a></li>
-                    <li><a href="#">Knihy</a></li>
+                    <li><a href="{{ route('products.new') }}">Novinky</a></li>
+                    <li><a href="{{ route('products.index') }}">Knihy</a></li>
                     <li><a href="#">Akcie a zľavy</a></li>
                 </ul>
             </div>

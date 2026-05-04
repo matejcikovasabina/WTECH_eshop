@@ -13,7 +13,7 @@
                         <div class="carousel-caption-custom">
                             <h1>Jarný výpredaj</h1>
                             <p>Získaj zľavy až do <strong>30 %</strong> na vybrané tituly!</p>
-                            <a href="#" class="btn btn-primary btn-lg">Nakupovať teraz</a>
+                            <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg">Nakupovať teraz</a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                         <div class="carousel-caption-custom">
                             <h1>Darčekové poukážky</h1>
                             <p>Nevieš si vybrať? Poteš svojich blízkych slobodou výberu.</p>
-                            <a href="#" class="btn btn-outline-light btn-lg">Pozrieť poukážky</a>
+                            <a href="{{ route('giftcards.index') }}" class="btn btn-outline-light btn-lg">Pozrieť poukážky</a>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         <div class="carousel-caption-custom">
                             <h1>Doplnky ku knihám</h1>
                             <p>Záložky, lampičky na čítanie a štýlové obaly, ktoré si zamiluješ.</p>
-                            <a href="#" class="btn btn-primary btn-lg">Chcem doplnky</a>
+                            <a href="{{ route('accessories.index') }}" class="btn btn-primary btn-lg">Chcem doplnky</a>
                         </div>
                     </div>
                 </div>

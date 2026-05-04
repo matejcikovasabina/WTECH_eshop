@@ -234,7 +234,7 @@ class BookSeeder extends Seeder
                 'isbn' => '9788055601246',
                 'price' => 9.90,
                 'stock_count' => 40,
-                'year' => 2022,
+                'year' => 2026,
                 'pages_num' => 112,
                 'weight' => 0.20,
                 'width' => 12.00,
@@ -414,7 +414,7 @@ class BookSeeder extends Seeder
                 'isbn' => '9788022205678',
                 'price' => 12.50,
                 'stock_count' => 18,
-                'year' => 2019,
+                'year' => 2016,
                 'pages_num' => 256,
                 'weight' => 0.32,
                 'width' => 13.50,
@@ -576,13 +576,103 @@ class BookSeeder extends Seeder
                 'isbn' => '9788055601264',
                 'price' => 7.90,
                 'stock_count' => 50,
-                'year' => 2023,
+                'year' => 2026,
                 'pages_num' => 368,
                 'weight' => 0.00,
                 'width' => 0.00,
                 'height' => 0.00,
                 'depth' => 0.00,
                 'images' => ['images/books/dvadsattisic_mil.webp'],
+            ],
+            [
+                'name' => 'Čísla neklamú',
+                'author' => ['Vaclav', 'Smil'],
+                'category' => 'História',
+                'language' => 'Čeština',
+                'publisher' => 'Slovart',
+                'binding' => 'Pevná väzba',
+                'isbn' => '9788055601306',
+                'price' => 21.90,
+                'stock_count' => 11,
+                'year' => 2026,
+                'pages_num' => 416,
+                'weight' => 0.72,
+                'width' => 16.00,
+                'height' => 23.00,
+                'depth' => 3.10,
+                'images' => ['images/books/cislaneklamu.webp'],
+            ],
+            [
+                'name' => 'Stopom až na koniec sveta',
+                'author' => ['Peter', 'Hlad'],
+                'category' => 'Psychológia',
+                'language' => 'Slovenčina',
+                'publisher' => 'Tatran',
+                'binding' => 'Brožovaná väzba',
+                'isbn' => '9788055601307',
+                'price' => 13.80,
+                'stock_count' => 23,
+                'year' => 2026,
+                'pages_num' => 248,
+                'weight' => 0.33,
+                'width' => 13.50,
+                'height' => 20.50,
+                'depth' => 1.90,
+                'images' => ['images/books/stopom.webp'],
+            ],
+            [
+                'name' => 'Strieborná elita',
+                'author' => ['Dani', 'Francis'],
+                'category' => 'Trilery a horory',
+                'language' => 'Slovenčina',
+                'publisher' => 'Albatros Media',
+                'binding' => 'Pevná väzba',
+                'isbn' => '9788055601308',
+                'price' => 19.90,
+                'stock_count' => 19,
+                'year' => 2026,
+                'pages_num' => 192,
+                'weight' => 0.66,
+                'width' => 18.00,
+                'height' => 24.00,
+                'depth' => 2.00,
+                'images' => ['images/books/elita.webp'],
+            ],
+            [
+                'name' => 'Lordi bolesti',
+                'author' => ['Angel', 'Lawson'],
+                'category' => 'Trilery a horory',
+                'language' => 'Čeština',
+                'publisher' => 'Slovart',
+                'binding' => 'Brožovaná väzba',
+                'isbn' => '9788055601309',
+                'price' => 12.90,
+                'stock_count' => 15,
+                'year' => 2026,
+                'pages_num' => 276,
+                'weight' => 0.39,
+                'width' => 13.50,
+                'height' => 20.50,
+                'depth' => 2.00,
+                'images' => ['images/books/lordibolesti.webp'],
+            ],
+            [
+                'name' => 'Nebojácna',
+                'author' => ['Lauren', 'Roberts'],
+                'category' => 'Trilery a horory',
+                'language' => 'Slovenčina',
+                'publisher' => 'Tatran',
+                'binding' => 'Pevná väzba',
+                'isbn' => '9788055601310',
+                'price' => 18.60,
+                'stock_count' => 17,
+                'year' => 2026,
+                'pages_num' => 340,
+                'weight' => 0.58,
+                'width' => 15.00,
+                'height' => 22.00,
+                'depth' => 2.70,
+                'images' => ['images/books/nebojacna.webp'],
             ],
         ];
 
@@ -591,15 +681,17 @@ class BookSeeder extends Seeder
                 ->where('last_name', $data['author'][1])
                 ->firstOrFail();
 
-            $product = Product::updateOrCreate(
-                ['name' => $data['name']],
-                [
-                    'type' => 'book',
-                    'price' => $data['price'],
-                    'stock_count' => $data['stock_count'],
-                    'category_id' => $categories[$data['category']]->id,
-                ]
-            );
+            $existingBook = Book::where('isbn', $data['isbn'])->first();
+            $product = $existingBook?->product ?? Product::firstOrNew(['name' => $data['name']]);
+
+            $product->fill([
+                'name' => $data['name'],
+                'type' => 'book',
+                'price' => $data['price'],
+                'stock_count' => $data['stock_count'],
+                'category_id' => $categories[$data['category']]->id,
+            ]);
+            $product->save();
 
             $book = Book::updateOrCreate(
                 ['product_id' => $product->id],
@@ -617,7 +709,7 @@ class BookSeeder extends Seeder
                 ]
             );
 
-            $book->authors()->syncWithoutDetaching([$author->id]);
+            $book->authors()->sync([$author->id]);
 
             ProductImage::where('product_id', $product->id)->delete();
 

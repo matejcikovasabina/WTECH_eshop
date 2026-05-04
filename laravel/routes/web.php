@@ -10,6 +10,7 @@ use App\Http\Controllers\GiftcardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
+use App\Services\CartService;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -50,11 +51,19 @@ Route::get('/cart/summary', [CheckoutController::class, 'summary'])
     ->name('cart.summary');
 
 
+Route::get('/novinky', [ProductController::class, 'newArrivals'])
+    ->name('products.new');
+
+
 Route::post('/cart/order', [CheckoutController::class, 'placeOrder'])
     ->name('checkout.placeOrder')
     ->middleware('auth');
 
     Route::get('/clear-cart', function () {
+        if (auth()->check()) {
+            app(CartService::class)->clearDatabaseCart(auth()->user());
+        }
+
         session()->forget('cart');
         return redirect()->route('cart.index');
     });
@@ -111,6 +120,5 @@ Route::prefix('admin/products')->name('admin.products.')->group(function () {
 
 
 require __DIR__.'/settings.php';
-
 
 

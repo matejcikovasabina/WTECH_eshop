@@ -8,11 +8,15 @@
             <span>&gt;</span>
 
             @if($type === 'book')
-                <a href="{{ route('products.index') }}">Knihy</a>
-                @if(request('category'))
+                @if(isset($isNew) && $isNew)
+                    <span class="active">Novinky</span>
+                @else
+                    <a href="{{ route('products.index') }}">Knihy</a>
+                @endif
+                @if(!(isset($isNew) && $isNew) && request('category'))
                     <span>&gt;</span>
                     <span>{{ $mainCategories->where('id', request('category'))->first()?->name ?? ($currentMainCategory->name ?? 'Všetky knihy') }}</span>
-                @else
+                @elseif(!(isset($isNew) && $isNew))
                     <span>&gt;</span>
                     <span>Všetky knihy</span>
                 @endif
@@ -30,7 +34,7 @@
                     <hr>
 
                     @if($type === 'book')
-                        <form action="{{ route('products.index') }}" method="GET" id="filter-form">
+                        <form action="{{ isset($isNew) && $isNew ? route('products.new') : route('products.index') }}" method="GET" id="filter-form">
                             @if(request('category'))
                                 <input type="hidden" name="category" value="{{ request('category') }}">
                             @endif
@@ -205,7 +209,9 @@
 
                 <section class="main-content">
                     @if($type === 'book')
-                        <h2 class="mb-3">{{ $currentMainCategory->name ?? 'Všetky knihy' }}</h2>
+                    <h2 class="mb-3">
+                        {{ isset($isNew) && $isNew ? 'Novinky' : ($currentMainCategory->name ?? 'Všetky knihy') }}
+                    </h2>
 
                         @if(isset($subCategories) && $subCategories->count() > 0)
                             <div class="category-filters mb-4">
@@ -213,7 +219,7 @@
                                     @if(isset($currentMainCategory))
                                         <li class="nav-item">
                                             <a class="nav-link {{ request('category') == $currentMainCategory->id ? 'active' : '' }}"
-                                               href="{{ route('products.index', array_merge(request()->except('page'), ['category' => $currentMainCategory->id])) }}">
+                                               href="{{ route(isset($isNew) && $isNew ? 'products.new' : 'products.index', array_merge(request()->except('page'), ['category' => $currentMainCategory->id])) }}">
                                                 Všetko
                                             </a>
                                         </li>
@@ -222,7 +228,7 @@
                                     @foreach($subCategories as $sub)
                                         <li class="nav-item">
                                             <a class="nav-link {{ request('category') == $sub->id ? 'active' : '' }}"
-                                               href="{{ route('products.index', array_merge(request()->except('page'), ['category' => $sub->id])) }}">
+                                               href="{{ route(isset($isNew) && $isNew ? 'products.new' : 'products.index', array_merge(request()->except('page'), ['category' => $sub->id])) }}">
                                                 {{ $sub->name }}
                                             </a>
                                         </li>
@@ -235,7 +241,7 @@
                     <div class="sortby-bar">
                         <h5>
                             @if($type === 'book')
-                                {{ $currentMainCategory->name ?? 'Všetky knihy' }}
+                                {{ isset($isNew) && $isNew ? 'Novinky' : ($currentMainCategory->name ?? 'Všetky knihy') }}
                             @elseif($type === 'giftcard')
                                 Darčekové poukážky
                             @else
@@ -360,9 +366,20 @@
                                                 {{ number_format($product->price ?? 0, 2, ',', ' ') }} €
                                             </span>
 
-                                            <button class="btn btn-dark btn-sm" type="button" onclick="addToCart({{ $product->id }})">
-                                                Košík
-                                            </button>
+                                            @if($type === 'book' && ($product->stock_count ?? 0) > 0)
+                                                <form action="{{ route('cart.add') }}" method="POST" class="m-0">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <button class="btn btn-dark btn-sm" type="submit">
+                                                        Košík
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <button class="btn btn-dark btn-sm" type="button" disabled>
+                                                    Košík
+                                                </button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

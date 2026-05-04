@@ -407,4 +407,123 @@ class ProductController extends Controller
             return back()->withErrors(['error' => 'Chyba pri ukladaní: ' . $e->getMessage()])->withInput();
         }
     }
+
+    public function newArrivals(Request $request)
+    {
+        $type = 'book';
+        $isNew = true;
+
+        $rootKnihy = Category::where('name', 'Knihy')->first();
+        $mainCategories = $rootKnihy ? $rootKnihy->children : collect();
+        $latestBookYear = Book::max('year');
+
+        $products = Product::with([
+            'book.authors',
+            'book.language',
+            'book.publisher',
+            'book.binding',
+            'images'
+        ])
+        ->whereHas('book', function ($query) use ($latestBookYear) {
+            if ($latestBookYear) {
+                $query->where('year', $latestBookYear);
+            }
+        });
+
+        $currentMainCategory = null;
+        $subCategories = collect();
+
+        if ($latestBookYear === null) {
+            $products->whereRaw('1 = 0');
+        }
+
+        if ($request->filled('category')) {
+            $selectedCat = Category::with('parent')->find($request->category);
+
+            if ($selectedCat && $rootKnihy) {
+                if ($selectedCat->category_id == $rootKnihy->id) {
+                    $currentMainCategory = $selectedCat;
+                    $subCategories = $selectedCat->children;
+
+                    $ids = $subCategories->pluck('id')->push($selectedCat->id);
+                    $products->whereIn('category_id', $ids);
+                } else {
+                    $currentMainCategory = $selectedCat->parent;
+                    $subCategories = $currentMainCategory ? $currentMainCategory->children : collect();
+
+                    $products->where('category_id', $selectedCat->id);
+                }
+            }
+        }
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+
+            $products->where(function ($q) use ($search) {
+                $q->whereRaw("unaccent(name) ILIKE unaccent(?)", ["%{$search}%"])
+                  ->orWhereHas('book.authors', function ($authorQuery) use ($search) {
+                      $authorQuery->whereRaw(
+                          "unaccent(first_name || ' ' || last_name) ILIKE unaccent(?)",
+                          ["%{$search}%"]
+                      );
+                  });
+            });
+        }
+
+        if ($request->filled('language')) {
+            $products->whereHas('book.language', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->language);
+            });
+        }
+
+        if ($request->filled('publisher')) {
+            $products->whereHas('book.publisher', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->publisher);
+            });
+        }
+
+        if ($request->filled('cover_type')) {
+            $products->whereHas('book.binding', function ($q) use ($request) {
+                $q->whereIn('name', (array) $request->cover_type);
+            });
+        }
+
+        if ($request->has('in_stock')) {
+            $products->where('stock_count', '>', 0);
+        }
+
+        if ($request->has('bestsellers')) {
+            $products->whereHas('book', function ($q) {
+                $q->where('is_bestseller', true);
+            });
+        }
+
+        $sort = $request->get('sort', 'newest');
+
+        switch ($sort) {
+            case 'cheapest':
+                $products->orderBy('price', 'asc');
+                break;
+
+            case 'most_expensive':
+                $products->orderBy('price', 'desc');
+                break;
+
+            case 'newest':
+            default:
+                $products->orderByDesc('id');
+                break;
+        }
+
+        $products = $products->paginate(12)->withQueryString();
+
+        return view('products.index', compact(
+            'products',
+            'type',
+            'isNew',
+            'mainCategories',
+            'currentMainCategory',
+            'subCategories'
+        ));
+    }
 }

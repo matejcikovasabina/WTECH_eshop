@@ -12,7 +12,7 @@
 
         <div class="nav-content" id="navContent">
             <ul class="nav">    
-                <li class="nav-item"><a class="nav-link" href="#">Novinky</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('products.new') }}">Novinky</a></li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
