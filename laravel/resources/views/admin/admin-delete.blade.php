@@ -6,7 +6,7 @@
     <h1 class="section-title">Vymazať produkt</h1>
 
     {{-- 1. VYHLADAVACIA CAST --}}
-    <form action="{{ route('admin.products.delete_search') }}" method="GET">
+    <form action="{{ route('admin.products.delete-page') }}" method="GET">
         <div class="form-grid">
             <div class="form-group full-width">
                 <label for="hladat">Názov knihy na vymazanie</label>
@@ -64,7 +64,7 @@
                         Áno, vymazať produkt
                     </button>
                 </form>
-                <a href="{{ route('admin.products.delete_search') }}" class="btn-dark-custom">Zrušiť</a>
+                <a href="{{ route('admin.products.delete-page') }}" class="btn-dark-custom">Zrušiť</a>
             </div>
         </div>
     @elseif(request('query'))
