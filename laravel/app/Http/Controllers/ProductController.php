@@ -107,7 +107,9 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'stock_count' => 'required|integer',
             'description' => 'required|string',
-            'images.*' => 'nullable|image|max:2048'
+            'images.*' => 'nullable|image|max:2048',
+            'value' => 'required_if:type,giftcard|nullable|numeric',
+            'code' => 'required_if:type,giftcard|nullable|string|unique:giftcards,code',
         ]);
 
         try {
@@ -169,6 +171,12 @@ class ProductController extends Controller
                     'product_id' => $product->id,
                     'value' => $request->value,
                     'code' => $request->code,
+                    'expires_at' => now()->addYear(),
+                ]);
+            }
+            elseif ($request->type === 'accessory') {
+                DB::table('accessories')->insert([
+                    'product_id' => $product->id,
                 ]);
             }
 

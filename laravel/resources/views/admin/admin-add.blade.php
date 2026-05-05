@@ -66,7 +66,7 @@
                 <div class="form-grid" style="margin-top: 0;">
                     <div class="form-group full-width">
                         <label for="authors_text">Autori (oddeľte čiarkou) *</label>
-                        <input type="text" id="authors_text" name="authors_raw" value="{{ old('authors_raw') }}" placeholder="Meno Priezvisko, Iný Autor, ..." required>
+                        <input type="text" id="authors_text" name="authors_raw" value="{{ old('authors_raw') }}" placeholder="Meno Priezvisko, Iný Autor, ...">
                         <small class="text-muted">Príklad: Pavol Dobšinský, J.K. Rowling</small>
                     </div>
                     <div class="form-group">
