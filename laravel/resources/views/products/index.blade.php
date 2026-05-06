@@ -155,36 +155,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <hr>
-
-                            <div class="filter-section">
-                                <div class="form-check">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        name="in_stock" 
-                                        id="skladom-sidebar" 
-                                        onchange="this.form.submit()"
-                                        {{ request('in_stock') ? 'checked' : '' }}
-                                    >
-                                    <label class="form-check-label" for="skladom-sidebar">Iba skladom</label>
-                                </div>
-                            </div>
-
-                            <div class="filter-section mt-2">
-                                <div class="form-check">
-                                    <input 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        name="bestsellers" 
-                                        id="bestseller-sidebar" 
-                                        onchange="this.form.submit()"
-                                        {{ request('bestsellers') ? 'checked' : '' }}
-                                    >
-                                    <label class="form-check-label" for="bestseller-sidebar">Bestsellery</label>
-                                </div>
-                            </div>
+                            
                         </form>
                     @else
                         <form action="{{ url()->current() }}" method="GET" id="filter-form">
@@ -239,15 +210,6 @@
                     @endif
 
                     <div class="sortby-bar">
-                        <h5>
-                            @if($type === 'book')
-                                {{ isset($isNew) && $isNew ? 'Novinky' : ($currentMainCategory->name ?? 'Všetky knihy') }}
-                            @elseif($type === 'giftcard')
-                                Darčekové poukážky
-                            @else
-                                Všetky doplnky
-                            @endif
-                        </h5>
 
                         @if($type === 'book')
                             <div class="form-check ms-3">
