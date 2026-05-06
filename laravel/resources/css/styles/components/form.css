@@ -114,6 +114,34 @@
 .full-width {
   grid-column: 1 / -1;
 }
+
+
+/* na selecty vo forms kde je vyber*/
+.form-grid select {
+  width: 100%;
+  height: 48px;
+  border: 1px solid var(--color-border-input);
+  background-color: #ffffff;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 18px;
+  transition: all 0.25s ease;
+  
+  /* vLASTNA SIPKA V SELECTOCH ODSADEINE */
+  border-right: 16px solid transparent;
+  
+  cursor: pointer;
+  color: #374151;
+}
+
+.form-grid select:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
 /* ----------- RESPONZIVITAA------------- */
 @media (max-width: 900px) {
   .form-grid {
