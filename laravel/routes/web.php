@@ -68,51 +68,23 @@ Route::post('/cart/order', [CheckoutController::class, 'placeOrder'])
         return redirect()->route('cart.index');
     });
 
-
-// Route::get('/admin', function () {
-//     return view('admin.admin-page');
-// })->name('admin.index');
-
-// // Admin skupina
-// Route::prefix('admin')->name('admin.')->group(function () {
-    
-//     Route::get('products/delete-page', [ProductController::class, 'deletePage'])->name('products.delete-page');
-    
-//     Route::resource('products', ProductController::class);
-// });
-
-// // Stránka s vyhľadávaním (tvoj Blade)
-// Route::get('/admin/delete-product', [ProductController::class, 'deleteSearch'])->name('admin.products.delete_search');
-
-// // Samotná akcia zmazania
-// Route::delete('/admin/products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-
-// // Zobrazenie edit stránky s vyhľadávaním
-// Route::get('/admin/products/edit-search', [ProductController::class, 'editSearch'])->name('admin.products.edit_search');
-
-// // Uloženie zmien (PUT/PATCH)
-// Route::put('/admin/products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
-
-
-// ZAKLADNA PLUCHA ADMINA
+// ZAKLADNA PLOCHA ADMINA
 Route::get('/admin', function () {
     return view('admin.admin-page');
 })->name('admin.index');
 
-// Cela admin skupina pre produkty
 Route::prefix('admin/products')->name('admin.products.')->group(function () {
     
-    // 1. SPECIALNE STRANKY
     Route::get('/edit-search', [ProductController::class, 'editSearch'])->name('edit_search');
+    Route::get('/search-edit', [ProductController::class, 'searchAndEdit'])->name('edit_list');
+
     Route::get('/delete-page', [ProductController::class, 'deletePage'])->name('delete-page');
 
-    // 2. KLASICKE STRAnKY
     Route::get('/', [ProductController::class, 'index'])->name('index');
+
     Route::get('/create', [ProductController::class, 'create'])->name('create');
     Route::post('/', [ProductController::class, 'store'])->name('store');
-
-    // 3. STRÁNKY S ID - musia byt posledne
-    Route::get('/{product}', [ProductController::class, 'show'])->name('show');
+    
     Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
     Route::put('/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('destroy');

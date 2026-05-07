@@ -72,13 +72,35 @@ class ProductController extends Controller
     /**
      * ADMIN: Zobrazenie zoznamu produktov na editaciu
      */
-    public function index()
+    public function searchAndEdit() // <--- TU ZMEŇ NÁZOV
     {
-        // Nacitaj vsetky produkty z databazy
+        // Nacitaj vsetky produkty z databazy (tvoj pôvodný kód)
         $products = Product::with('images', 'book', 'category')
             ->paginate(20);
         
         return view('admin.admin-edit', compact('products'));
+    }
+
+    public function index(Request $request)
+    {
+        $query = Product::with(['images', 'book.authors', 'category']);
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhereHas('book', function($b) use ($search) {
+                    $b->where('isbn', 'LIKE', "%{$search}%")
+                        ->orWhereHas('authors', function($a) use ($search) {
+                            $a->where('name', 'LIKE', "%{$search}%");
+                        });
+                });
+            });
+        }
+
+        $products = $query->orderBy('id', 'desc')->paginate(15);
+
+        return view('admin.admin-zoznam', compact('products'));
     }
 
     /**

@@ -124,6 +124,179 @@
     object-fit: cover;
 }
 
+/* zoznam produktov */
+/* kontajner zoznamu */
+.admin-list-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-table-fixed {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* jedlotlivy riadok produktu */
+.product-item {
+    display: flex;
+    align-items: center;
+    background: var(--color-bg-card, #fff);
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.product-item:hover {
+    transform: scale(1.01);
+}
+
+/* fotka produktu */
+.product-img-container {
+    width: 50px;
+    height: 70px;
+    background: #f3f4f6;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+}
+
+.product-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-placeholder {
+    font-size: 10px;
+    color: #9ca3af;
+    font-weight: bold;
+}
+
+/* info */
+.product-info {
+    flex-grow: 1;
+}
+
+.product-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.product-meta {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+.product-price {
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-top: 5px;
+}
+
+/* badges pre typy */
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.badge-book { background: #e0f2fe; color: #0369a1; }
+.badge-giftcard { background: #fef3c7; color: #92400e; }
+.badge-accessory { background: #f3e8ff; color: #7e22ce; }
+
+
+/* BUTTONS PRE AKCIE */
+.product-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* TLACIDLA */
+.btn-add, .btn-edit, .btn-delete, .btn-zrusit{
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* farby pre tlacidla */
+.btn-add {
+    background-color: rgb(213, 230, 190);
+    color: rgb(73, 97, 73);
+}
+
+.btn-add:hover {
+    background-color: rgb(193, 210, 170);
+    color: rgb(73, 97, 73);
+
+}
+
+.btn-edit {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-edit:hover { 
+    background: #e5e7eb; 
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-delete:hover { 
+    background: #fecaca; 
+}
+
+.btn-add:active, .btn-edit:active, .btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Responzivita pre mobily */
+@media (max-width: 768px) {
+    .product-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .product-img { margin: 0 0 15px 0; }
+    .product-actions { margin-top: 15px; width: 100%; justify-content: center; }
+}
+
 
 /* RESPONSIVE (Mobil a tablet - pod sebou) */
 @media (max-width: 900px) {
@@ -179,3 +352,4 @@
         height: 90px;
     }
 }
+

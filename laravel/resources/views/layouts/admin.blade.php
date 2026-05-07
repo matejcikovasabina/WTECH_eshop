@@ -10,13 +10,17 @@
             {{-- SIDEBAR --}}
             <div class="admin-card admin-sidebar">
                 <h2 class="section-title">Admin panel</h2>
+
+                <a href="{{ route('admin.products.index') }}" class="btn-dark-custom mb-2 d-block text-decoration-none">
+                    <i class="bi me-2"></i>Zoznam produktov
+                </a>
                 
                 <a href="{{ route('admin.products.create') }}" class="btn-dark-custom mb-2 d-block text-decoration-none">
                     <i class="bi bi-plus-circle me-2"></i>Pridať produkt
                 </a>
                 
-                <a href="{{ route('admin.products.index') }}" class="btn-dark-custom mb-2 d-block text-decoration-none">
-                    <i class="bi bi-pencil-square me-2"></i>Zoznam a Editácia
+                <a href="{{ route('admin.products.edit_list') }}" class="btn-dark-custom mb-2 d-block text-decoration-none">
+                    <i class="bi bi-pencil-square me-2"></i>Upraviť produkt
                 </a>
                 
                 <a href="{{ route('admin.products.delete-page') }}" class="btn-dark-custom mb-2 d-block text-decoration-none">
