@@ -376,7 +376,7 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
 
-            // 2. Aktualizacia
+            // 2. Aktualizacia základneho produktu
             $product->update([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -387,7 +387,7 @@ class ProductController extends Controller
 
             // 3. Ak je to KNIHA
             if ($product->type === 'book' && $product->book) {
-                $produ základneho produktuct->book->update([
+                $product->book->update([
                     'isbn' => $request->isbn,
                     'language_id' => $request->language_id,
                     'publisher_id' => $request->publisher_id,
