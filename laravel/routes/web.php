@@ -10,6 +10,7 @@ use App\Http\Controllers\GiftcardController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\WishlistController;
 use App\Services\CartService;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -33,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
+    Route::post('/wishlist', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{product}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 });
 
 Route::get('/cart/delivery', [CheckoutController::class, 'delivery'])->name('cart.delivery');
@@ -92,5 +96,4 @@ Route::prefix('admin/products')->name('admin.products.')->group(function () {
 
 
 require __DIR__.'/settings.php';
-
 

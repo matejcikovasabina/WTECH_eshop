@@ -167,6 +167,10 @@
   transform: translateY(-2px);
 }
 
+.wishlist.active {
+  color: #c62828;
+}
+
 .cart-btn,
 .cart-btn-sidebar,
 .review-btn {

@@ -14,6 +14,7 @@ use App\Models\Binding;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -39,6 +40,8 @@ class ProductController extends Controller
         $moreFromAuthor = collect();
         $showAuthorSlider = false;
         $recommended = collect();
+        $isWishlisted = Auth::check()
+            && Auth::user()->wishlistProducts()->where('products.id', $product->id)->exists();
 
         if ($product->book) {
             $authorIds = $product->book->authors->pluck('id');
@@ -65,7 +68,8 @@ class ProductController extends Controller
             'product',
             'moreFromAuthor',
             'showAuthorSlider',
-            'recommended'
+            'recommended',
+            'isWishlisted'
         ));
     }
 

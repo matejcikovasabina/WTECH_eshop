@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Models\Product;
 use App\Services\CartService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,31 +27,32 @@ class CartController extends Controller
     public function add(Request $request, CartService $cartService)
     {
         $validated = $request->validate([
-            'product_id' => ['required', 'integer', 'exists:books,product_id'],
+            'product_id' => ['required', 'integer', 'exists:products,id'],
             'quantity' => ['required', 'integer', 'min:1'],
         ]);
 
-        $book = Book::with(['product.images', 'authors'])
-            ->where('product_id', $validated['product_id'])
-            ->firstOrFail();
+        $product = Product::with(['images', 'book.authors', 'accessory'])
+            ->findOrFail($validated['product_id']);
 
-        $stock = $book->product?->stock_count ?? 0;
+        $stock = $product->stock_count ?? 0;
         $quantityToAdd = $validated['quantity'];
 
         if ($stock <= 0) {
-            return back()->with('error', 'Táto kniha momentálne nie je skladom.');
+            return back()->with('error', 'Tento produkt momentálne nie je skladom.');
         }
 
         $cart = session()->get('cart', []);
-        $productId = $book->product_id;
+        $productId = $product->id;
 
-        $authorName = $book->authors->pluck('full_name')->implode(', ');
-        if (empty($authorName)) {
-            $authorName = 'Neznámy autor';
-        }
-
-        $firstImage = $book->product?->images?->first();
-        $imagePath = $firstImage?->image_path ?? 'images/no-image.webp';
+        $productInfo = match ($product->type) {
+            'book' => $product->book?->authors?->pluck('full_name')->implode(', ') ?: 'Neznámy autor',
+            'giftcard' => 'Darčeková poukážka',
+            'accessory' => 'Knižný doplnok',
+            default => 'Produkt',
+        };
+        $imagePath = $product->images?->first()?->image_path
+            ?? $product->accessory?->image_path
+            ?? 'images/no-image.webp';
 
         if (isset($cart[$productId])) {
             $newQuantity = $cart[$productId]['quantity'] + $quantityToAdd;
@@ -69,10 +70,10 @@ class CartController extends Controller
             }
 
             $cart[$productId] = [
-                'product_id' => $book->product_id,
-                'name' => $book->product?->name ?? 'Bez názvu',
-                'author' => $authorName,
-                'price' => $book->product?->price ?? 0,
+                'product_id' => $product->id,
+                'name' => $product->name ?? 'Bez názvu',
+                'author' => $productInfo,
+                'price' => $product->price ?? 0,
                 'image_path' => $imagePath,
                 'quantity' => $quantityToAdd,
                 'stock_count' => $stock,
@@ -85,7 +86,7 @@ class CartController extends Controller
             $cartService->saveSessionCartForUser(Auth::user(), $cart);
         }
 
-        return redirect()->route('cart.index')->with('success', 'Kniha bola pridaná do košíka.');
+        return redirect()->route('cart.index')->with('success', 'Produkt bol pridaný do košíka.');
     }
 
     public function update(Request $request, CartService $cartService)

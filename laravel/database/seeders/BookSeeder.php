@@ -41,6 +41,10 @@ class BookSeeder extends Seeder
                 'height' => 21.00,
                 'depth' => 2.50,
                 'images' => ['images/books/hobbit.webp'],
+                'description' => 'Jedno z najslávnejších diel svetovej literatúry, určené čitateľom všetkých vekových kategórií.
+
+                Hobbiti sú pokojamilovní ľudkovia, žijúci v útulných jaskynkách. Sú menší ako trpaslíci, svojími vlastnosťami pripomínajú ľudí, no ich svet je rozprávkový. Dobrodružné rozprávanie o hrdinstve a statočnosti, v ktorom napokon víťazí dobro nad zlom.
+                Dotlač nového, nezmeneného vydania prekladu Viktora Krupu.',
             ],
             [
                 'name' => 'Pán prsteňov: Spoločenstvo prsteňa',
@@ -59,6 +63,9 @@ class BookSeeder extends Seeder
                 'height' => 21.50,
                 'depth' => 3.20,
                 'images' => ['images/books/pp_prsten.webp'],
+                'description' => 'Tento príbeh narastal pri rozprávaní, až sa stal dejinami Veľkej vojny o Prsteň a obsahuje mnoho pohľadov do ešte starodávnejších dejín, ktoré mu predchádzali - napísal v predslove k druhému vydaniu J. R. R. Tolkien o tejto vari najznámejšej knižnej trilógii minulého storočia. Čarovný svet elfov a hobitov je paralelným svetom ""veľkých ľudí"". Jeho hlavnou témou je Prsteň ako ohnivko, ktoré ho púta k Hobitovi. Proti akýmkoľvek alegóriám sa autor bránil a všetky možné posolstvá a vnútorné významy spájané s jeho knihou sa mu zo srdca protivili. Preto je túto knihu potrebné chápať ako najobľúbenejšie dejiny pradávneho veku a nijako inak. Knihu preložil Otakar Kořínek.
+
+                Všetkým filmovým fanúšikom dávame do pozornosti aj film na DVD s názvom Pán prsteňov: Spoločenstvo prsteňa, ktorý bol natočený podľa tohto titulu.',
             ],
             [
                 'name' => 'Pán prsteňov: Dve veže',
@@ -77,6 +84,7 @@ class BookSeeder extends Seeder
                 'height' => 21.50,
                 'depth' => 3.30,
                 'images' => ['images/books/pp_veze.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Pán prsteňov: Návrat kráľa',
@@ -95,6 +103,7 @@ class BookSeeder extends Seeder
                 'height' => 21.50,
                 'depth' => 3.40,
                 'images' => ['images/books/pp_navrat.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Harry Potter a Kameň mudrcov',
@@ -113,6 +122,7 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 2.20,
                 'images' => ['images/books/hp_mudrc.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Harry Potter a Väzeň z Azkabanu',
@@ -131,6 +141,9 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 2.50,
                 'images' => ['images/books/hp_vazen.webp'],
+                'description' => 'Keď v tme s treskotom pristane pri Harrym Rytiersky autobus, začne sa tým preňho ďalší školský rok, ktorý ani zďaleka nie je obyčajný. Sirius Black, šialený zločinec a prívrženec lorda Voldemorta, je na úteku a údajne ide práve po Harrym. Profesorka Trelawneyová na prvej Harryho hodine veštenia vidí v jeho čajových lístkoch znamenie smrti. Zo všetkého najstrašnejší sú však asi dementori, ktorí strážia školský areál a svojím bozkom vysávajú duše...
+
+Vďaka nádherným plnofarebným ilustráciám a jedinečným interaktívnym prvkom z dielne grafického štúdia MinaLima bude toto originálne vydanie tretieho pokračovania kníh o Harrym Potterovi ozdobou knižnice všetkých čitateľov a fanúšikov.',
             ],
             [
                 'name' => 'Zaklínač: Posledné želanie',
@@ -149,6 +162,7 @@ class BookSeeder extends Seeder
                 'height' => 20.80,
                 'depth' => 2.00,
                 'images' => ['images/books/zaklinac_posledne_zelanie.webp'],
+                'description' => 'Blyskáča posadne mocný džin oslobodený z fľaše. Geralt sa preto vydáva do mesta Rinda, kde prosí o pomoc čarodejnicu Yennefer. Tá síce Blyskáča vylieči, ale zároveň očaruje Geralta a s jeho pomocou sa pomstí ľuďom v meste. Yennefer chce džina znova vyvolať a chytiť ho, lenže to sa jej nepodarí, pretože Geraltovi splnil iba dve priania a nemôže odísť, kým nesplní aj to tretie.',
             ],
             [
                 'name' => 'Zaklínač: Meč osudu',
@@ -167,6 +181,7 @@ class BookSeeder extends Seeder
                 'height' => 20.80,
                 'depth' => 2.10,
                 'images' => ['images/books/zaklinac_mec_osudu.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Letopisy Narnie',
@@ -185,6 +200,7 @@ class BookSeeder extends Seeder
                 'height' => 22.50,
                 'depth' => 4.50,
                 'images' => ['images/books/letopisy.webp'],
+                'description' => '',
 
             ],
             [
@@ -204,7 +220,7 @@ class BookSeeder extends Seeder
                 'height' => 19.80,
                 'depth' => 2.40,
                 'images' => ['images/books/pj_blesk.webp'],
-                
+                'description' => 'CHLAPEC - POLOBOH - HRDINA Volám sa Percy Jackson. Až doteraz som si myslel, že som obyčajný chalan, ktorého v najhoršom prípade čaká vyhodenie zo školy… Zistil som však, že môj otec je jeden z hlavných bohov na Olympe, moja učiteľka sa premenila na krvilačnú príšeru a môj najlepší kamarát Grover je satyr! Odrazu na mňa číhajú kadejaké monštrá zo starých gréckych povestí a vládca bohov Zeus ma podozrieva, že som mu ukradol blesk - jeho najmocnejšiu zbraň. Aby som zachránil seba a celé ľudstvo, musím dokázať svoju nevinu a nájsť pravého zlodeja aj ukradnutý blesk. Pomôžeš mi? Bude to však nebezpečné, tak sa potom nesťažuj, že som ťa nevaroval! Prvá časť svetovo úspešnej fantasy série.',
             ],
             [
                 'name' => 'Alchymista',
@@ -223,6 +239,7 @@ class BookSeeder extends Seeder
                 'height' => 19.50,
                 'depth' => 1.40,
                 'images' => ['images/books/alchymista.webp'],
+                'description' => 'Podmanivý román, ktorý očarí jednoduchosťou a múdrosťou, nadchol ľudí na celom svete. Alchymista rozpráva príbeh andalúzskeho pastiera Santiaga, ktorý sa vybral z rodného Španielska do egyptskej púšte hľadať poklad ukrytý v pyramídach. Cestou stretne Cigánku, muža, ktorý sám seba nazýva kráľom, a alchymistu. Všetci mu ukážu smer, no nik netuší, kde sa poklad nachádza ani to, či Santiago zdolá všetky prekážky. Hľadanie svetského pokladu sa napokon zmení na objav pokladu vo vlastnom vnútri. Svieži, pútavý, no najmä hlboko ľudský príbeh Santiaga predstavuje večné svedectvo o sile snov meniť všetko navôkol a o dôležitosti načúvania svojmu srdcu.',
             ],
             [
                 'name' => 'Malý princ',
@@ -241,6 +258,10 @@ class BookSeeder extends Seeder
                 'height' => 18.00,
                 'depth' => 1.20,
                 'images' => ['images/books/maly_princ.webp'],
+                'description' => '„Dobre vidíme iba srdcom. To hlavné je očiam neviditeľné.“
+
+Pôvabná knižka nielen pre deti, ale pre všetkých, ktorí chcú deťom porozumieť. Toto dielko dosiahlo svetový úspech a dnes patrí do základného fondu svetovej literatúry. Jeho hodnota a krása nespočíva len v peknom rozprávkovom príbehu, ale hlavne v myšlienkach, ktoré ako vzácne kamienky vytvárajú obraz tých najkrajších ľudských vlastností...
+Knižka vychádza v novom preklade.',
             ],
             [
                 'name' => 'Pýcha a predsudok',
@@ -259,6 +280,7 @@ class BookSeeder extends Seeder
                 'height' => 20.00,
                 'depth' => 2.00,
                 'images' => ['images/books/pycha_predsudok.webp'],
+                'description' => 'Od veľkého nečakaného úspechu prvého knižného vydania v roku 1813 sa dielo Pýcha a predsudok stalo populárnym po celom svete a očarilo milióny čitateľov. Autorka Jane Austen nazvala román „svojím drahým dieťaťom“ a jeho hrdinku Elizabeth „najrozkošnejším stvorením, aké sa kedy v knihách objavilo“. Ľúbostné peripetie medzi nezávislou slečnou Bennetovou a hrdým pánom Darcym sú skvostnou ukážkou dvorenia a spoločenských pomerov na začiatku 19. storočia. Hrdinovia románu na jeho stránkach roztancujú delikátnu štvorylku plnú flirtovania, pôvabu a dôvtipu, ktorá poteší a pobaví nielen priaznivcov románovej tvorby regentského obdobia v Anglicku. K slovenskému čitateľovi sa kniha dostáva v novom preklade.',
             ],
             [
                 'name' => 'Jane Eyrová',
@@ -277,6 +299,10 @@ class BookSeeder extends Seeder
                 'height' => 21.00,
                 'depth' => 2.80,
                 'images' => ['images/books/jane_eyre.webp'],
+                'description' => 'Sirota Jane Eyrová nemala ľahké detstvo. V Lowoodskej škole pre chudobné dievčatá a pod vplyvom svojej nevľúdnej tety okúsila trpkú osamelosť i krutosť. To však len posilnilo jej odhodlanie nájsť v živote šťastie a vlastnú cestu. Mohla by to dokázať vďaka práci guvernantky, ktorú získala v sídle Thornfield.
+Majiteľ sídla a Janin zamestnávateľ, zádumčivý a svojrázny pán Rochester, je charizmatický muž a zdá sa, že ani Jane mu nie je ľahostajná. Múry sídla však ukrývajú temné tajomstvo, ktoré Janine nežné city podrobí skúške. Rozhodne sa ostať v Thornfielde a čeliť následkom alebo poslúchne svoje presvedčenie, hoci to znamená opustiť milovaného muža?
+
+Čiastočne autobiografický román je kritikou viktoriánskej spoločnosti a zároveň zobrazuje osudovú lásku klasického gotického príbehu doplnením nových realistických motívov.',
             ],
             [
                 'name' => 'Búrlivé výšiny',
@@ -295,6 +321,7 @@ class BookSeeder extends Seeder
                 'height' => 20.00,
                 'depth' => 1.90,
                 'images' => ['images/books/burlive_vysiny.webp'],
+                'description' => 'Pán Lockwood, nový nájomník usadlosti Drozdovo, nachádza v nehostinných vresoviskách yorkshirského panstva pokoj od ruchu spoločnosti. Jednej noci je nútený vyhľadať prístrešok v neďalekom sídle Búrlivé výšiny. Tam sa dozvedá o dramatických udalostiach z minulosti, o vášnivom vzťahu siroty Heathcliffa a Catherine Earnshawovej, dcéry pána domu, ktorá pred láskou uprednostnila spoločenské očakávania. Zatrpknutý Heathcliff je po zrade odhodlaný pomstiť sa nasledujúcej generácii a prinútiť nevinných dedičov čeliť osudnej minulosti.',
             ],
             [
                 'name' => 'Na vine sú hviezdy',
@@ -313,6 +340,7 @@ class BookSeeder extends Seeder
                 'height' => 20.00,
                 'depth' => 1.80,
                 'images' => ['images/books/hviezdy_vino.webp'],
+                'description' => 'Odkedy Hazel v trinástich rokoch diagnostikovali rakovinu štítnej žľazy v štvrtom štádiu, pripravovala sa na vlastnú smrť. Potom sa stal medicínsky zázrak a metastázy v pľúcach sa jej zmenšili. Odvtedy nechodí do školy, nemá priateľov a nevie, ako vyzerá normálny život. Je hadičkami pripútaná ku kyslíkovej fľaši a užíva silné lieky, aby sa nádory nerozširovali. Na nenávidenom stretnutí podpornej skupiny pre pacientov s rakovinou však spozná Augusta Watersa. Mladík má štýl, chorobu na ústupe a oči len pre ňu. S ním začne objavovať dosiaľ nepoznaný svet lásky na pomedzí života a smrti.',
             ],
             [
                 'name' => 'Chlapec v pásikavom pyžame',
@@ -331,6 +359,7 @@ class BookSeeder extends Seeder
                 'height' => 19.70,
                 'depth' => 1.50,
                 'images' => ['images/books/chlapec_pyzamo.webp'],
+                'description' => 'Jedného dňa sa Bruno vráti zo školy a nájde pobalené všetky veci. Jeho otec dostal nové miesto a rodina sa s ním musí odsťahovať ďaleko na zvláštne miesto, kde nemá čo robiť, kde sa nemá s kým hrať. Kam len oko dovidí sa tiahne plot, ktorý ho oddeľuje od čudných ľudí. Bruno je však prieskumník a nezmieri sa s tým, čo vidí. Pri prieskumných cestách pozdĺž plota stretne chlapca, ktorého život a podmienky sú úplne odlišné od jeho.',
             ],
             [
                 'name' => 'The Book Thief',
@@ -349,6 +378,12 @@ class BookSeeder extends Seeder
                 'height' => 19.80,
                 'depth' => 3.00,
                 'images' => ['images/books/book_thief.webp'],
+                'description' => 'HERE IS A SMALL FACT - YOU ARE GOING TO DIE
+
+1939 Nazi Germany. The country is holding its breath. Death has never been busier.
+Liesel, a nine-year-old girl, is living with a foster family on Himmel Street. Her parents have been taken away to a concentration camp. Liesel steals books. This is her story and the story of the inhabitants of her street when the bombs begin to fall.
+
+SOME IMPORTANT INFORMATION - THIS NOVEL IS NARRATED BY DEATH',
             ],
             [
                 'name' => 'The Kite Runner',
@@ -367,6 +402,7 @@ class BookSeeder extends Seeder
                 'height' => 19.80,
                 'depth' => 2.20,
                 'images' => ['images/books/kite_runner.webp'],
+                'description' => '',
             ],
             [
                 'name' => '1984',
@@ -385,6 +421,7 @@ class BookSeeder extends Seeder
                 'height' => 19.80,
                 'depth' => 2.10,
                 'images' => ['images/books/1984.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Zvieracia farma',
@@ -403,6 +440,7 @@ class BookSeeder extends Seeder
                 'height' => 19.50,
                 'depth' => 1.20,
                 'images' => ['images/books/zvieracia_farma.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Vražda v Orient exprese',
@@ -421,6 +459,7 @@ class BookSeeder extends Seeder
                 'height' => 20.00,
                 'depth' => 2.00,
                 'images' => ['images/books/vrazda_expres.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Desať malých černoškov',
@@ -439,6 +478,7 @@ class BookSeeder extends Seeder
                 'height' => 20.00,
                 'depth' => 1.90,
                 'images' => ['images/books/desat_cernoskou.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Sherlock Holmes: Štúdia v červenom',
@@ -457,6 +497,7 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 1.50,
                 'images' => ['images/books/sh_studia.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Sherlock Holmes: Pes baskervillský',
@@ -475,6 +516,7 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 1.60,
                 'images' => ['images/books/sh_pes.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Anjeli a démoni',
@@ -493,6 +535,7 @@ class BookSeeder extends Seeder
                 'height' => 20.80,
                 'depth' => 3.10,
                 'images' => ['images/books/anjeli_demoni.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Da Vinciho kód',
@@ -511,6 +554,7 @@ class BookSeeder extends Seeder
                 'height' => 20.80,
                 'depth' => 3.00,
                 'images' => ['images/books/davinciho_kod.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Meno ruže',
@@ -529,6 +573,7 @@ class BookSeeder extends Seeder
                 'height' => 21.20,
                 'depth' => 3.40,
                 'images' => ['images/books/meno_ruze.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Dracula',
@@ -547,6 +592,7 @@ class BookSeeder extends Seeder
                 'height' => 20.80,
                 'depth' => 2.70,
                 'images' => ['images/books/dracula.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Frankenstein',
@@ -565,6 +611,7 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 1.90,
                 'images' => ['images/books/frankeinstein.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Dvadsaťtisíc míľ pod morom',
@@ -583,6 +630,7 @@ class BookSeeder extends Seeder
                 'height' => 0.00,
                 'depth' => 0.00,
                 'images' => ['images/books/dvadsattisic_mil.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Čísla neklamú',
@@ -601,6 +649,7 @@ class BookSeeder extends Seeder
                 'height' => 23.00,
                 'depth' => 3.10,
                 'images' => ['images/books/cislaneklamu.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Stopom až na koniec sveta',
@@ -619,6 +668,7 @@ class BookSeeder extends Seeder
                 'height' => 20.50,
                 'depth' => 1.90,
                 'images' => ['images/books/stopom.webp'],
+                'description' => '',
             ],
             [
                 'name' => 'Strieborná elita',
@@ -673,6 +723,7 @@ class BookSeeder extends Seeder
                 'height' => 22.00,
                 'depth' => 2.70,
                 'images' => ['images/books/nebojacna.webp'],
+                'description' => '',
             ],
         ];
 
@@ -683,6 +734,9 @@ class BookSeeder extends Seeder
 
             $existingBook = Book::where('isbn', $data['isbn'])->first();
             $product = $existingBook?->product ?? Product::firstOrNew(['name' => $data['name']]);
+            $description = trim($data['description'] ?? '') !== ''
+                ? $data['description']
+                : 'Kniha ' . $data['name'] . ' ponúka pútavé čítanie pre všetkých milovníkov kvalitnej literatúry.';
 
             $product->fill([
                 'name' => $data['name'],
@@ -690,6 +744,7 @@ class BookSeeder extends Seeder
                 'price' => $data['price'],
                 'stock_count' => $data['stock_count'],
                 'category_id' => $categories[$data['category']]->id,
+                'description' => $description,
             ]);
             $product->save();
 
