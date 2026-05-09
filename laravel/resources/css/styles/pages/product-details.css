@@ -38,23 +38,74 @@
   background: #fff;
   border-radius: 1rem;
 }
-
+/* Hlavný obal, ktorý drží obrázok aj miniatúry */
 .product-image {
+    width: 300px;
+    min-width: 300px;
+    height: auto; 
+    background-color: transparent; 
+    display: block; 
+}
+
+/* Obal čisto pre hlavný obrázok a šípky */
+.main-image-container {
   width: 300px;
-  min-width: 300px;
   height: 460px;
-  background-color: var(--color-bg-muted);
+  background-color: transparent;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.product-image .main-product-img {
-  width: 100%;
-  height: 100%;
+/* Sipky pre skip obrazkov */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.slider-arrow.left { 
+  left: 10px; 
+}
+.slider-arrow.right {
+  right: 10px; 
+}
+
+/* mini obrazky pod obrazkom */
+.thumbnail-bar {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.img-thumbnail {
+  width: 60px;
+  height: 80px;
+  border-radius: 8px;
   object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.img-thumbnail:hover {
+  border-color: var(--color-primary);
 }
 
 .product-info {
@@ -241,10 +292,13 @@
 .book-cover {
   width: 120px;
   height: 180px;
-  background-color: var(--color-bg-muted);
+  background-color: transparent;
   margin-bottom: 14px;
   border-radius: 14px;
   overflow: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .book-cover .sidebar-book-img {

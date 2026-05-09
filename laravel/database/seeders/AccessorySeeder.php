@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Product;
 use App\Models\Accessory;
 use Illuminate\Database\Seeder;
-use App\Models\ProductImage; // TOTO PRIDAJ
+use App\Models\ProductImage;
 
 use App\Models\Category;
 

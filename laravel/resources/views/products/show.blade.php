@@ -36,11 +36,36 @@
 
         <div class="product-detail">
             <div class="product-image">
-                <img
-                    src="{{ $mainImage ? asset($mainImage) : asset('images/no-image.webp') }}"
-                    class="main-product-img"
-                    alt="{{ $product->name ?? 'Produkt' }}"
-                >
+                <div class="main-image-container" style="position: relative;">
+                    {{-- zobrazenie sipiek pre viac obrazkov --}}
+                    @if($product->images->count() > 1)
+                        <button class="slider-arrow left" onclick="changeImage(-1)">&#10094;</button>
+                    @endif
+
+                    <img 
+                        id="current-main-img"
+                        src="{{ $mainImage ? asset($mainImage) : asset('images/no-image.webp') }}" 
+                        class="main-product-img" 
+                        alt="{{ $product->name ?? 'Produkt' }}"
+                    >
+
+                    @if($product->images->count() > 1)
+                        <button class="slider-arrow right" onclick="changeImage(1)">&#10095;</button>
+                    @endif
+                </div>
+
+                {{-- nahlad vsetkych obrazkov --}}
+                @if($product->images->count() > 1)
+                    <div class="thumbnail-bar d-flex gap-2 mt-2">
+                        @foreach($product->images as $index => $img)
+                            <img 
+                                src="{{ asset($img->image_path) }}" 
+                                class="img-thumbnail"
+                                onclick="setImage({{ $index }}, '{{ asset($img->image_path) }}')"
+                            >
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
             <div class="product-info">
@@ -332,6 +357,36 @@
                 });
             }
         }
+    }
+
+    // pole vsetkych obrazkov pripravene z php
+    const productImages = @json($product->images->pluck('image_path')->map(fn($path) => asset($path)));
+    let currentIndex = 0;
+
+    function changeImage(direction) {
+        if (productImages.length === 0) return;
+        
+        currentIndex += direction;
+        
+        if (currentIndex >= productImages.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = productImages.length - 1;
+        
+        updateImageDisplay();
+    }
+
+    function setImage(index, path) {
+        currentIndex = index;
+        updateImageDisplay();
+    }
+
+    function updateImageDisplay() {
+        const mainImg = document.getElementById('current-main-img');
+        mainImg.src = productImages[currentIndex];
+        
+        // zvyrazni aktivny nahlad
+        document.querySelectorAll('.img-thumbnail').forEach((thumb, idx) => {
+            thumb.style.opacity = (idx === currentIndex) ? '1' : '0.6';
+        });
     }
 </script>
 @endsection
