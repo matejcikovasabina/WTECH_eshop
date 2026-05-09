@@ -1,13 +1,20 @@
 .wishlist-container {
-    margin-top: 40px;
+    margin-top: 0;
 }
 
 .wishlist-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 18px 14px;
     gap: 30px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wishlist-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 5px 5px var(--shadow-main);
 }
 
 .wishlist-item-main {
@@ -18,8 +25,8 @@
 }
 
 .wishlist-book-cover {
-    width: 60px;
-    height: 80px;
+    width: 70px;
+    height: 92px;
     background-color: var(--color-bg-card);
     border-radius: 4px;
     display: flex;
@@ -36,7 +43,7 @@
 
 .wishlist-book-details .book-title {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--color-black);
 }
@@ -50,7 +57,7 @@
 /* Prava cast - ostatne stlpce*/
 .wishlist-item-columns {
     display: grid;
-    grid-template-columns: 100px 60px 80px 100px; /* rozlozenie sltpcov*/
+    grid-template-columns: 120px 90px 100px 110px;
     gap: 20px;
     align-items: center;
     text-align: right;
@@ -63,7 +70,7 @@
 }
 
 .price-column {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: var(--color-black);
 }
@@ -82,7 +89,7 @@
 .wishlist-divider {
     border: none;
     border-top: 1px solid var(--color-line-dark);
-    margin: 0;
+    margin: 0 0 4px;
 }
 @media (max-width: 1100px) {
     .wishlist-item {

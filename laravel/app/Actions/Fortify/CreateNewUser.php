@@ -31,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'phone' => $input['phone'] ?? null,
             'password' => $input['password'],
             'role_id' => 2,
+            'avatar' => 'avatar1.jpg',
         ]);
     }
 }

@@ -82,7 +82,7 @@
                         @auth
                             <li><a class="dropdown-item" href="{{ route('profile') }}">Profil</a></li>
                             <li><a class="dropdown-item" href="{{route('orders.index')}}">Moje objednávky</a></li>
-                            <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                            <li><a class="dropdown-item" href="{{ route('wishlist.index') }}">Wishlist</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">

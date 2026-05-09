@@ -62,21 +62,19 @@
 
                 @if(!empty($product->subtitle ?? null))
                     <p class="subtitle">{{ $product->subtitle }}</p>
-                @elseif(!empty($product->description))
-                    <p class="subtitle">{{ \Illuminate\Support\Str::limit($product->description, 140, '...') }}</p>
                 @endif
 
                 <p class="description">
-                    {{ $product->description ?? 'Popis produktu nie je dostupný.' }}
+                    {{ $description ?? 'Popis produktu nie je dostupný.' }}
                 </p>
 
                 @if($type === 'book')
                     <p class="meta">
-                        {{ $product->binding?->name ?? 'Neznáma väzba' }}
-                        • {{ $product->language?->name ?? 'Neznámy jazyk' }}
-                        • {{ $product->publisher?->name ?? 'Neznáme vydavateľstvo' }}
-                        @if($product->year)
-                            , {{ $product->year }}
+                        {{ $product->book?->binding?->name ?? 'Neznáma väzba' }}
+                        • {{ $product->book?->language?->name ?? 'Neznámy jazyk' }}
+                        • {{ $product->book?->publisher?->name ?? 'Neznáme vydavateľstvo' }}
+                        @if($product->book?->year)
+                            , {{ $product->book->year }}
                         @endif
                     </p>
                 @endif
@@ -99,27 +97,54 @@
                         </p>
                     </div>
 
-                    <form action="{{ route('cart.add') }}" method="POST" class="actions d-flex align-items-center gap-2">
-                        @csrf
+                    <div class="actions d-flex align-items-center gap-2">
+                        @auth
+                            <form
+                                action="{{ $isWishlisted ? route('wishlist.destroy', $product) : route('wishlist.store') }}"
+                                method="POST"
+                                class="m-0"
+                            >
+                                @csrf
+                                @if($isWishlisted)
+                                    @method('DELETE')
+                                @else
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                @endif
 
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <button
+                                    class="wishlist {{ $isWishlisted ? 'active' : '' }}"
+                                    type="submit"
+                                    aria-label="{{ $isWishlisted ? 'Odstrániť z wishlistu' : 'Pridať do wishlistu' }}"
+                                >
+                                    {{ $isWishlisted ? '♥' : '♡' }}
+                                </button>
+                            </form>
+                        @else
+                            <a class="wishlist d-inline-flex align-items-center justify-content-center text-decoration-none" href="{{ route('login') }}" aria-label="Prihlásiť sa pre wishlist">
+                                ♡
+                            </a>
+                        @endauth
 
-                        <input
-                            type="number"
-                            name="quantity"
-                            min="1"
-                            max="{{ $product->stock_count ?? 1 }}"
-                            value="1"
-                            class="form-control"
-                            style="width: 90px;"
-                        >
+                        <form action="{{ route('cart.add') }}" method="POST" class="d-flex align-items-center gap-2 m-0">
+                            @csrf
 
-                        <button class="wishlist" type="button">♡</button>
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-                        <button class="cart-btn" type="submit">
-                            Vložiť do košíka
-                        </button>
-                    </form>
+                            <input
+                                type="number"
+                                name="quantity"
+                                min="1"
+                                max="{{ $product->stock_count ?? 1 }}"
+                                value="1"
+                                class="form-control"
+                                style="width: 90px;"
+                            >
+
+                            <button class="cart-btn" type="submit">
+                                Vložiť do košíka
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,12 +199,8 @@
                 <section id="popis" class="content-section">
                     <h2>Popis</h2>
 
-                    @if(!empty($product->description))
-                        <p class="short-desc">
-                            {{ \Illuminate\Support\Str::limit($product->description, 80, '...') }}
-                        </p>
-
-                        <p>{{ $product->description }}</p>
+                    @if(!empty($description))
+                        <p>{{ $description }}</p>
                     @else
                         <p>Popis produktu nie je dostupný.</p>
                     @endif

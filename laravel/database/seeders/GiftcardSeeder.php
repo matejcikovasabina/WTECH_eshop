@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use App\Models\ProductImage;
 use App\Models\Category;
 
 class GiftcardSeeder extends Seeder
@@ -26,6 +27,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 10,
                 'expires_at' => Carbon::now()->addMonths(6),
+                'description' => 'Darčeková karta s hodnotou 10 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 15 €',
@@ -35,6 +38,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 15,
                 'expires_at' => Carbon::now()->addMonths(6),
+                'description' => 'Darčeková karta s hodnotou 15 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 20 €',
@@ -44,6 +49,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 20,
                 'expires_at' => Carbon::now()->addMonths(12),
+                'description' => 'Darčeková karta s hodnotou 20 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 25 €',
@@ -53,6 +60,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 25,
                 'expires_at' => Carbon::now()->addMonths(12),
+                'description' => 'Darčeková karta s hodnotou 25 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 30 €',
@@ -62,6 +71,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 30,
                 'expires_at' => Carbon::now()->addYear(),
+                'description' => 'Darčeková karta s hodnotou 30 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 50 €',
@@ -71,6 +82,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 50,
                 'expires_at' => Carbon::now()->addYear(),
+                'description' => 'Darčeková karta s hodnotou 50 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 75 €',
@@ -80,6 +93,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 75,
                 'expires_at' => Carbon::now()->addMonths(18),
+                'description' => 'Darčeková karta s hodnotou 75 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
             [
                 'name' => 'Darčeková karta 100 €',
@@ -89,6 +104,8 @@ class GiftcardSeeder extends Seeder
                 'category_id' => $categoryId,
                 'value' => 100,
                 'expires_at' => Carbon::now()->addYears(2),
+                'description' => 'Darčeková karta s hodnotou 100 €, s ktorou možete nakupovať u nás do expirácie.',
+                'images' => ['images/books/giftcard.webp'],
             ],
         ];
 
@@ -99,6 +116,7 @@ class GiftcardSeeder extends Seeder
                 'price' => $item['price'],
                 'stock_count' => $item['stock_count'],
                 'category_id' => $item['category_id'],
+                'description' => $item['description'],
             ]);
 
             Giftcard::create([
@@ -107,6 +125,15 @@ class GiftcardSeeder extends Seeder
                 'code' => $this->generateUniqueCode(),
                 'expires_at' => $item['expires_at'],
             ]);
+
+            ProductImage::where('product_id', $product->id)->delete();
+
+            foreach ($item['images'] ?? [] as $imagePath) {
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image_path' => $imagePath,
+                ]);
+            }
         }
     }
 

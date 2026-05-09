@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Book;
 use App\Models\Cart;
+use App\Models\Product;
 use App\Models\User;
 
 class CartService
@@ -13,6 +13,7 @@ class CartService
         $cart = Cart::with([
             'items.product.images',
             'items.product.book.authors',
+            'items.product.accessory',
         ])->where('user_id', $user->id)->first();
 
         if (!$cart) {
@@ -23,13 +24,12 @@ class CartService
 
         foreach ($cart->items as $item) {
             $product = $item->product;
-            $book = $product?->book;
 
-            if (!$product || !$book || $product->stock_count <= 0) {
+            if (!$product || $product->stock_count <= 0) {
                 continue;
             }
 
-            $sessionCart[$product->id] = $this->formatSessionItem($book, min($item->quantity, $product->stock_count));
+            $sessionCart[$product->id] = $this->formatSessionItem($product, min($item->quantity, $product->stock_count));
         }
 
         return $sessionCart;
@@ -56,17 +56,16 @@ class CartService
                 $quantity += (int) ($mergedCart[$productId]['quantity'] ?? 1);
             }
 
-            $book = Book::with(['product.images', 'authors'])
-                ->where('product_id', $productId)
-                ->first();
+            $product = Product::with(['images', 'book.authors', 'accessory'])
+                ->find($productId);
 
-            if (!$book || !$book->product || $book->product->stock_count <= 0) {
+            if (!$product || $product->stock_count <= 0) {
                 continue;
             }
 
             $mergedCart[$productId] = $this->formatSessionItem(
-                $book,
-                min($quantity, $book->product->stock_count)
+                $product,
+                min($quantity, $product->stock_count)
             );
         }
 
@@ -84,15 +83,13 @@ class CartService
         foreach ($sessionCart as $productId => $item) {
             $quantity = max(1, (int) ($item['quantity'] ?? 1));
 
-            $book = Book::with('product')
-                ->where('product_id', $productId)
-                ->first();
+            $product = Product::find($productId);
 
-            if (!$book || !$book->product || $book->product->stock_count <= 0) {
+            if (!$product || $product->stock_count <= 0) {
                 continue;
             }
 
-            $quantity = min($quantity, $book->product->stock_count);
+            $quantity = min($quantity, $product->stock_count);
             $keptProductIds[] = (int) $productId;
 
             $cart->items()->updateOrCreate(
@@ -120,20 +117,26 @@ class CartService
         }
     }
 
-    private function formatSessionItem(Book $book, int $quantity): array
+    private function formatSessionItem(Product $product, int $quantity): array
     {
-        $product = $book->product;
-        $authorName = $book->authors->pluck('full_name')->implode(', ') ?: 'Neznámy autor';
-        $imagePath = $product?->images?->first()?->image_path ?? 'images/no-image.webp';
+        $productInfo = match ($product->type) {
+            'book' => $product->book?->authors?->pluck('full_name')->implode(', ') ?: 'Neznámy autor',
+            'giftcard' => 'Darčeková poukážka',
+            'accessory' => 'Knižný doplnok',
+            default => 'Produkt',
+        };
+        $imagePath = $product->images?->first()?->image_path
+            ?? $product->accessory?->image_path
+            ?? 'images/no-image.webp';
 
         return [
-            'product_id' => $book->product_id,
-            'name' => $product?->name ?? 'Bez názvu',
-            'author' => $authorName,
-            'price' => $product?->price ?? 0,
+            'product_id' => $product->id,
+            'name' => $product->name ?? 'Bez názvu',
+            'author' => $productInfo,
+            'price' => $product->price ?? 0,
             'image_path' => $imagePath,
             'quantity' => $quantity,
-            'stock_count' => $product?->stock_count ?? 0,
+            'stock_count' => $product->stock_count ?? 0,
         ];
     }
 }

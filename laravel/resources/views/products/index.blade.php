@@ -328,7 +328,7 @@
                                                 {{ number_format($product->price ?? 0, 2, ',', ' ') }} €
                                             </span>
 
-                                            @if($type === 'book' && ($product->stock_count ?? 0) > 0)
+                                            @if(($product->stock_count ?? 0) > 0)
                                                 <form action="{{ route('cart.add') }}" method="POST" class="m-0">
                                                     @csrf
                                                     <input type="hidden" name="product_id" value="{{ $product->id }}">
