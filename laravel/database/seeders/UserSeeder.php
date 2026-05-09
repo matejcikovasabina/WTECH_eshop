@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Admin',
                 'password' => 'admin1234',
                 'role_id' => $adminRole->id,
+                'avatar' => 'avatar1.jpg',
             ]
         );
 
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'User',
                 'password' => 'user1234',
                 'role_id' => $userRole->id,
+                'avatar' => 'avatar1.jpg',
             ]
         );
     }
