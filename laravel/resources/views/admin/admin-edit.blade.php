@@ -153,7 +153,7 @@
                 </div>
 
                 {{-- OBRAZKY --}}
-                <div class="form-group full-width">
+                <!-- <div class="form-group full-width">
                     <label>Aktuálne fotografie</label>
                     <div class="d-flex gap-2 mb-3">
                         @foreach($product->images as $image)
@@ -163,6 +163,29 @@
                     <label for="e-foto">Nahradiť fotografie (staré sa zmažú)</label>
                     <input type="file" id="e-foto" name="images[]" class="form-control" accept="image/*" multiple>
                 </div>
+            </div> -->
+            <div class="form-group full-width">
+                <label>Aktuálne fotografie (kliknutím na X odstránite konkrétny obrázok)</label>
+                <div class="d-flex flex-wrap gap-3 mb-3">
+                    @foreach($product->images as $image)
+                        <div class="position-relative" id="image-box-{{ $image->id }}" style="width: 80px; height: 100px;">
+                            <img src="{{ asset($image->image_path) }}" 
+                                style="width: 100%; height: 100%; object-fit: cover; border: 1px solid #ddd; border-radius: 4px;">
+                            
+                            {{-- Tlacidlo na vymazanie --}}
+                            <button type="button" 
+                                    onclick="deleteImage({{ $image->id }})"
+                                    class="btn-delete-img"
+                                    style="position: absolute; top: -5px; right: -5px; background: red; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer; line-height: 18px; text-align: center;">
+                                &times;
+                            </button>
+                        </div>
+                    @endforeach
+                </div>
+                
+                <label for="e-foto">Pridať nové fotografie</label>
+                <input type="file" id="e-foto" name="images[]" class="form-control" accept="image/*" multiple>
+                <small class="text-muted">Poznámka: Ak vyberiete nové súbory, nahrajú sa k existujúcim (ak ste ich nezmazali krížikom).</small>
             </div>
 
             <div class="form-actions mt-4">
@@ -192,5 +215,34 @@
         document.addEventListener('DOMContentLoaded', function() {
             toggleSections();
         });
+
+
+        function deleteImage(imageId) {
+            if (confirm('Naozaj chcete fyzicky odstrániť tento obrázok?')) {
+                fetch(`/admin/product-image/${imageId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // odstrani element z obrazovky
+                        const element = document.getElementById(`image-box-${imageId}`);
+                        if (element) element.remove();
+                    } 
+                    else {
+                        alert('Chyba: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Nastala chyba pri odstraňovaní obrázka.');
+                });
+            }
+        }
     </script>
 @endsection

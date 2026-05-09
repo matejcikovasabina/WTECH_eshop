@@ -297,6 +297,27 @@ class ProductController extends Controller
         }
     }
 
+
+    public function deleteImage($id)
+    {
+        $image = \DB::table('products_images')->where('id', $id)->first();
+
+        if ($image) {
+            // 1.fyzicky zmazanie z disku
+            $filePath = public_path($image->image_path);
+            if (\File::exists($filePath)) {
+                \File::delete($filePath);
+            }
+
+            // 2.zmazanie z databazy
+            \DB::table('products_images')->where('id', $id)->delete();
+
+            return response()->json(['success' => true, 'message' => 'Obrázok bol odstránený.']);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Obrázok sa nenašiel.'], 404);
+    }
+
     public function deleteSearch(Request $request)
     {
         $query = $request->input('query');
@@ -355,7 +376,7 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
 
-            // 2. Aktualizacia základneho produktu
+            // 2. Aktualizacia
             $product->update([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -366,7 +387,7 @@ class ProductController extends Controller
 
             // 3. Ak je to KNIHA
             if ($product->type === 'book' && $product->book) {
-                $product->book->update([
+                $produ základneho produktuct->book->update([
                     'isbn' => $request->isbn,
                     'language_id' => $request->language_id,
                     'publisher_id' => $request->publisher_id,
@@ -414,17 +435,17 @@ class ProductController extends Controller
 
             // 5. Obrazky
             if ($request->hasFile('images')) {
-                foreach ($product->images as $img) {
-                    if (File::exists(public_path($img->image_path))) {
-                        File::delete(public_path($img->image_path));
-                    }
-                }
-                $product->images()->delete();
-
+                
                 foreach ($request->file('images') as $image) {
-                    $imageName = time() . '_' . $image->getClientOriginalName();
-                    $image->move(public_path('images/books'), $imageName);
-                    $product->images()->create(['image_path' => 'images/books/' . $imageName]);
+                    if ($image->isValid()) {
+                        $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('images/books'), $imageName);
+                        
+                        // vytvori novy obrazok a prida k existujucim
+                        $product->images()->create([
+                            'image_path' => 'images/books/' . $imageName
+                        ]);
+                    }
                 }
             }
 

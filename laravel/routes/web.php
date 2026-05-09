@@ -73,6 +73,9 @@ Route::get('/admin', function () {
     return view('admin.admin-page');
 })->name('admin.index');
 
+Route::delete('/admin/product-image/{id}', [ProductController::class, 'deleteImage'])->name('admin.images.delete');
+
+
 Route::prefix('admin/products')->name('admin.products.')->group(function () {
     
     Route::get('/edit-search', [ProductController::class, 'editSearch'])->name('edit_search');
@@ -88,6 +91,7 @@ Route::prefix('admin/products')->name('admin.products.')->group(function () {
     Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('edit');
     Route::put('/{product}', [ProductController::class, 'update'])->name('update');
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('destroy');
+
 });
 
 
