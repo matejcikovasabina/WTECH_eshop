@@ -31,7 +31,6 @@
                     </ul>
                 </li>              
                 
-                <li class="nav-item"><a class="nav-link" href="#">Akcie a Zľavy</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('giftcards.index') }}">Darčekové poukážky</a>
                 </li>
