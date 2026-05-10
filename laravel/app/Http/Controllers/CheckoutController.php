@@ -258,6 +258,10 @@ class CheckoutController extends Controller
                     'quantity' => $item['quantity'],
                     'unit_price' => $item['price'],
                 ]);
+
+                // ZNIZENIE STAVU SKLADU
+                \App\Models\Product::where('id', $item['product_id'])
+                    ->decrement('stock_count', $item['quantity']);
             }
         });
 
