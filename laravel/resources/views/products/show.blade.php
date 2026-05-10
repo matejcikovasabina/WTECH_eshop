@@ -216,7 +216,6 @@
                 <nav class="side-nav">
                     <a href="#popis">Popis produktu</a>
                     <a href="#podrobnosti">Podrobnosti</a>
-                    <a href="#recenzie">Recenzie</a>
                 </nav>
             </aside>
 
@@ -255,60 +254,6 @@
                             </div>
                             <div class="detail-item">Dostupnosť: Na sklade</div>
                         @endif
-                    </div>
-                </section>
-
-                <section id="recenzie" class="content-section">
-                    <h2>Recenzie</h2>
-
-                    <div class="reviews-summary">
-                        <div class="rating-main">
-                            <div class="rating-value">{{ number_format($product->rating ?? 0, 1) }} / 5</div>
-                            <div class="rating-count">Počet hodnotení zatiaľ nie je dostupný</div>
-                            <button class="review-btn" type="button">Pridať recenziu</button>
-                        </div>
-
-                        <div class="rating-breakdown">
-                            <div class="rating-row">
-                                <span>★★★★★</span>
-                            </div>
-                            <div class="rating-row">
-                                <span>★★★★☆</span>
-                            </div>
-                            <div class="rating-row">
-                                <span>★★★☆☆</span>
-                            </div>
-                            <div class="rating-row">
-                                <span>★★☆☆☆</span>
-                            </div>
-                            <div class="rating-row">
-                                <span>★☆☆☆☆</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reviews-list">
-                        <article class="review-item">
-                            <div class="review-content">
-                                <div class="review-header">
-                                    <span class="review-author">ReadIt</span>
-                                    <span class="review-stars">
-                                        @php
-                                            $rating = $product->rating ?? 0;
-                                            $fullStars = floor($rating);
-                                        @endphp
-
-                                        @for($i = 1; $i <= 5; $i++)
-                                            {{ $i <= $fullStars ? '★' : '☆' }}
-                                        @endfor
-                                    </span>
-                                </div>
-
-                                <p>
-                                    Recenzie zatiaľ nie sú dostupné.
-                                </p>
-                            </div>
-                        </article>
                     </div>
                 </section>
             </div>

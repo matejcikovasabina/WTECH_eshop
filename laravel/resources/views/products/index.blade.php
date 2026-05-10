@@ -124,37 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <hr>
-
-                            <div class="filter-section">
-                                <h6 class="filter-title" data-bs-toggle="collapse" data-bs-target="#collapseRating">
-                                    Hodnotenia <span class="arrow-icon">▾</span>
-                                </h6>
-                                <div class="collapse show" id="collapseRating">
-                                    <div class="filter-content">
-                                        @for($i = 5; $i >= 1; $i--)
-                                            <div class="form-check">
-                                                <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    name="rating[]"
-                                                    value="{{ $i }}"
-                                                    id="rate-{{ $i }}"
-                                                    {{ is_array(request('rating')) && in_array((string) $i, request('rating')) ? 'checked' : '' }}
-                                                    onchange="this.form.submit()"
-                                                >
-                                                <label class="form-check-label" for="rate-{{ $i }}">
-                                                    @for($j = 1; $j <= 5; $j++)
-                                                        {{ $j <= $i ? '★' : '☆' }}
-                                                    @endfor
-                                                    ({{ $i }}+)
-                                                </label>
-                                            </div>
-                                        @endfor
-                                    </div>
-                                </div>
-                            </div>
                             
                         </form>
                     @else
