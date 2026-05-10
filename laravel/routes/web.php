@@ -60,8 +60,7 @@ Route::get('/novinky', [ProductController::class, 'newArrivals'])
 
 
 Route::post('/cart/order', [CheckoutController::class, 'placeOrder'])
-    ->name('checkout.placeOrder')
-    ->middleware('auth');
+    ->name('checkout.placeOrder');
 
     Route::get('/clear-cart', function () {
         if (auth()->check()) {
@@ -100,4 +99,3 @@ Route::prefix('admin/products')->name('admin.products.')->group(function () {
 
 
 require __DIR__.'/settings.php';
-

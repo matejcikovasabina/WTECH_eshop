@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('city', 15);
             $table->string('zip_code', 6);
             $table->string('state', 20);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('address_type_id');
 
             $table->foreign('user_id')
