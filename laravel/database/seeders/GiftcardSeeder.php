@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use App\Models\ProductImage;
 use App\Models\Category;
 
+// FOTKY BRANE Z: https://www.martinus.sk/
+
 class GiftcardSeeder extends Seeder
 {
     public function run(): void

@@ -12,6 +12,9 @@ use App\Models\Publisher;
 use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
+
+// FOTKY BRANE Z: https://www.martinus.sk/
+
 class BookSeeder extends Seeder
 {
     public function run(): void
