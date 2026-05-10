@@ -127,16 +127,27 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:40',
-            'price' => 'required|numeric',
-            'type' => 'required|in:book,giftcard,accessory',
-            'category_id' => 'required|exists:categories,id',
-            'stock_count' => 'required|integer',
-            'description' => 'required|string',
-            'images.*' => 'nullable|image|max:2048',
-            'value' => 'required_if:type,giftcard|nullable|numeric',
-            'code' => 'required_if:type,giftcard|nullable|string|unique:giftcards,code',
-        ]);
+        'name' => 'required|string|max:100',
+        'price' => 'required|numeric|min:0.01',
+        'type' => 'required|in:book,giftcard,accessory',
+        'category_id' => 'required|exists:categories,id',
+        'stock_count' => 'required|integer|min:0',
+        'description' => 'required|string|min:10',
+        'images.*' => 'nullable|image|max:2048',
+        
+        //  validacie pre giftcards
+        'value' => 'required_if:type,giftcard|nullable|numeric|min:1',
+        'code' => 'required_if:type,giftcard|nullable|string|unique:giftcards,code',
+        
+        // validacie pre knihy
+        'year' => 'required_if:type,book|nullable|integer|min:1000|max:' . (date('Y') + 1),
+        'pages_num' => 'required_if:type,book|nullable|integer|min:1',
+        'isbn' => 'required_if:type,book|nullable|string|max:20',
+        'weight' => 'nullable|numeric|min:0',
+        'width' => 'nullable|numeric|min:0',
+        'height' => 'nullable|numeric|min:0',
+        'depth' => 'nullable|numeric|min:0',
+    ]);
 
         try {
             DB::beginTransaction();
