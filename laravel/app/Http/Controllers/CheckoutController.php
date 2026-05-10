@@ -23,6 +23,10 @@ class CheckoutController extends Controller
         $delivery = session()->get('checkout.delivery', []);
         $user = Auth::user();
 
+        if (empty($cart)) {
+            return redirect()->route('cart.index')->with('error', 'Košík je prázdny.');
+        }
+
         $total = collect($cart)->sum(function ($item) {
             return ($item['price'] ?? 0) * ($item['quantity'] ?? 1);
         });

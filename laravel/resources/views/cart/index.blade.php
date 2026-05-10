@@ -116,10 +116,15 @@
                                         <strong>{{ number_format($total, 2, ',', ' ') }} €</strong>
                                     </div>
 
-                                    <a href="{{ route('cart.delivery') }}" 
-                                    class="continue-btn {{ empty($cart) ? 'disabled' : '' }}">
-                                        Pokračovať
-                                    </a>
+                                    @if(empty($cart))
+                                        <button type="button" class="continue-btn disabled" disabled>
+                                            Pokračovať
+                                        </button>
+                                    @else
+                                        <a href="{{ route('cart.delivery') }}" class="continue-btn">
+                                            Pokračovať
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
