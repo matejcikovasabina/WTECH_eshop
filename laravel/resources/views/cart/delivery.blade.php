@@ -6,6 +6,14 @@
 
 <main class="py-4">
     <div class="container">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+
         <div class="row justify-content-center g-4">
 
             <div class="col-12 col-lg-4">
@@ -42,6 +50,80 @@
                         <form method="POST" action="{{ route('cart.delivery.store') }}">
                             @csrf
 
+                            <h2 class="h4 mb-2">Kontaktné údaje</h2>
+                            <p class="text-muted mb-4">Tieto údaje použijeme na potvrdenie a doručenie objednávky.</p>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-12 col-md-6">
+                                    <label for="first_name" class="form-label">Meno</label>
+                                    <input
+                                        type="text"
+                                        id="first_name"
+                                        name="first_name"
+                                        class="form-control @error('first_name') is-invalid @enderror"
+                                        value="{{ old('first_name', $delivery['first_name'] ?? $user?->first_name) }}"
+                                        maxlength="50"
+                                        autocomplete="given-name"
+                                        required
+                                    >
+                                    @error('first_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="last_name" class="form-label">Priezvisko</label>
+                                    <input
+                                        type="text"
+                                        id="last_name"
+                                        name="last_name"
+                                        class="form-control @error('last_name') is-invalid @enderror"
+                                        value="{{ old('last_name', $delivery['last_name'] ?? $user?->last_name) }}"
+                                        maxlength="50"
+                                        autocomplete="family-name"
+                                        required
+                                    >
+                                    @error('last_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        value="{{ old('email', $delivery['email'] ?? $user?->email) }}"
+                                        maxlength="100"
+                                        autocomplete="email"
+                                        required
+                                    >
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="phone" class="form-label">Telefón</label>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        class="form-control @error('phone') is-invalid @enderror"
+                                        value="{{ old('phone', $delivery['phone'] ?? $user?->phone) }}"
+                                        maxlength="30"
+                                        autocomplete="tel"
+                                        placeholder="+421 900 123 456"
+                                        required
+                                    >
+                                    @error('phone')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <h2 class="h4 mb-2">Spôsob doručenia</h2>
                             <p class="text-muted mb-4">Vyber si spôsob, ktorý ti najviac vyhovuje.</p>
 
@@ -49,7 +131,7 @@
 
                                 <label class="border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="delivery" id="pickup" value="pickup" checked>
+                                        <input class="form-check-input" type="radio" name="delivery" id="pickup" value="pickup" @checked(old('delivery', $delivery['delivery'] ?? 'pickup') === 'pickup')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
@@ -68,7 +150,7 @@
 
                                 <label class="border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="delivery" id="courier" value="courier">
+                                        <input class="form-check-input" type="radio" name="delivery" id="courier" value="courier" @checked(old('delivery', $delivery['delivery'] ?? 'pickup') === 'courier')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
@@ -87,7 +169,7 @@
 
                                 <label class="border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="delivery" id="packeta" value="packeta">
+                                        <input class="form-check-input" type="radio" name="delivery" id="packeta" value="packeta" @checked(old('delivery', $delivery['delivery'] ?? 'pickup') === 'packeta')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
@@ -114,10 +196,16 @@
                                         type="text" 
                                         id="address" 
                                         name="address"
-                                        class="form-control" 
+                                        class="form-control @error('address') is-invalid @enderror" 
                                         placeholder="Zadaj ulicu a číslo domu"
-                                        value="{{ old('address') }}"
+                                        value="{{ old('address', $delivery['address'] ?? '') }}"
+                                        maxlength="100"
+                                        autocomplete="street-address"
+                                        required
                                     >
+                                    @error('address')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="row g-2">
@@ -127,10 +215,16 @@
                                             type="text" 
                                             id="city" 
                                             name="city"
-                                            class="form-control" 
+                                            class="form-control @error('city') is-invalid @enderror" 
                                             placeholder="Bratislava"
-                                            value="{{ old('city') }}"
+                                            value="{{ old('city', $delivery['city'] ?? '') }}"
+                                            maxlength="50"
+                                            autocomplete="address-level2"
+                                            required
                                         >
+                                        @error('city')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="col-12 col-md-4">
@@ -139,10 +233,16 @@
                                             type="text" 
                                             id="zip" 
                                             name="zip"
-                                            class="form-control" 
+                                            class="form-control @error('zip') is-invalid @enderror" 
                                             placeholder="811 01"
-                                            value="{{ old('zip') }}"
+                                            value="{{ old('zip', $delivery['zip'] ?? '') }}"
+                                            maxlength="10"
+                                            autocomplete="postal-code"
+                                            required
                                         >
+                                        @error('zip')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -152,9 +252,13 @@
                                         id="note" 
                                         name="note"
                                         rows="4" 
-                                        class="form-control" 
+                                        class="form-control @error('note') is-invalid @enderror" 
+                                        maxlength="500"
                                         placeholder="Napr. zazvoniť pri vchode alebo nechať balík na recepcii"
-                                    >{{ old('note') }}</textarea>
+                                    >{{ old('note', $delivery['note'] ?? '') }}</textarea>
+                                    @error('note')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
 

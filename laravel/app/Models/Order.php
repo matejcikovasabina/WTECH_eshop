@@ -13,6 +13,9 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'guest_mail',
+        'customer_first_name',
+        'customer_last_name',
+        'customer_phone',
         'status_id',
         'payment_method_id',
         'delivery_method_id',
@@ -73,6 +76,7 @@ class Order extends Model
     {
         return $this->hasOne(Invoice::class, 'order_id');
     }
+
     public function review()
     {
         return $this->hasOne(OrderReview::class, 'order_id');

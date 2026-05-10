@@ -28,6 +28,25 @@
 
                         <div class="card border rounded-4 mb-4">
                             <div class="card-body">
+                                <h3 class="h5 mb-3">Kontaktné a fakturačné údaje</h3>
+
+                                <div class="row gy-2 mb-3">
+                                    <div class="col-12 col-md-6">
+                                        <span class="fw-semibold">Meno:</span>
+                                        <span class="text-muted">{{ $delivery['first_name'] }} {{ $delivery['last_name'] }}</span>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <span class="fw-semibold">E-mail:</span>
+                                        <span class="text-muted">{{ $delivery['email'] }}</span>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <span class="fw-semibold">Telefón:</span>
+                                        <span class="text-muted">{{ $delivery['phone'] }}</span>
+                                    </div>
+                                </div>
+
                                 <h3 class="h5 mb-3">Doručenie</h3>
 
                                 <div class="row gy-2">
@@ -86,6 +105,11 @@
                                 <div class="d-flex justify-content-between align-items-center py-2">
                                     <span>Doručenie</span>
                                     <span>{{ number_format($deliveryPrice, 2, ',', ' ') }} €</span>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <span>Platba</span>
+                                    <span>{{ number_format($paymentPrice, 2, ',', ' ') }} €</span>
                                 </div>
 
                                 <div class="d-flex justify-content-between align-items-center pt-3 mt-2 border-top fs-5 fw-bold">

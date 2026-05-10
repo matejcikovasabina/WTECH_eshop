@@ -6,6 +6,14 @@
 
 <main class="py-4">
     <div class="container">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        @endif
+
         <div class="row justify-content-center g-4">
 
             <div class="col-12 col-lg-4">
@@ -54,7 +62,7 @@
 
                                 <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="payment" id="cardPayment" value="card" checked>
+                                        <input class="form-check-input" type="radio" name="payment" id="cardPayment" value="card" @checked(old('payment', session('checkout.payment.payment', 'card')) === 'card')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
@@ -73,7 +81,7 @@
 
                                 <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="payment" id="cashPayment" value="cash">
+                                        <input class="form-check-input" type="radio" name="payment" id="cashPayment" value="cash" @checked(old('payment', session('checkout.payment.payment', 'card')) === 'cash')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
@@ -92,7 +100,7 @@
 
                                 <label class="payment-option border rounded-4 p-3 p-md-4 bg-white">
                                     <div class="form-check m-0">
-                                        <input class="form-check-input" type="radio" name="payment" id="bankTransfer" value="bank_transfer">
+                                        <input class="form-check-input" type="radio" name="payment" id="bankTransfer" value="bank_transfer" @checked(old('payment', session('checkout.payment.payment', 'card')) === 'bank_transfer')>
                                         <div class="ms-4">
                                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-start gap-2">
                                                 <div>
