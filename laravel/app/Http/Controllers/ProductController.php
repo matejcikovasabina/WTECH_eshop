@@ -147,6 +147,11 @@ class ProductController extends Controller
         'width' => 'nullable|numeric|min:0',
         'height' => 'nullable|numeric|min:0',
         'depth' => 'nullable|numeric|min:0',
+
+
+        'publisher_id' => 'required_if:type,book|nullable|exists:publishers,id',
+        'language_id'  => 'required_if:type,book|nullable|exists:languages,id',
+        'binding_id'   => 'required_if:type,book|nullable|exists:bindings,id',
     ]);
 
         try {
@@ -377,15 +382,21 @@ class ProductController extends Controller
         // 1. VALIDACIA
         $request->validate([
             'name'        => 'required|string|max:255',
-            'price'       => 'required|numeric|min:0',
+            'price'       => 'required|numeric|min:0.01',
             'stock_count' => 'required|integer|min:0',
-            'description' => 'required|string',
+            'description' => 'required|string|min:10',
             'category_id' => 'nullable|exists:categories,id',
-            'weight'      => 'nullable|numeric',
-            'width'       => 'nullable|numeric',
-            'height'      => 'nullable|numeric',
-            'depth'       => 'nullable|numeric',
+            
+            'weight'      => 'nullable|numeric|min:0',
+            'width'       => 'nullable|numeric|min:0',
+            'height'      => 'nullable|numeric|min:0',
+            'depth'       => 'nullable|numeric|min:0',
+            
             'isbn'        => 'nullable|string|max:20',
+            'year'        => 'nullable|integer|min:1000|max:' . (date('Y') + 1),
+            'pages_num'   => 'nullable|integer|min:1',
+            
+            'value'       => 'required_if:type,giftcard|nullable|numeric|min:1',
         ]);
 
         try {
