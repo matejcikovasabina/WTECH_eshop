@@ -1,52 +1,5 @@
 <?php
 
-// namespace App\Http\Controllers;
-
-// use App\Models\Product;
-// use Illuminate\Http\Request;
-// use App\Models\Giftcard;
-
-// class GiftcardController extends Controller
-// {
-//     // public function index()
-//     // {
-//     //     $query = Product::where('type', 'giftcard');
-
-//     //     if (request('sort') == 'cheapest') {
-//     //         $query->orderBy('price', 'asc');
-//     //     } 
-//     //     elseif (request('sort') == 'most_expensive') {
-//     //         $query->orderBy('price', 'desc');
-//     //     } 
-//     //     else {
-//     //         $query->orderBy('id', 'desc');
-//     //     }
-
-//     //     $giftcards = $query->paginate(12);
-
-//     //     return view('giftcards.index', compact('giftcards'));
-//     // }
-
-
-//     // public function show($id)
-//     // {
-//     //     // 1. Načítame konkrétnu poukážku (tu Laravel automaticky vie, čo je Primary Key)
-//     //     $giftcard = \App\Models\Giftcard::findOrFail($id);
-
-//     //     // 2. Načítame odporúčané produkty - ZMENA: 'id' sme prepísali na 'product_id'
-//     //     $recommended = \App\Models\Giftcard::where('product_id', '!=', $id) 
-//     //                                         ->inRandomOrder()
-//     //                                         ->take(6)
-//     //                                         ->get();
-
-//     //     // 3. Pošleme do view
-//     //     return view('giftcards.show', compact('giftcard', 'recommended'));
-//     // }
-
-    
-// }
-
-
 namespace App\Http\Controllers;
 
 use App\Models\Product;

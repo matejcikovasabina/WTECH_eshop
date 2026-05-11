@@ -24,6 +24,7 @@ class BookController extends Controller
         $currentMainCategory = null;
         $subCategories = collect();
 
+        // AK chceme filtrovat konkretny kategoriu
         if ($request->filled('category')) {
             $selectedCat = Category::with('parent')->find($request->category);
 
@@ -34,7 +35,8 @@ class BookController extends Controller
 
                     $ids = $subCategories->pluck('id')->push($selectedCat->id);
                     $query->whereIn('category_id', $ids);
-                } else {
+                } 
+                else {
                     $currentMainCategory = $selectedCat->parent;
                     $subCategories = $currentMainCategory ? $currentMainCategory->children : collect();
 
@@ -43,6 +45,7 @@ class BookController extends Controller
             }
         }
 
+        // Ak vyhladavame na stranke
         if ($request->filled('search')) {
             $search = $request->search;
 
@@ -57,6 +60,7 @@ class BookController extends Controller
             });
         }
 
+        // Filtre podla sidebaru
         if ($request->filled('language')) {
             $query->whereHas('book.language', function ($q) use ($request) {
                 $q->whereIn('name', (array) $request->language);
@@ -75,14 +79,6 @@ class BookController extends Controller
             });
         }
 
-        if ($request->filled('rating')) {
-            $minRating = min((array) $request->rating);
-
-            $query->whereHas('book', function ($q) use ($minRating) {
-                $q->where('rating', '>=', $minRating);
-            });
-        }
-
         if ($request->has('in_stock')) {
             $query->where('stock_count', '>', 0);
         }
@@ -93,6 +89,7 @@ class BookController extends Controller
             });
         }
 
+        // SORTOVANIE
         $sort = $request->get('sort', 'newest');
 
         switch ($sort) {
@@ -112,7 +109,7 @@ class BookController extends Controller
                 break;
         }
 
-        $products = $query->paginate(12)->withQueryString();
+        $products = $query->paginate(12)->withQueryString(); //zachova filtre pri strankovani
         $type = 'book';
 
         return view('products.index', compact(

@@ -76,15 +76,17 @@ class ProductController extends Controller
     /**
      * ADMIN: Zobrazenie zoznamu produktov na editaciu
      */
-    public function searchAndEdit() // <--- TU ZMEŇ NÁZOV
+    public function searchAndEdit()
     {
-        // Nacitaj vsetky produkty z databazy (tvoj pôvodný kód)
         $products = Product::with('images', 'book', 'category')
             ->paginate(20);
         
         return view('admin.admin-edit', compact('products'));
     }
 
+    /**
+     * ADMIN Zoznam produktov + search
+     */
     public function index(Request $request)
     {
         $query = Product::with(['images', 'book.authors', 'category']);
@@ -240,7 +242,8 @@ class ProductController extends Controller
             DB::commit();
             return redirect()->route('admin.products.index')->with('success', 'Produkt pridaný!');
 
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             DB::rollBack();
             return back()->withErrors(['error' => $e->getMessage()])->withInput();       
         }
@@ -268,13 +271,11 @@ class ProductController extends Controller
             $product = Product::where('name', 'LIKE', "%{$query}%")->first();
         }
 
-        // Uisti sa, ze tento string 'admin.admin-delete' zodpoveda ceste k suboru
         return view('admin.admin-delete', compact('product'));
     }
 
     /**
      * ADMIN: Vymazanie produktu
-     * Route: DELETE /admin/products/{product}
      */
     public function destroy(Product $product)
     {
@@ -294,7 +295,7 @@ class ProductController extends Controller
 
             // 3. Ak je to kniha, zmazeme prepojenia na autorov a knihu samotnu
             if ($product->book) {
-                // Odpojime autorov vo vazobnej tabulke (pivot)
+                // Odpojime autorov vo vazobnej tabulke
                 $product->book->authors()->detach();
                 // Zmazeme zaznam v tabulke books
                 $product->book->delete();
@@ -311,13 +312,17 @@ class ProductController extends Controller
             DB::commit();
             return redirect()->route('admin.products.index')->with('success', 'Produkt bol úspešne zmazaný.');
 
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             DB::rollBack();
             return back()->withErrors(['error' => 'Chyba pri mazaní: ' . $e->getMessage()]);
         }
     }
 
 
+    /**
+     * Zmazanie jedneho obrazka
+     */
     public function deleteImage($id)
     {
         $image = \DB::table('products_images')->where('id', $id)->first();
@@ -338,6 +343,9 @@ class ProductController extends Controller
         return response()->json(['success' => false, 'message' => 'Obrázok sa nenašiel.'], 404);
     }
 
+    /**
+     * Vyhladanie produktu na zmazanie
+     */
     public function deleteSearch(Request $request)
     {
         $query = $request->input('query');
@@ -351,6 +359,9 @@ class ProductController extends Controller
         return view('admin.admin-delete', compact('product'));
     }
 
+    /**
+     * Vyhladavanie produktu pre editaciu
+     */
     public function editSearch(Request $request)
     {
         $query = $request->input('query');
@@ -377,6 +388,9 @@ class ProductController extends Controller
         ));
     }
 
+    /**
+     * Uprava existujuceho produktu
+     */
     public function update(Request $request, Product $product)
     {
         // 1. VALIDACIA
@@ -402,7 +416,7 @@ class ProductController extends Controller
         try {
             DB::beginTransaction();
 
-            // 2. Aktualizacia základneho produktu
+            // 2. Aktualizacia zakladneho produktu
             $product->update([
                 'name' => $request->name,
                 'price' => $request->price,
@@ -479,12 +493,16 @@ class ProductController extends Controller
             return redirect()->route('admin.products.edit_search', ['query' => $product->name])
                             ->with('success', 'Produkt bol úspešne upravený.');
 
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             DB::rollBack();
             return back()->withErrors(['error' => 'Chyba pri ukladaní: ' . $e->getMessage()])->withInput();
         }
     }
-
+    
+    /**
+     * stranka pre novinky -> knihy len tento rok co vysli
+     */
     public function newArrivals(Request $request)
     {
         $type = 'book';
